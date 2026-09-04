@@ -4,16 +4,15 @@ using UnityEngine;
 
 public class ShooterController : MonoBehaviour
 {
-    private MovementInput input;
+    //private MovementInput input;
     private Animator anim;
 
-    [Header("Cinemachine")]
-    public CinemachineFreeLook thirdPersonCam;
+    //[Header("Cinemachine")]
+    //public CinemachineFreeLook thirdPersonCam;
 
     private void Start()
     {
-        input = GetComponent<MovementInput>();
+        //input = GetComponent<MovementInput>();
         anim = GetComponent<Animator>();
-
     }
 }

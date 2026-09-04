@@ -1,4 +1,5 @@
-﻿ using UnityEngine;
+﻿using UnityEngine;
+using Cinemachine;
 #if ENABLE_INPUT_SYSTEM 
 using UnityEngine.InputSystem;
 #endif
@@ -75,6 +76,35 @@ namespace StarterAssets
         [Tooltip("For locking the camera position on all axis")]
         public bool LockCameraPosition = false;
 
+        [Header("Aim Camera")]
+
+        [Tooltip("The Cinemachine Virtual Camera used for aiming")]
+        public CinemachineVirtualCamera PlayerFollowCamera;
+
+        [Tooltip("Shoulder offset when aiming")]
+        public Vector3 AimShoulderOffset = new Vector3(2f, 0.1f, 2.7f);
+
+        private Vector3 _normalShoulderOffset;
+
+        [Header("Weapon Aim")]
+
+        [Tooltip("The muzzle transform of the weapon")]
+        public Transform Muzzle;
+
+        [Tooltip("The transform that controls the weapon aiming rotation")]
+        public Transform WeaponAimPivot;
+
+        [Tooltip("Maximum distance used for aiming")]
+        public float AimRayDistance = 1000f;
+
+        [Tooltip("Layers that can be hit by the aim ray")]
+        public LayerMask AimLayers;
+
+        [Header("Aim Target")]
+
+        [Tooltip("The world-space target point used for aiming")]
+        public Transform AimTarget;
+
         // cinemachine
         private float _cinemachineTargetYaw;
         private float _cinemachineTargetPitch;
@@ -97,6 +127,7 @@ namespace StarterAssets
         private int _animIDJump;
         private int _animIDFreeFall;
         private int _animIDMotionSpeed;
+        private int _animIDAiming;
 
 #if ENABLE_INPUT_SYSTEM 
         private PlayerInput _playerInput;
@@ -104,11 +135,13 @@ namespace StarterAssets
         private Animator _animator;
         private CharacterController _controller;
         private StarterAssetsInputs _input;
-        private GameObject _mainCamera;
+        private Camera _mainCamera;
 
         private const float _threshold = 0.01f;
 
+        // Boolean
         private bool _hasAnimator;
+        private bool _isAiming;
 
         private bool IsCurrentDeviceMouse
         {
@@ -122,20 +155,22 @@ namespace StarterAssets
             }
         }
 
-
         private void Awake()
         {
             // get a reference to our main camera
             if (_mainCamera == null)
             {
-                _mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
+                _mainCamera = Camera.main;
             }
         }
 
         private void Start()
         {
             _cinemachineTargetYaw = CinemachineCameraTarget.transform.rotation.eulerAngles.y;
-            
+
+            // Store the normal shoulder offset for later use
+            _normalShoulderOffset = PlayerFollowCamera.GetCinemachineComponent<Cinemachine3rdPersonFollow>().ShoulderOffset;
+
             _hasAnimator = TryGetComponent(out _animator);
             _controller = GetComponent<CharacterController>();
             _input = GetComponent<StarterAssetsInputs>();
@@ -159,6 +194,10 @@ namespace StarterAssets
             JumpAndGravity();
             GroundedCheck();
             Move();
+
+            Aim();
+            Fire();
+            UpdateWeaponAim();
         }
 
         private void LateUpdate()
@@ -173,6 +212,7 @@ namespace StarterAssets
             _animIDJump = Animator.StringToHash("Jump");
             _animIDFreeFall = Animator.StringToHash("FreeFall");
             _animIDMotionSpeed = Animator.StringToHash("MotionSpeed");
+            _animIDAiming = Animator.StringToHash("Aiming");
         }
 
         private void GroundedCheck()
@@ -277,6 +317,91 @@ namespace StarterAssets
                 _animator.SetFloat(_animIDSpeed, _animationBlend);
                 _animator.SetFloat(_animIDMotionSpeed, inputMagnitude);
             }
+        }
+
+        private void Aim()
+        {
+            Cinemachine3rdPersonFollow thirdPersonFollow = PlayerFollowCamera.GetCinemachineComponent<Cinemachine3rdPersonFollow>();
+
+            if (Input.GetMouseButtonDown(1))
+            {
+                _animator.SetBool(_animIDAiming, true);
+                _isAiming = true;
+
+                // Change camera to aiming position
+                thirdPersonFollow.ShoulderOffset = AimShoulderOffset;
+            }
+
+            if(Input.GetMouseButtonUp(1))
+            {
+                _animator.SetBool(_animIDAiming, false);
+                _isAiming = false;
+
+                // Restore normal camera position
+                thirdPersonFollow.ShoulderOffset = _normalShoulderOffset;
+            }
+        }
+
+        private void Fire()
+        {
+            if (Input.GetMouseButtonDown(0) && _isAiming)
+            {
+                _animator.SetTrigger("Fire");
+            }
+        }
+
+        private void UpdateWeaponAim()
+        {
+            if (!_isAiming || WeaponAimPivot == null || AimTarget == null)
+                return;
+
+            Vector3 targetPoint = GetAimTargetPoint();
+
+            AimTarget.position = targetPoint;
+
+            Vector3 aimDirection = targetPoint - WeaponAimPivot.position;
+
+            if (aimDirection.sqrMagnitude < 0.001f)
+                return;
+
+            Quaternion targetRotation = Quaternion.LookRotation(aimDirection);
+
+            WeaponAimPivot.rotation = targetRotation;
+
+            Debug.DrawLine(
+                WeaponAimPivot.position,
+                targetPoint,
+                Color.red
+            );
+        }
+
+        private Vector3 GetAimTargetPoint()
+        {
+            Vector3 screenCenter = new Vector3(
+                Screen.width * 0.5f,
+                Screen.height * 0.5f,
+                0f
+            );
+
+            Ray ray = _mainCamera.ScreenPointToRay(screenCenter);
+
+            if (Physics.Raycast(
+                ray,
+                out RaycastHit hit,
+                AimRayDistance,
+                AimLayers,
+                QueryTriggerInteraction.Ignore))
+            {
+                Debug.DrawLine(ray.origin, hit.point, Color.red);
+
+                return hit.point;
+            }
+
+            Vector3 targetPoint = ray.origin + ray.direction * AimRayDistance;
+
+            Debug.DrawLine(ray.origin, targetPoint, Color.red);
+
+            return targetPoint;
         }
 
         private void JumpAndGravity()
