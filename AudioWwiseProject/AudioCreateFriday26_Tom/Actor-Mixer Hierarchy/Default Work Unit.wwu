@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{73A11A96-30E8-4D7B-8388-7642E14CB277}" SchemaVersion="119">
+	<AudioObjects>
+		<WorkUnit Name="Default Work Unit" ID="{73A11A96-30E8-4D7B-8388-7642E14CB277}" PersistMode="Standalone">
+			<ChildrenList>
+				<Sound Name="FS_Teest" ID="{B78EA171-5103-47B5-9BE1-CD100CC09F33}" ShortID="559616295">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0D0BDD3C-E48D-4BC7-B834-30F30F1AB16A}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B707C56D-6B95-4003-903A-F69E21EA27D1}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="TestFS" ID="{20B7EBE9-539E-4BF4-8D0D-142F49ACD9F3}">
+							<Language>SFX</Language>
+							<AudioFile>TestFS.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="491690467"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="TestFS" ID="{20B7EBE9-539E-4BF4-8D0D-142F49ACD9F3}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="Test_Magic" ID="{5B69757A-273F-43DC-90C2-238067B044E9}" ShortID="546685599">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0D0BDD3C-E48D-4BC7-B834-30F30F1AB16A}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B707C56D-6B95-4003-903A-F69E21EA27D1}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Magic_Test" ID="{FA10899A-95AA-4C7D-A7C0-4116FCBF0764}">
+							<Language>SFX</Language>
+							<AudioFile>Magic_Test.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="343996238"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Magic_Test" ID="{FA10899A-95AA-4C7D-A7C0-4116FCBF0764}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+			</ChildrenList>
+		</WorkUnit>
+	</AudioObjects>
+</WwiseDocument>

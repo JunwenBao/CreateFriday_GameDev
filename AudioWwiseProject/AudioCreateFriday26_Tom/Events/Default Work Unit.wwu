@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{8EADA07F-2019-4F75-B9B7-7A9CD425A61F}" SchemaVersion="119">
+	<Events>
+		<WorkUnit Name="Default Work Unit" ID="{8EADA07F-2019-4F75-B9B7-7A9CD425A61F}" PersistMode="Standalone">
+			<ChildrenList>
+				<Event Name="Play_FS_Teest" ID="{CEB7B37C-6F28-4F73-8373-E4B90E3F6362}">
+					<ChildrenList>
+						<Action Name="" ID="{27BAA9A6-2481-4CB0-9370-D46E436F52A7}" ShortID="652840756">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="FS_Teest" ID="{B78EA171-5103-47B5-9BE1-CD100CC09F33}" WorkUnitID="{73A11A96-30E8-4D7B-8388-7642E14CB277}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_Test_Magic" ID="{4D3CE230-F638-4AFA-A93D-B07FCD5E06C6}">
+					<ChildrenList>
+						<Action Name="" ID="{C207FA8F-516E-4E5F-80CD-DCDC8F8861E9}" ShortID="258019447">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Test_Magic" ID="{5B69757A-273F-43DC-90C2-238067B044E9}" WorkUnitID="{73A11A96-30E8-4D7B-8388-7642E14CB277}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+			</ChildrenList>
+		</WorkUnit>
+	</Events>
+</WwiseDocument>
