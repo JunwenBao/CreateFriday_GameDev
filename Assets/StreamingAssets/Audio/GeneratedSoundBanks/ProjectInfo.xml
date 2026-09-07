@@ -3,10 +3,10 @@
 	<Project Name="CreateFriday26" GUID="{BDA90451-F56D-4E4E-843F-3BBAEA4AF578}" Generator="2023.1.19.8928"/>
 	<CacheRoot>../../../../../../Wwise/Project/CreateFriday26/.cache</CacheRoot>
 	<Platforms>
-		<Platform Name="Windows" GUID="{86A63514-B02A-490D-A4B5-36459D8E483A}" BasePlatform="Windows" BasePlatformGUID="{6E0CB257-C6C8-4C5C-8366-2740DFC441EB}" Path="../../../../../../Wwise/Project/CreateFriday26/GeneratedSoundBanks/Windows"/>
+		<Platform Name="Windows" GUID="{86A63514-B02A-490D-A4B5-36459D8E483A}" BasePlatform="Windows" BasePlatformGUID="{6E0CB257-C6C8-4C5C-8366-2740DFC441EB}" Path="../../../../../../Wwise/Project/CreateFriday26/SoundBanks"/>
 	</Platforms>
 	<Languages>
 		<Language Name="English(US)" Id="684519430" GUID="{809D31F6-20F0-4E26-B5D9-13607CAA17AC}" Default="true" UseAsStandIn="true"/>
 	</Languages>
-	<FileHash>{86C0CE4D-E053-9961-C800-B1C6EC420386}</FileHash>
+	<FileHash>{1DD9DB83-FAE1-E979-A0C4-531AB57E0610}</FileHash>
 </ProjectInfo>
