@@ -28,6 +28,7 @@ namespace StarterAssets
 
         [Tooltip("Acceleration and deceleration")]
         public float SpeedChangeRate = 10.0f;
+        public float Sensitivity = 1f;
 
         public AudioClip LandingAudioClip;
         public AudioClip[] FootstepAudioClips;
@@ -85,6 +86,8 @@ namespace StarterAssets
         public Vector3 AimShoulderOffset = new Vector3(2f, 0.1f, 2.7f);
 
         private Vector3 _normalShoulderOffset;
+        private Vector3 _targetShoulderOffset;
+        private float _shoulderOffsetSmoothSpeed = 10f;
 
         [Header("Weapon Aim")]
 
@@ -93,7 +96,7 @@ namespace StarterAssets
 
         [Tooltip("The transform that controls the weapon aiming rotation")]
         public Transform WeaponAimPivot;
-
+        
         [Tooltip("Maximum distance used for aiming")]
         public float AimRayDistance = 1000f;
 
@@ -104,6 +107,9 @@ namespace StarterAssets
 
         [Tooltip("The world-space target point used for aiming")]
         public Transform AimTarget;
+
+        [Header("Camera Pitch")]
+        public Transform CameraPitchRoot;
 
         // cinemachine
         private float _cinemachineTargetYaw;
@@ -140,6 +146,7 @@ namespace StarterAssets
         private const float _threshold = 0.01f;
 
         // Boolean
+        private bool _rotateOnMove = true;
         private bool _hasAnimator;
         private bool _isAiming;
 
@@ -170,6 +177,7 @@ namespace StarterAssets
 
             // Store the normal shoulder offset for later use
             _normalShoulderOffset = PlayerFollowCamera.GetCinemachineComponent<Cinemachine3rdPersonFollow>().ShoulderOffset;
+            _targetShoulderOffset = _normalShoulderOffset;
 
             _hasAnimator = TryGetComponent(out _animator);
             _controller = GetComponent<CharacterController>();
@@ -195,9 +203,13 @@ namespace StarterAssets
             GroundedCheck();
             Move();
 
+            /*
             Aim();
+            UpdateShoulderOffset();
+
             Fire();
             UpdateWeaponAim();
+            */
         }
 
         private void LateUpdate()
@@ -232,23 +244,26 @@ namespace StarterAssets
 
         private void CameraRotation()
         {
-            // if there is an input and camera position is not fixed
             if (_input.look.sqrMagnitude >= _threshold && !LockCameraPosition)
             {
-                //Don't multiply mouse input by Time.deltaTime;
                 float deltaTimeMultiplier = IsCurrentDeviceMouse ? 1.0f : Time.deltaTime;
 
-                _cinemachineTargetYaw += _input.look.x * deltaTimeMultiplier;
-                _cinemachineTargetPitch += _input.look.y * deltaTimeMultiplier;
+                _cinemachineTargetYaw += _input.look.x * deltaTimeMultiplier * Sensitivity;
+                _cinemachineTargetPitch += _input.look.y * deltaTimeMultiplier * Sensitivity;
             }
 
-            // clamp our rotations so our values are limited 360 degrees
-            _cinemachineTargetYaw = ClampAngle(_cinemachineTargetYaw, float.MinValue, float.MaxValue);
-            _cinemachineTargetPitch = ClampAngle(_cinemachineTargetPitch, BottomClamp, TopClamp);
+            _cinemachineTargetYaw =
+                ClampAngle(_cinemachineTargetYaw, float.MinValue, float.MaxValue);
 
-            // Cinemachine will follow this target
-            CinemachineCameraTarget.transform.rotation = Quaternion.Euler(_cinemachineTargetPitch + CameraAngleOverride,
-                _cinemachineTargetYaw, 0.0f);
+            _cinemachineTargetPitch =
+                ClampAngle(_cinemachineTargetPitch, BottomClamp, TopClamp);
+
+            CinemachineCameraTarget.transform.rotation =
+                Quaternion.Euler(
+                    _cinemachineTargetPitch + CameraAngleOverride,
+                    _cinemachineTargetYaw,
+                    0.0f
+                );
         }
 
         private void Move()
@@ -301,7 +316,10 @@ namespace StarterAssets
                     RotationSmoothTime);
 
                 // rotate to face input direction relative to camera position
-                transform.rotation = Quaternion.Euler(0.0f, rotation, 0.0f);
+                if(_rotateOnMove)
+                {
+                    transform.rotation = Quaternion.Euler(0.0f, rotation, 0.0f);
+                }
             }
 
 
@@ -321,24 +339,22 @@ namespace StarterAssets
 
         private void Aim()
         {
-            Cinemachine3rdPersonFollow thirdPersonFollow = PlayerFollowCamera.GetCinemachineComponent<Cinemachine3rdPersonFollow>();
-
             if (Input.GetMouseButtonDown(1))
             {
                 _animator.SetBool(_animIDAiming, true);
                 _isAiming = true;
 
-                // Change camera to aiming position
-                thirdPersonFollow.ShoulderOffset = AimShoulderOffset;
+                // Set the target position for aiming
+                _targetShoulderOffset = AimShoulderOffset;
             }
 
-            if(Input.GetMouseButtonUp(1))
+            if (Input.GetMouseButtonUp(1))
             {
                 _animator.SetBool(_animIDAiming, false);
                 _isAiming = false;
 
-                // Restore normal camera position
-                thirdPersonFollow.ShoulderOffset = _normalShoulderOffset;
+                // Set the target position back to normal
+                _targetShoulderOffset = _normalShoulderOffset;
             }
         }
 
@@ -350,15 +366,29 @@ namespace StarterAssets
             }
         }
 
+        private void UpdateShoulderOffset()
+        {
+            Cinemachine3rdPersonFollow thirdPersonFollow =
+                PlayerFollowCamera.GetCinemachineComponent<Cinemachine3rdPersonFollow>();
+
+            thirdPersonFollow.ShoulderOffset = Vector3.Lerp(
+                thirdPersonFollow.ShoulderOffset,
+                _targetShoulderOffset,
+                Time.deltaTime * _shoulderOffsetSmoothSpeed
+            );
+        }
+
         private void UpdateWeaponAim()
         {
-            if (!_isAiming || WeaponAimPivot == null || AimTarget == null)
+            if (!_isAiming || AimTarget == null)
                 return;
 
             Vector3 targetPoint = GetAimTargetPoint();
 
             AimTarget.position = targetPoint;
 
+            Debug.Log($"AimTarget: {targetPoint}");
+            /*
             Vector3 aimDirection = targetPoint - WeaponAimPivot.position;
 
             if (aimDirection.sqrMagnitude < 0.001f)
@@ -373,6 +403,7 @@ namespace StarterAssets
                 targetPoint,
                 Color.red
             );
+            */
         }
 
         private Vector3 GetAimTargetPoint()
@@ -492,6 +523,16 @@ namespace StarterAssets
             Gizmos.DrawSphere(
                 new Vector3(transform.position.x, transform.position.y - GroundedOffset, transform.position.z),
                 GroundedRadius);
+        }
+
+        public void SetSensitivity(float newSensitivity)
+        {
+            Sensitivity = newSensitivity;
+        }
+
+        public void SetRotateOnMove(bool newRotateOnMove)
+        {
+            _rotateOnMove = newRotateOnMove;
         }
 
         private void OnFootstep(AnimationEvent animationEvent)
