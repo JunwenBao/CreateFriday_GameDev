@@ -3,10 +3,10 @@
 	<Project Name="AudioCreateFriday26_Tom" GUID="{FC183145-51A6-4EC1-B72E-ACC6CA026488}" Generator="2023.1.19.8928"/>
 	<CacheRoot>../.cache</CacheRoot>
 	<Platforms>
-		<Platform Name="Windows" GUID="{19CE0E22-DC1B-412E-A2FD-EBC91D7FC3A1}" BasePlatform="Windows" BasePlatformGUID="{6E0CB257-C6C8-4C5C-8366-2740DFC441EB}" Path="Windows"/>
+		<Platform Name="Windows" GUID="{19CE0E22-DC1B-412E-A2FD-EBC91D7FC3A1}" BasePlatform="Windows" BasePlatformGUID="{6E0CB257-C6C8-4C5C-8366-2740DFC441EB}" Path="../../../Assets/StreamingAssets/Audio/GeneratedSoundBanks"/>
 	</Platforms>
 	<Languages>
 		<Language Name="English(US)" Id="684519430" GUID="{9541993D-53E6-45B9-8A65-685AF0EE04E0}" Default="true" UseAsStandIn="true"/>
 	</Languages>
-	<FileHash>{3D2655E9-2DB4-791C-BA2E-30CC213BA516}</FileHash>
+	<FileHash>{B188927C-ABC0-699A-D85D-6CC6C1301B40}</FileHash>
 </ProjectInfo>

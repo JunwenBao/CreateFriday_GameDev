@@ -42,9 +42,9 @@ public class AkWwiseInitializationSettings : AkCommonPlatformSettings
 	}
 
 
-	[UnityEngine.HideInInspector]
+	//[UnityEngine.HideInInspector]
 	public AkCommonUserSettings UserSettings = new AkCommonUserSettings();
-	[UnityEngine.HideInInspector]
+	//[UnityEngine.HideInInspector]
 	public AkCommonAdvancedSettings AdvancedSettings = new AkCommonAdvancedSettings();
 	[UnityEngine.HideInInspector]
 	public AkCommonCommSettings CommsSettings = new AkCommonCommSettings();

@@ -345,7 +345,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit
     guid: 2000cf21073421459d604f39e6f97502
     GuidInternal: 
-    m_lastTime: -8584128307886798436
+    m_lastTime: -8584128276522095387
     List:
     - name: Main
       guid: 1893697925a3d848880a7af3f38dbe7f
@@ -373,7 +373,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: 7fa0ad8e1920754fb9b77a9cd425a61f
     GuidInternal: 
-    m_lastTime: -8584128307886813491
+    m_lastTime: -8584128276522074848
     List:
     - name: Play_FS_Teest
       guid: 7cb3b7ce286f734f8373e4b90e3f6362
@@ -392,6 +392,23 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 0.29866666
       minDuration: 0.29866666
+    - name: Play_Test_Amb
+      guid: be5b2e9ec445544db4716aef1bc5113a
+      id: 3141567363
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7fa0ad8e1920754fb9b77a9cd425a61f
+      - ElementName: Play_Test_Amb
+        ObjectType: 3
+        guid: be5b2e9ec445544db4716aef1bc5113a
+      Path: Events\Default Work Unit\Play_Test_Amb
+      maxAttenuation: 0
+      maxDuration: 230.58133
+      minDuration: 230.58133
     - name: Play_Test_Magic
       guid: 30e23c4d38f6fa4aa93db07fcd5e06c6
       id: 1626553858

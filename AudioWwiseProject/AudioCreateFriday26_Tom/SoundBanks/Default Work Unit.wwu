@@ -6,6 +6,7 @@
 				<SoundBank Name="Main" ID="{79699318-A325-48D8-880A-7AF3F38DBE7F}">
 					<ObjectInclusionList>
 						<ObjectRef Name="Play_Test_Magic" ID="{4D3CE230-F638-4AFA-A93D-B07FCD5E06C6}" WorkUnitID="{8EADA07F-2019-4F75-B9B7-7A9CD425A61F}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_Test_Amb" ID="{9E2E5BBE-45C4-4D54-B471-6AEF1BC5113A}" WorkUnitID="{8EADA07F-2019-4F75-B9B7-7A9CD425A61F}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_FS_Teest" ID="{CEB7B37C-6F28-4F73-8373-E4B90E3F6362}" WorkUnitID="{8EADA07F-2019-4F75-B9B7-7A9CD425A61F}" Origin="Manual" Filter="7"/>
 					</ObjectInclusionList>
 					<ObjectExclusionList/>

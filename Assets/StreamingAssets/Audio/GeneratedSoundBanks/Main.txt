@@ -1,8 +1,10 @@
 Event	ID	Name			Wwise Object Path	Notes
 	1626553858	Play_Test_Magic			\Default Work Unit\Play_Test_Magic	
+	3141567363	Play_Test_Amb			\Default Work Unit\Play_Test_Amb	
 	4235852269	Play_FS_Teest			\Default Work Unit\Play_FS_Teest	
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	313066091	Test_Amb	E:\CreateFriday\CreateFriday_GameDev\AudioWwiseProject\AudioCreateFriday26_Tom\.cache\Windows\SFX\AMB_Test_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Test_Amb		44271712
 	343996238	Test_Magic	E:\CreateFriday\CreateFriday_GameDev\AudioWwiseProject\AudioCreateFriday26_Tom\.cache\Windows\SFX\Magic_Test_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Test_Magic		335968
 	491690467	FS_Teest	E:\CreateFriday\CreateFriday_GameDev\AudioWwiseProject\AudioCreateFriday26_Tom\.cache\Windows\SFX\TestFS_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\FS_Teest		28768
 
