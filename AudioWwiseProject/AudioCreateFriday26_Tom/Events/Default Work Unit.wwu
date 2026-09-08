@@ -25,6 +25,17 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Play_Test_Amb" ID="{9E2E5BBE-45C4-4D54-B471-6AEF1BC5113A}">
+					<ChildrenList>
+						<Action Name="" ID="{3235ADBB-52D6-4142-AF49-5C8246B0BD42}" ShortID="321182041">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Test_Amb" ID="{C60B8A5F-B9F8-4852-9FFD-1D8F408A2AA2}" WorkUnitID="{73A11A96-30E8-4D7B-8388-7642E14CB277}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

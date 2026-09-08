@@ -166,10 +166,14 @@
 				</AcousticTexture>
 			</AcousticTextures>
 		</SoundBank>
-		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{766F2477-CC05-C85F-630D-26E065E9C098}">
+		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{5AE9758D-AB0A-3797-ECB3-504407A98E98}">
 			<ShortName>Main</ShortName>
 			<Path>Main.bnk</Path>
 			<Media>
+				<File Id="313066091" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB_Test.wav</ShortName>
+					<CachePath>SFX/AMB_Test_818F3B66.wem</CachePath>
+				</File>
 				<File Id="343996238" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Magic_Test.wav</ShortName>
 					<CachePath>SFX/Magic_Test_818F3B66.wem</CachePath>
@@ -185,6 +189,11 @@
 						<MediaRef Id="491690467"/>
 					</MediaRefs>
 				</Event>
+				<Event Id="3141567363" Name="Play_Test_Amb" DurationType="OneShot" DurationMin="230.58133" DurationMax="230.58133">
+					<MediaRefs>
+						<MediaRef Id="313066091"/>
+					</MediaRefs>
+				</Event>
 				<Event Id="1626553858" Name="Play_Test_Magic" DurationType="OneShot" DurationMin="1.7493334" DurationMax="1.7493334">
 					<MediaRefs>
 						<MediaRef Id="343996238"/>
@@ -193,5 +202,5 @@
 			</Events>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{BDF57E45-CD1A-B9FA-3D98-F5B859AEAB0A}</FileHash>
+	<FileHash>{3AFBF2CC-8975-B875-E18F-56E71149EABE}</FileHash>
 </SoundBanksInfo>
