@@ -1465,7 +1465,7 @@ MonoBehaviour:
   spawBulletPosition: {fileID: 7636719422708746805}
   vfxHitRed: {fileID: 499110, guid: 78e1c8c5b281b8b439229473779ac9aa, type: 3}
   crossHairUI: {fileID: 8823162767402184187}
-  muzzlePoint: {fileID: 0}
+  fireRate: 2.5
   muzzleSmokeParticle: {fileID: 956008095986487070}
 --- !u!114 &4536965881996194940
 MonoBehaviour:

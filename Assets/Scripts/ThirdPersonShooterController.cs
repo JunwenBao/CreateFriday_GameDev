@@ -5,7 +5,6 @@ using Cinemachine;
 using StarterAssets;
 using UnityEngine.InputSystem;
 using UnityEngine.Animations.Rigging;
-//using System.Numerics;
 
 public class ThirdPersonShooterController : MonoBehaviour
 {
@@ -21,13 +20,17 @@ public class ThirdPersonShooterController : MonoBehaviour
 
     [SerializeField] private GameObject crossHairUI;
 
-    [Header("Gun")]
+    [Header("Weapon Control")]
+    [SerializeField] private float fireRate = 5f;
     [SerializeField] private ParticleSystem muzzleSmokeParticle;
 
     private ThirdPersonController thirdPersonController;
     private StarterAssetsInputs starterAssetsInputs;
     private Animator animator;
     private float aimRigWeight;
+    private float nextFireTime;
+    private bool wasMoving;
+    private bool wasAiming;
 
     private void Awake()
     {
@@ -50,6 +53,8 @@ public class ThirdPersonShooterController : MonoBehaviour
             hitTransform = hit.transform;
         }
 
+        bool isMoving = starterAssetsInputs.move.sqrMagnitude > 0.01f;
+
         if (starterAssetsInputs.aim)
         {
             crossHairUI.SetActive(true);
@@ -69,37 +74,41 @@ public class ThirdPersonShooterController : MonoBehaviour
         else
         {
             crossHairUI.SetActive(false);
+            starterAssetsInputs.shoot = false;
 
             aimVirtualCamera.gameObject.SetActive(false);
             thirdPersonController.SetSensitivity(normalSensitivity);
             thirdPersonController.SetRotateOnMove(true);
             aimRigWeight = 0f;
+
+            if (!isMoving && (wasMoving || wasAiming))
+            {
+                animator.Play("Idle Walk Run Blend", 0, 0f);
+            }
             animator.SetLayerWeight(1, Mathf.Lerp(animator.GetLayerWeight(1), 0f, Time.deltaTime * 10f));
 
         }
 
-        if (starterAssetsInputs.shoot)
+        if (starterAssetsInputs.aim && starterAssetsInputs.shoot)
         {
-            animator.SetTrigger("Fire");
-            muzzleSmokeParticle.Play();
-
-            if (hitTransform != null)
+            if (Time.time >= nextFireTime)
             {
-                if (hitTransform.GetComponent<BulletTarget>() != null)
+                nextFireTime = Time.time + Mathf.Max(fireRate, 0.01f);
+                animator.SetTrigger("Fire");
+                muzzleSmokeParticle.Play();
+
+                if (hitTransform != null && hitTransform.GetComponent<BulletTarget>() != null)
                 {
                     Instantiate(vfxHitRed, hitTransform.position, Quaternion.identity); // Instantiate green hit effect
                     Debug.Log("Hit a target!");
                 }
-                else
-                {
-                    //Instantiate(vfxHitRed, transform.position, Quaternion.identity); // Instantiate red hit effect
-                }
             }
 
-            //Vector3 aimDir = (mouseWorldPosition - spawBulletPosition.position).normalized;
-            //Instantiate(pfBulletProjectile, spawBulletPosition.position, Quaternion.LookRotation(aimDir, Vector3.up));
-            starterAssetsInputs.shoot = false; // Reset shoot input after shootings
+            starterAssetsInputs.shoot = false;
         }
+
+        wasMoving = isMoving;
+        wasAiming = starterAssetsInputs.aim;
 
         aimRig.weight = Mathf.Lerp(aimRig.weight, aimRigWeight, Time.deltaTime * 20f);
     }
