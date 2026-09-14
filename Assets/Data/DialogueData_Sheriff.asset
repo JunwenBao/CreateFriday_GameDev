@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: DialogueData_Sheriff
   m_EditorClassIdentifier: 
   conversationBlock:
-  - Hello!!!
-  - Good Bye!!!
+  - speaker: 1
+    text: <speed = 10>Welcome
+  - speaker: 0
+    text: <speed = 10>BYE BYE

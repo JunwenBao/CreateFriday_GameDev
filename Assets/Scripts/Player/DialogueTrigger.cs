@@ -13,10 +13,19 @@ public class DialogueTrigger : MonoBehaviour
 
     [Header("UI")]
     [SerializeField] private GameObject dialogueCanvas;
+    [SerializeField] private TextParser textParser;
 
     private void Awake()
     {
         thirdPersonController = GetComponent<ThirdPersonController>();
+
+        if (textParser == null)
+        {
+            Debug.LogError("Text Parser is not assigned on DialogueTrigger.", this);
+            return;
+        }
+
+        textParser.onConversationEnd.AddListener(EndDialogue);
     }
 
     private void Update()
@@ -26,16 +35,10 @@ public class DialogueTrigger : MonoBehaviour
             currentNPC.TurnToPlayer(transform.position);
         }
 
-        if (Input.GetKeyDown(KeyCode.E) && currentNPC != null)
+        // 对话未开始时E键用于开始对话；对话进行中E键交给TextParser处理快进/下一句
+        if (Input.GetKeyDown(KeyCode.E) && currentNPC != null && !dialogueIsActive)
         {
-            if (dialogueIsActive)
-            {
-                EndDialogue();
-            }
-            else
-            {
-                StartDialogue();
-            }
+            StartDialogue();
         }
     }
 
@@ -58,6 +61,8 @@ public class DialogueTrigger : MonoBehaviour
 
         DialogueCamera.SetActive(true);
         dialogueCanvas.SetActive(true);
+
+        textParser.BeginDialogue(currentNPC.dialogue);
     }
 
     private void EndDialogue()

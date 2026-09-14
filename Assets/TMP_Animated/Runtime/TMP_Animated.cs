@@ -23,8 +23,17 @@ namespace TMPro
         public TextRevealEvent onTextReveal;
         public DialogueEvent onDialogueFinish;
 
+        private Coroutine readRoutine;
+
+        /// <summary>是否正在逐字显示文本。</summary>
+        public bool IsReading { get; private set; }
+
         public void ReadText(string newText)
         {
+            // 若上一段还在播放，先停止，避免两段文字叠加
+            if (readRoutine != null)
+                StopCoroutine(readRoutine);
+
             text = string.Empty;
             // split the whole text into parts based off the <> tags 
             // even numbers in the array are text, odd numbers are tags
@@ -48,10 +57,11 @@ namespace TMPro
             // send that string to textmeshpro and hide all of it, then start reading
             text = displayText;
             maxVisibleCharacters = 0;
-            StartCoroutine(Read());
+            readRoutine = StartCoroutine(Read());
 
             IEnumerator Read()
             {
+                IsReading = true;
                 int subCounter = 0;
                 int visibleCounter = 0;
                 while (subCounter < subTexts.Length)
@@ -65,7 +75,7 @@ namespace TMPro
                     {
                         while (visibleCounter < subTexts[subCounter].Length)
                         {
-                            onTextReveal.Invoke(subTexts[subCounter][visibleCounter]);
+                            onTextReveal?.Invoke(subTexts[subCounter][visibleCounter]);
                             visibleCounter++;
                             maxVisibleCharacters++;
                             yield return new WaitForSeconds(1f / speed);
@@ -90,17 +100,32 @@ namespace TMPro
                         }
                         else if (tag.StartsWith("emotion="))
                         {
-                            onEmotionChange.Invoke((Emotion)System.Enum.Parse(typeof(Emotion), tag.Split('=')[1]));
+                            onEmotionChange?.Invoke((Emotion)System.Enum.Parse(typeof(Emotion), tag.Split('=')[1]));
                         }
                         else if (tag.StartsWith("action="))
                         {
-                            onAction.Invoke(tag.Split('=')[1]);
+                            onAction?.Invoke(tag.Split('=')[1]);
                         }
                     }
                     return null;
                 }
-                onDialogueFinish.Invoke();
+                IsReading = false;
+                readRoutine = null;
+                onDialogueFinish?.Invoke();
             }
+        }
+
+        /// <summary>立即显示全部文字（跳过打字动画），例如玩家点击加速时调用。</summary>
+        public void SkipToEnd()
+        {
+            if (readRoutine == null)
+                return;
+
+            StopCoroutine(readRoutine);
+            readRoutine = null;
+            maxVisibleCharacters = textInfo.characterCount > 0 ? textInfo.characterCount : text.Length;
+            IsReading = false;
+            onDialogueFinish?.Invoke();
         }
     }
 }
