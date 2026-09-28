@@ -15,6 +15,8 @@ public class DialogueTrigger : MonoBehaviour
     [SerializeField] private GameObject dialogueCanvas;
     [SerializeField] private TextParser textParser;
 
+    public bool IsDialogueActive => dialogueIsActive;
+
     private void Awake()
     {
         thirdPersonController = GetComponent<ThirdPersonController>();
@@ -42,6 +44,7 @@ public class DialogueTrigger : MonoBehaviour
         }
     }
 
+    // 与 NPC 对话：切换到对话相机，聚焦玩家与 NPC
     private void StartDialogue()
     {
         if (currentNPC == null || targetGroup == null || targetGroup.m_Targets.Length < 2)
@@ -65,10 +68,27 @@ public class DialogueTrigger : MonoBehaviour
         textParser.BeginDialogue(currentNPC.dialogue);
     }
 
+    // 与物品对话：不切换相机，仅弹出对话框并开始对话
+    public void StartItemDialogue(DialogueData dialogue)
+    {
+        if (dialogueIsActive) return;
+
+        if (dialogue == null)
+        {
+            Debug.LogWarning("Item dialogue data is empty.", this);
+            return;
+        }
+
+        dialogueIsActive = true;
+        dialogueCanvas.SetActive(true);
+
+        textParser.BeginDialogue(dialogue);
+    }
+
     private void EndDialogue()
     {
         dialogueIsActive = false;
-        currentNPC.npcIsTalking = false;
+        if (currentNPC != null) currentNPC.npcIsTalking = false;
         thirdPersonController.enabled = true;
 
         DialogueCamera.SetActive(false);
