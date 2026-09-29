@@ -19,6 +19,8 @@ public class ThirdPersonShooterController : MonoBehaviour
 
     [Header("Weapon Control")]
     [SerializeField] private float fireRate = 5f;                   // 武器射速
+    [SerializeField] private GameObject weaponObjectHand;           // 武器对象
+    [SerializeField] private GameObject weaponObjectHolster;        // 收枪位置的武器对象
     [SerializeField] private ParticleSystem muzzleSmokeParticle;    // 枪口烟雾特效
 
     private ThirdPersonController thirdPersonController;
@@ -28,6 +30,7 @@ public class ThirdPersonShooterController : MonoBehaviour
     private float nextFireTime;
     private bool wasMoving;
     private bool wasAiming;
+    private bool isWeaponDrawn;
 
     private Transform hitTransform = null;
 
@@ -54,7 +57,19 @@ public class ThirdPersonShooterController : MonoBehaviour
 
         bool isMoving = starterAssetsInputs.move.sqrMagnitude > 0.01f;
 
-        if (starterAssetsInputs.aim)
+        // 按下 Q 切换拔枪/收枪状态
+        if (starterAssetsInputs.drawWeapon)
+        {
+            isWeaponDrawn = !isWeaponDrawn;
+            starterAssetsInputs.drawWeapon = false;
+
+            animator.SetBool("IsArmed", isWeaponDrawn);
+        }
+
+        // 只有拔枪后，按住鼠标右键才会进入瞄准
+        bool isAiming = isWeaponDrawn && starterAssetsInputs.aim;
+
+        if (isAiming)
         {
             crossHairUI.SetActive(true);
 
@@ -63,15 +78,16 @@ public class ThirdPersonShooterController : MonoBehaviour
             thirdPersonController.SetRotateOnMove(false);
 
             aimRigWeight = 1f;
-            animator.SetLayerWeight(1, Mathf.Lerp(animator.GetLayerWeight(1), 1f, Time.deltaTime * 10f));
 
             Vector3 worldAimTarget = mouseWorldPosition;
             worldAimTarget.y = transform.position.y;
             Vector3 aimDirection = (worldAimTarget - transform.position).normalized;
 
             transform.forward = Vector3.Lerp(transform.forward, aimDirection, Time.deltaTime * 20f);
+
+            animator.SetBool("IsAiming", true);
         }
-        else if(!starterAssetsInputs.aim)
+        else
         {
             crossHairUI.SetActive(false);
             starterAssetsInputs.shoot = false;
@@ -86,10 +102,17 @@ public class ThirdPersonShooterController : MonoBehaviour
             {
                 animator.Play("Idle Walk Run Blend", 0, 0f);
             }
-            animator.SetLayerWeight(1, Mathf.Lerp(animator.GetLayerWeight(1), 0f, Time.deltaTime * 10f));
+
+            animator.SetBool("IsAiming", false);
         }
 
-        if (starterAssetsInputs.aim && starterAssetsInputs.shoot)
+        // 上半身层（layer 1）权重：只要动画没回到 Unarmed 空手状态就保持，收枪动画才能完整播放
+        AnimatorStateInfo upperBodyState = animator.GetCurrentAnimatorStateInfo(1);
+        bool isUnarmed = upperBodyState.IsName("Unarmed") && !animator.IsInTransition(1);
+        float upperBodyLayerWeight = (isWeaponDrawn || !isUnarmed) ? 1f : 0f;
+        animator.SetLayerWeight(1, Mathf.Lerp(animator.GetLayerWeight(1), upperBodyLayerWeight, Time.deltaTime * 10f));
+
+        if (isAiming && starterAssetsInputs.shoot)
         {
             Shoot();
 
@@ -97,9 +120,21 @@ public class ThirdPersonShooterController : MonoBehaviour
         }
 
         wasMoving = isMoving;
-        wasAiming = starterAssetsInputs.aim;
+        wasAiming = isAiming;
 
         aimRig.weight = Mathf.Lerp(aimRig.weight, aimRigWeight, Time.deltaTime * 20f);
+    }
+
+    public void OnAnimHolsterWeapon()
+    {
+        weaponObjectHand.SetActive(false);
+        weaponObjectHolster.SetActive(true);
+    }
+
+    public void OnAnimDrawWeapon()
+    {
+        weaponObjectHand.SetActive(true);
+        weaponObjectHolster.SetActive(false);
     }
 
     private void Shoot()
