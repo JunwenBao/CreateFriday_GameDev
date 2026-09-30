@@ -1506,11 +1506,14 @@ MonoBehaviour:
     type: 3}
   spawBulletPosition: {fileID: 7636719422708746805}
   vfxHitRed: {fileID: 499110, guid: 78e1c8c5b281b8b439229473779ac9aa, type: 3}
-  crossHairUI: {fileID: 8823162767402184187}
+  crossHairUI: {fileID: 2869757217057170861}
   fireRate: 1
   weaponObjectHand: {fileID: 8660784798846668962}
   weaponObjectHolster: {fileID: 2317185067920367486}
   muzzleSmokeParticle: {fileID: 8258178312495698345}
+  aimAssistEnabled: 1
+  aimAssistScreenRadius: 15
+  aimAssistSnapSpeed: 15
 --- !u!114 &8360815286031001691
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1525,6 +1528,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactKey: 101
   dialogueTrigger: {fileID: 0}
+  playerAnimator: {fileID: 0}
 --- !u!114 &417710331642129032
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1621,7 +1625,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4858780278437547515
 RectTransform:
   m_ObjectHideFlags: 0

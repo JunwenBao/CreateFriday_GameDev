@@ -65,7 +65,7 @@ public class Interactable : MonoBehaviour
     }
 
     // 按下 E 键时触发的互动逻辑，dialogueTrigger 由玩家侧传入
-    public void Interact(DialogueTrigger dialogueTrigger)
+    public void Interact(DialogueTrigger dialogueTrigger, Animator playerAnimator)
     {
         if (interactableType == InteractableType.Message)
         {
@@ -80,7 +80,12 @@ public class Interactable : MonoBehaviour
         }
         else if(interactableType == InteractableType.Pickup)
         {
-            
+            if (playerAnimator != null)
+            {
+                playerAnimator.SetTrigger("Pickup");
+            }
+
+            Destroy(this.gameObject, 0.8f);
         }
     }
 }

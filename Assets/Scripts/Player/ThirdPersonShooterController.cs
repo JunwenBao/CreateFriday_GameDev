@@ -23,6 +23,11 @@ public class ThirdPersonShooterController : MonoBehaviour
     [SerializeField] private GameObject weaponObjectHolster;        // 收枪位置的武器对象
     [SerializeField] private ParticleSystem muzzleSmokeParticle;    // 枪口烟雾特效
 
+    [Header("Aim Assist")]
+    [SerializeField] private bool aimAssistEnabled = true;          // 是否启用辅助瞄准
+    [SerializeField] private float aimAssistScreenRadius = 15f;     // 准星进入目标此屏幕像素半径内触发吸附
+    [SerializeField] private float aimAssistSnapSpeed = 15f;        // 准星吸附/回中的平滑速度
+
     private ThirdPersonController thirdPersonController;
     private StarterAssetsInputs starterAssetsInputs;
     private Animator animator;
@@ -33,12 +38,19 @@ public class ThirdPersonShooterController : MonoBehaviour
     private bool isWeaponDrawn;
 
     private Transform hitTransform = null;
+    private RectTransform crossHairRectTransform;                    // 十字准心的 RectTransform，用于在屏幕上移动准心
 
     private void Awake()
     {
         thirdPersonController = GetComponent<ThirdPersonController>();
         starterAssetsInputs = GetComponent<StarterAssetsInputs>();
         animator = GetComponent<Animator>();
+
+        // 获取十字准心的 RectTransform，用于在屏幕上移动准心
+        if (crossHairUI != null)
+        {
+            crossHairRectTransform = crossHairUI.GetComponent<RectTransform>();
+        }
     }
 
     private void Update()
@@ -79,6 +91,22 @@ public class ThirdPersonShooterController : MonoBehaviour
 
             aimRigWeight = 1f;
 
+            // 辅助瞄准：准星靠近头部 sphere 时自动吸附到其中心
+            Vector3 crossHairTargetPos = screenCenterPoint;
+            if (aimAssistEnabled &&
+                TryGetAimAssistTarget(screenCenterPoint, out AimAssistTarget assistTarget, out Vector3 assistScreenPos))
+            {
+                crossHairTargetPos = assistScreenPos;
+                mouseWorldPosition = assistTarget.transform.position;
+                hitTransform = assistTarget.transform;
+            }
+
+            if (crossHairRectTransform != null)
+            {
+                crossHairRectTransform.position = Vector3.Lerp(
+                    crossHairRectTransform.position, crossHairTargetPos, Time.deltaTime * aimAssistSnapSpeed);
+            }
+
             Vector3 worldAimTarget = mouseWorldPosition;
             worldAimTarget.y = transform.position.y;
             Vector3 aimDirection = (worldAimTarget - transform.position).normalized;
@@ -91,6 +119,12 @@ public class ThirdPersonShooterController : MonoBehaviour
         {
             crossHairUI.SetActive(false);
             starterAssetsInputs.shoot = false;
+
+            // 退出瞄准时把准星复位到屏幕中心，下次进入瞄准不会从旧的吸附位置漂移
+            if (crossHairRectTransform != null)
+            {
+                crossHairRectTransform.position = screenCenterPoint;
+            }
 
             aimVirtualCamera.gameObject.SetActive(false);
             thirdPersonController.SetSensitivity(normalSensitivity);
@@ -137,6 +171,44 @@ public class ThirdPersonShooterController : MonoBehaviour
         weaponObjectHolster.SetActive(false);
     }
 
+    // 在所有 AimAssistTarget 中，找出屏幕上离准星最近且在吸附半径内的目标
+    private bool TryGetAimAssistTarget(Vector2 screenCenter, out AimAssistTarget bestTarget, out Vector3 targetScreenPos)
+    {
+        bestTarget = null;
+        targetScreenPos = Vector3.zero;
+
+        Camera cam = Camera.main;
+        if (cam == null)
+        {
+            return false;
+        }
+
+        float bestDistance = aimAssistScreenRadius;
+        foreach (AimAssistTarget target in AimAssistTarget.Targets)
+        {
+            if (target == null)
+            {
+                continue;
+            }
+
+            Vector3 screenPos = cam.WorldToScreenPoint(target.transform.position);
+            if (screenPos.z <= 0f)
+            {
+                continue; // 目标在相机背后
+            }
+
+            float distance = Vector2.Distance(screenCenter, screenPos);
+            if (distance <= bestDistance)
+            {
+                bestDistance = distance;
+                bestTarget = target;
+                targetScreenPos = screenPos;
+            }
+        }
+
+        return bestTarget != null;
+    }
+
     private void Shoot()
     {
         if (Time.time >= nextFireTime)
@@ -146,7 +218,7 @@ public class ThirdPersonShooterController : MonoBehaviour
             muzzleSmokeParticle.Play();
 
             // TODO：实现这个射击结果判定
-            if (hitTransform != null && hitTransform.GetComponent<BulletTarget>() != null)
+            if (hitTransform != null && hitTransform.GetComponentInParent<BulletTarget>() != null)
             {
                 Instantiate(vfxHitRed, hitTransform.position, Quaternion.identity);
                 Debug.Log("Hit a target!");
