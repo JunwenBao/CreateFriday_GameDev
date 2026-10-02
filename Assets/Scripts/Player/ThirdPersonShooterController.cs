@@ -5,6 +5,7 @@ using UnityEngine.Animations.Rigging;
 
 public class ThirdPersonShooterController : MonoBehaviour
 {
+    [Header("相机控制")]
     [SerializeField] private Rig aimRig;
     [SerializeField] private CinemachineVirtualCamera aimVirtualCamera;
     [SerializeField] private float normalSensitivity = 1f;
@@ -15,15 +16,16 @@ public class ThirdPersonShooterController : MonoBehaviour
     [SerializeField] private Transform spawBulletPosition;
     [SerializeField] private Transform vfxHitRed;
 
+    [Header("准星UI")]
     [SerializeField] private GameObject crossHairUI;                // 十字准心UI
 
-    [Header("Weapon Control")]
+    [Header("武器控制")]
     [SerializeField] private float fireRate = 5f;                   // 武器射速
     [SerializeField] private GameObject weaponObjectHand;           // 武器对象
     [SerializeField] private GameObject weaponObjectHolster;        // 收枪位置的武器对象
     [SerializeField] private ParticleSystem muzzleSmokeParticle;    // 枪口烟雾特效
 
-    [Header("Aim Assist")]
+    [Header("辅助瞄准")]
     [SerializeField] private bool aimAssistEnabled = true;          // 是否启用辅助瞄准
     [SerializeField] private float aimAssistScreenRadius = 15f;     // 准星进入目标此屏幕像素半径内触发吸附
     [SerializeField] private float aimAssistSnapSpeed = 15f;        // 准星吸附/回中的平滑速度
@@ -159,19 +161,14 @@ public class ThirdPersonShooterController : MonoBehaviour
         aimRig.weight = Mathf.Lerp(aimRig.weight, aimRigWeight, Time.deltaTime * 20f);
     }
 
-    public void OnAnimHolsterWeapon()
-    {
-        weaponObjectHand.SetActive(false);
-        weaponObjectHolster.SetActive(true);
-    }
-
-    public void OnAnimDrawWeapon()
-    {
-        weaponObjectHand.SetActive(true);
-        weaponObjectHolster.SetActive(false);
-    }
-
-    // 在所有 AimAssistTarget 中，找出屏幕上离准星最近且在吸附半径内的目标
+    #region 射击控制
+    /// <summary>
+    /// 在所有 AimAssistTarget 中，找出屏幕上离准星最近且在吸附半径内的目标
+    /// </summary>
+    /// <param name="screenCenter"></param>
+    /// <param name="bestTarget"></param>
+    /// <param name="targetScreenPos"></param>
+    /// <returns></returns>
     private bool TryGetAimAssistTarget(Vector2 screenCenter, out AimAssistTarget bestTarget, out Vector3 targetScreenPos)
     {
         bestTarget = null;
@@ -209,13 +206,16 @@ public class ThirdPersonShooterController : MonoBehaviour
         return bestTarget != null;
     }
 
+    /// <summary>
+    /// 控制玩家射击
+    /// </summary>
     private void Shoot()
     {
         if (Time.time >= nextFireTime)
         {
-            nextFireTime = Time.time + Mathf.Max(fireRate, 0.01f);
-            animator.SetTrigger("Fire");
-            muzzleSmokeParticle.Play();
+            nextFireTime = Time.time + Mathf.Max(fireRate, 0.01f);  // 射速控制
+            animator.SetTrigger("Fire");    // 动画控制
+            muzzleSmokeParticle.Play();     // VFX
 
             // TODO：实现这个射击结果判定
             if (hitTransform != null && hitTransform.GetComponentInParent<BulletTarget>() != null)
@@ -225,4 +225,25 @@ public class ThirdPersonShooterController : MonoBehaviour
             }
         }
     }
+    #endregion
+
+    #region 动画事件
+    /// <summary>
+    /// 当动画播放到收枪时，切换枪的GameObject到腰部
+    /// </summary>
+    public void OnAnimHolsterWeapon()
+    {
+        weaponObjectHand.SetActive(false);
+        weaponObjectHolster.SetActive(true);
+    }
+
+    /// <summary>
+    /// 当动画播放到拔枪时，切换枪的GameObject到手部
+    /// </summary>
+    public void OnAnimDrawWeapon()
+    {
+        weaponObjectHand.SetActive(true);
+        weaponObjectHolster.SetActive(false);
+    }
+    #endregion
 }
