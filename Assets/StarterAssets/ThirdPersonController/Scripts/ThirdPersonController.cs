@@ -22,6 +22,13 @@ namespace StarterAssets
         [Tooltip("Sprint speed of the character in m/s")]
         public float SprintSpeed = 5.335f;
 
+        [Tooltip("Move speed while crouching in m/s")]
+        public float CrouchSpeed = 1.5f;
+
+        [Tooltip("Crouched height as a fraction of standing height")]
+        [Range(0.25f, 0.9f)]
+        public float CrouchHeightMultiplier = 0.5f;
+
         [Tooltip("How fast the character turns to face movement direction")]
         [Range(0.0f, 0.3f)]
         public float RotationSmoothTime = 0.12f;
@@ -122,6 +129,9 @@ namespace StarterAssets
         private float _rotationVelocity;
         private float _verticalVelocity;
         private float _terminalVelocity = 53.0f;
+        private float _standingHeight;
+        private Vector3 _standingCenter;
+        private bool _isCrouching;
 
         // timeout deltatime
         private float _jumpTimeoutDelta;
@@ -181,6 +191,8 @@ namespace StarterAssets
 
             _hasAnimator = TryGetComponent(out _animator);
             _controller = GetComponent<CharacterController>();
+            _standingHeight = _controller.height;
+            _standingCenter = _controller.center;
             _input = GetComponent<StarterAssetsInputs>();
 #if ENABLE_INPUT_SYSTEM 
             _playerInput = GetComponent<PlayerInput>();
@@ -201,6 +213,7 @@ namespace StarterAssets
 
             JumpAndGravity();
             GroundedCheck();
+            UpdateCrouch();
             Move();
 
             /*
@@ -269,7 +282,7 @@ namespace StarterAssets
         private void Move()
         {
             // set target speed based on move speed, sprint speed and if sprint is pressed
-            float targetSpeed = _input.sprint ? SprintSpeed : MoveSpeed;
+            float targetSpeed = _isCrouching ? CrouchSpeed : (_input.sprint ? SprintSpeed : MoveSpeed);
 
             // a simplistic acceleration and deceleration designed to be easy to remove, replace, or iterate upon
 
@@ -335,6 +348,52 @@ namespace StarterAssets
                 _animator.SetFloat(_animIDSpeed, _animationBlend);
                 _animator.SetFloat(_animIDMotionSpeed, inputMagnitude);
             }
+        }
+
+        private void UpdateCrouch()
+        {
+            if (_input.crouch == _isCrouching)
+                return;
+
+            if (_input.crouch)
+            {
+                float crouchedHeight = Mathf.Max(_controller.radius * 2f, _standingHeight * CrouchHeightMultiplier);
+                _controller.height = crouchedHeight;
+                _controller.center = _standingCenter - Vector3.up * ((_standingHeight - crouchedHeight) * 0.5f);
+                _isCrouching = true;
+
+                _animator.SetBool("IsCrouch", true);
+
+                Debug.Log("Crouching");
+            }
+            else if (CanStandUp())
+            {
+                _controller.height = _standingHeight;
+                _controller.center = _standingCenter;
+                _isCrouching = false;
+                _animator.SetBool("IsCrouch", false);
+                Debug.Log("Standing up");
+            }
+            else
+            {
+                _input.CrouchInput(true);
+            }
+        }
+
+        private bool CanStandUp()
+        {
+            float horizontalScale = Mathf.Max(Mathf.Abs(transform.lossyScale.x), Mathf.Abs(transform.lossyScale.z));
+            float radius = _controller.radius * horizontalScale;
+            Vector3 bottom = transform.TransformPoint(_standingCenter + Vector3.up * _controller.radius);
+            Vector3 top = transform.TransformPoint(_standingCenter + Vector3.up * (_standingHeight - _controller.radius));
+
+            foreach (Collider overlap in Physics.OverlapCapsule(bottom, top, radius, ~0, QueryTriggerInteraction.Ignore))
+            {
+                if (overlap != _controller && !overlap.transform.IsChildOf(transform))
+                    return false;
+            }
+
+            return true;
         }
 
         private void Aim()
