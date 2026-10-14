@@ -30,6 +30,9 @@ public class ThirdPersonShooterController : MonoBehaviour
     [SerializeField] private float aimAssistScreenRadius = 15f;     // 准星进入目标此屏幕像素半径内触发吸附
     [SerializeField] private float aimAssistSnapSpeed = 15f;        // 准星吸附/回中的平滑速度
 
+    [Header("上半身稳定")]
+    [SerializeField] private float upperBodyStabilizeSpeed = 10f;   // 越小越稳，但姿势切换越拖滞
+
     private ThirdPersonController thirdPersonController;
     private StarterAssetsInputs starterAssetsInputs;
     private Animator animator;
@@ -38,6 +41,10 @@ public class ThirdPersonShooterController : MonoBehaviour
     private bool wasMoving;
     private bool wasAiming;
     private bool isWeaponDrawn;
+    private Vector3 baseBodyPosition;
+    private Quaternion baseBodyRotation;
+    private Transform spineBone;
+    private Quaternion smoothedSpineRotation;                       // 脊柱相对角色根节点的平滑旋转
 
     private Transform hitTransform = null;
     private RectTransform crossHairRectTransform;                    // 十字准心的 RectTransform，用于在屏幕上移动准心
@@ -47,6 +54,7 @@ public class ThirdPersonShooterController : MonoBehaviour
         thirdPersonController = GetComponent<ThirdPersonController>();
         starterAssetsInputs = GetComponent<StarterAssetsInputs>();
         animator = GetComponent<Animator>();
+        spineBone = animator.GetBoneTransform(HumanBodyBones.Spine);
 
         // 获取十字准心的 RectTransform，用于在屏幕上移动准心
         if (crossHairUI != null)
@@ -159,6 +167,44 @@ public class ThirdPersonShooterController : MonoBehaviour
         wasAiming = isAiming;
 
         aimRig.weight = Mathf.Lerp(aimRig.weight, aimRigWeight, Time.deltaTime * 20f);
+    }
+
+    /// <summary>
+    /// 遮罩的 Body 同时包含胯部和脊柱：保留上半身层的脊柱弯曲，但把胯部还原为下半身(Base Layer)的结果，避免行走时上下半身脱节
+    /// </summary>
+    private void OnAnimatorIK(int layerIndex)
+    {
+        if (layerIndex == 0)
+        {
+            baseBodyPosition = animator.bodyPosition;
+            baseBodyRotation = animator.bodyRotation;
+        }
+        else if (layerIndex == 1)
+        {
+            animator.bodyPosition = baseBodyPosition;
+            animator.bodyRotation = baseBodyRotation;
+        }
+    }
+
+    /// <summary>
+    /// 持枪时脊柱用的是静态的瞄准动画，缺少行走动画里抵消胯部摇摆的反向扭转，上半身会跟着胯部晃；
+    /// 在动画(含 Animation Rigging)之后对脊柱相对角色的旋转做低通滤波，滤掉每步的晃动
+    /// </summary>
+    private void LateUpdate()
+    {
+        if (spineBone == null) return;
+
+        Quaternion spineRotation = Quaternion.Inverse(transform.rotation) * spineBone.rotation;
+        float weight = animator.GetLayerWeight(1);
+        if (weight <= 0.001f)
+        {
+            smoothedSpineRotation = spineRotation;
+            return;
+        }
+
+        float t = 1f - Mathf.Exp(-upperBodyStabilizeSpeed * Time.deltaTime);
+        smoothedSpineRotation = Quaternion.Slerp(smoothedSpineRotation, spineRotation, t);
+        spineBone.rotation = Quaternion.Slerp(spineBone.rotation, transform.rotation * smoothedSpineRotation, weight);
     }
 
     #region 射击控制
