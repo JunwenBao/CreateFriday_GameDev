@@ -4972,7 +4972,7 @@ GameObject:
   - component: {fileID: 155680756}
   - component: {fileID: 155680755}
   m_Layer: 0
-  m_Name: Sphere
+  m_Name: AimAssistTarget
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7299,12 +7299,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4344472637887006, guid: 14c7e6be46ece4f45b8e7eb21032c206,
     type: 3}
   m_PrefabInstance: {fileID: 206682124}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &208184729 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5068514615726898036, guid: a7ee847e3e47c7f46a036a66816421d9,
-    type: 3}
-  m_PrefabInstance: {fileID: 1192579815}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &209442199
 PrefabInstance:
@@ -43364,24 +43358,9 @@ PrefabInstance:
       objectReference: {fileID: 1046651883}
     - target: {fileID: 417710331642129032, guid: a7ee847e3e47c7f46a036a66816421d9,
         type: 3}
-      propertyPath: targetGroup
-      value: 
-      objectReference: {fileID: 1716102327}
-    - target: {fileID: 417710331642129032, guid: a7ee847e3e47c7f46a036a66816421d9,
-        type: 3}
       propertyPath: dialogueCanvas
       value: 
       objectReference: {fileID: 1188957012}
-    - target: {fileID: 1184693744033231990, guid: a7ee847e3e47c7f46a036a66816421d9,
-        type: 3}
-      propertyPath: m_Follow
-      value: 
-      objectReference: {fileID: 1716102328}
-    - target: {fileID: 1184693744033231990, guid: a7ee847e3e47c7f46a036a66816421d9,
-        type: 3}
-      propertyPath: m_LookAt
-      value: 
-      objectReference: {fileID: 1716102328}
     - target: {fileID: 2383292905008902290, guid: a7ee847e3e47c7f46a036a66816421d9,
         type: 3}
       propertyPath: m_Name
@@ -64395,60 +64374,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1715925646}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1716102326
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1716102328}
-  - component: {fileID: 1716102327}
-  m_Layer: 0
-  m_Name: CinemachineTargetGroup
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1716102327
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1716102326}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5eb80d8e62d9d145bb50fb783c0f731, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_PositionMode: 0
-  m_RotationMode: 0
-  m_UpdateMethod: 2
-  m_Targets:
-  - target: {fileID: 208184729}
-    weight: 1
-    radius: 0
-  - target: {fileID: 0}
-    weight: 1
-    radius: 0
---- !u!4 &1716102328
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1716102326}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1716274764
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -73582,6 +73507,8 @@ MonoBehaviour:
   dialogue: {fileID: 11400000, guid: 22071bbfd5563ea469d3248ff28804af, type: 2}
   outlineColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   outlineWidth: 0.02
+  pickupItem: {fileID: 0}
+  pickupAmount: 1
 --- !u!1001 &1932764491
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -85175,6 +85102,8 @@ MonoBehaviour:
   dialogue: {fileID: 0}
   outlineColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   outlineWidth: 0.02
+  pickupItem: {fileID: 0}
+  pickupAmount: 1
 --- !u!65 &6265326710524563575
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -85278,7 +85207,6 @@ SceneRoots:
   - {fileID: 1910240582}
   - {fileID: 2091868233}
   - {fileID: 1192579815}
-  - {fileID: 1716102328}
   - {fileID: 5399493261040767194}
   - {fileID: 1188957016}
   - {fileID: 4822693141479021}

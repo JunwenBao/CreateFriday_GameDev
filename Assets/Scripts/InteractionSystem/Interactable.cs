@@ -19,6 +19,11 @@ public class Interactable : MonoBehaviour
     [SerializeField] private Color outlineColor = Color.yellow;
     [SerializeField, Range(0f, 0.1f)] private float outlineWidth = 0.02f;
 
+    [Header("Pickup")]
+    [SerializeField] private ItemData pickupItem;
+    [SerializeField, Min(1)] private int pickupAmount = 1;
+    private bool isPickedUp;   // 防止销毁延迟期间重复拾取
+
     private Renderer[] renderers;
     private Material outlineMaterial;
     private Material[][] originalMaterials;   // 每个 renderer 的原始材质
@@ -65,7 +70,7 @@ public class Interactable : MonoBehaviour
     }
 
     // 按下 E 键时触发的互动逻辑，dialogueTrigger 由玩家侧传入
-    public void Interact(DialogueTrigger dialogueTrigger, Animator playerAnimator)
+    public void Interact(DialogueTrigger dialogueTrigger, Animator playerAnimator, Inventory inventory)
     {
         if (interactableType == InteractableType.Message)
         {
@@ -80,6 +85,20 @@ public class Interactable : MonoBehaviour
         }
         else if(interactableType == InteractableType.Pickup)
         {
+            if (isPickedUp) return;
+
+            if (pickupItem != null && inventory != null)
+            {
+                pickupAmount = inventory.Add(pickupItem, pickupAmount);
+                if (pickupAmount > 0)
+                {
+                    Debug.Log("背包已满");
+                    return;
+                }
+            }
+
+            isPickedUp = true;
+
             if (playerAnimator != null)
             {
                 playerAnimator.SetTrigger("Pickup");

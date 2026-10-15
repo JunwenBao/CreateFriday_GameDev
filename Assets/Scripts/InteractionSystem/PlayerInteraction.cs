@@ -6,6 +6,7 @@ public class PlayerInteraction : MonoBehaviour
     [SerializeField] private KeyCode interactKey = KeyCode.E;
     [SerializeField] private DialogueTrigger dialogueTrigger;
     [SerializeField] private Animator playerAnimator;
+    [SerializeField] private Inventory inventory;
 
     private Interactable currentInteractable;
 
@@ -20,6 +21,11 @@ public class PlayerInteraction : MonoBehaviour
         {
             playerAnimator = GetComponentInChildren<Animator>();
         }
+
+        if (inventory == null)
+        {
+            inventory = GetComponent<Inventory>();
+        }
     }
 
     private void Update()
@@ -32,7 +38,7 @@ public class PlayerInteraction : MonoBehaviour
 
         if (currentInteractable != null && Input.GetKeyDown(interactKey))
         {
-            currentInteractable.Interact(dialogueTrigger, playerAnimator);
+            currentInteractable.Interact(dialogueTrigger, playerAnimator, inventory);
         }
     }
 

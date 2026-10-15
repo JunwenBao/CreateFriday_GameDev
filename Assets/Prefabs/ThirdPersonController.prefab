@@ -494,6 +494,60 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 6300104674254815549}
+--- !u!1 &1532322589679352029
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5361344024867771994}
+  - component: {fileID: 2457766749857733464}
+  m_Layer: 0
+  m_Name: CinemachineTargetGroup
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5361344024867771994
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1532322589679352029}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7751799786883822281}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2457766749857733464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1532322589679352029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5eb80d8e62d9d145bb50fb783c0f731, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PositionMode: 0
+  m_RotationMode: 0
+  m_UpdateMethod: 2
+  m_Targets:
+  - target: {fileID: 5068514615726898036}
+    weight: 1
+    radius: 0
+  - target: {fileID: 0}
+    weight: 1
+    radius: 0
 --- !u!1 &1609723311035809391
 GameObject:
   m_ObjectHideFlags: 0
@@ -943,6 +997,7 @@ Transform:
   - {fileID: 3586160896173782660}
   - {fileID: 3115705724097940648}
   - {fileID: 2725024061065593881}
+  - {fileID: 5361344024867771994}
   - {fileID: 8722255257648687680}
   - {fileID: 7568256067448295305}
   - {fileID: 5068514615726898036}
@@ -1517,6 +1572,7 @@ MonoBehaviour:
   aimAssistEnabled: 1
   aimAssistScreenRadius: 15
   aimAssistSnapSpeed: 15
+  upperBodyStabilizeSpeed: 10
 --- !u!114 &8360815286031001691
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1532,6 +1588,7 @@ MonoBehaviour:
   interactKey: 101
   dialogueTrigger: {fileID: 0}
   playerAnimator: {fileID: 0}
+  inventory: {fileID: 0}
 --- !u!114 &417710331642129032
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1544,7 +1601,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d2e1749a1754974295434f43be66029, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetGroup: {fileID: 0}
+  targetGroup: {fileID: 2457766749857733464}
   DialogueCamera: {fileID: 4790095108029143294}
   dialogueCanvas: {fileID: 0}
   textParser: {fileID: 0}
@@ -2273,8 +2330,8 @@ MonoBehaviour:
   m_StreamingVersion: 20170927
   m_Priority: 30
   m_StandbyUpdate: 2
-  m_LookAt: {fileID: 0}
-  m_Follow: {fileID: 0}
+  m_LookAt: {fileID: 5361344024867771994}
+  m_Follow: {fileID: 5361344024867771994}
   m_Lens:
     FieldOfView: 40
     OrthographicSize: 10
@@ -4401,7 +4458,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1908759806999368, guid: 146c5256fc521374c91ca33fc98e9603, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4879888146567566, guid: 146c5256fc521374c91ca33fc98e9603, type: 3}
       propertyPath: m_LocalScale.x
