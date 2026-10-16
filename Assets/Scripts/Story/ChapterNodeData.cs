@@ -5,34 +5,22 @@ using UnityEngine;
 namespace Game.Story
 {
     /// <summary>
-    /// A single beat of the narrative. It becomes "unlocked" once its
-    /// <see cref="StoryCondition"/> is met, runs its actions, and (optionally)
-    /// marks the story's final reveal.
+    /// A single event within a chapter. Nodes unlock strictly in order:
+    /// a node can only be triggered once the node before it is unlocked.
     /// </summary>
-    [CreateAssetMenu(fileName = "Node_", menuName = "Story/Story Node", order = 1)]
-    public class StoryNodeData : ScriptableObject
+    [CreateAssetMenu(fileName = "ChapterNode_", menuName = "Story/Chapter Node", order = 1)]
+    public class ChapterNodeData : ScriptableObject
     {
         [Tooltip("Stable unique id used for saving. Auto-generated if left empty.")]
         [SerializeField] private string nodeID;
         [SerializeField] private string title;
         [SerializeField, TextArea(3, 8)] private string narrative;
 
-        [SerializeField] private StoryCondition unlockCondition = new StoryCondition();
         [SerializeField] private List<StoryAction> onUnlockActions = new List<StoryAction>();
-
-        [Tooltip("When this node unlocks, the mystery is considered solved.")]
-        [SerializeField] private bool isTruthReveal;
 
         public string NodeID => nodeID;
         public string Title => title;
         public string Narrative => narrative;
-        public bool IsTruthReveal => isTruthReveal;
-        public StoryCondition UnlockCondition => unlockCondition;
-
-        public bool CanUnlock(IStoryState state)
-        {
-            return unlockCondition != null && unlockCondition.IsSatisfied(state);
-        }
 
         public void RunUnlockActions(StoryManager manager)
         {

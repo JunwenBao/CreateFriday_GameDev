@@ -11,14 +11,12 @@ namespace Game.Story
     /// </summary>
     public static class StoryEventManager
     {
-        public static event Action<ClueData> ClueCollected;
-        public static event Action<StoryNodeData> StoryNodeUnlocked;
+        public static event Action<ChapterNodeData> NodeUnlocked;
         public static event Action<ChapterData> ChapterCompleted;
         public static event Action StoryCompleted;
         public static event Action<StoryProgress> ProgressLoaded;
 
-        public static void RaiseClueCollected(ClueData clue) => ClueCollected?.Invoke(clue);
-        public static void RaiseStoryNodeUnlocked(StoryNodeData node) => StoryNodeUnlocked?.Invoke(node);
+        public static void RaiseNodeUnlocked(ChapterNodeData node) => NodeUnlocked?.Invoke(node);
         public static void RaiseChapterCompleted(ChapterData chapter) => ChapterCompleted?.Invoke(chapter);
         public static void RaiseStoryCompleted() => StoryCompleted?.Invoke();
         public static void RaiseProgressLoaded(StoryProgress progress) => ProgressLoaded?.Invoke(progress);
@@ -26,8 +24,7 @@ namespace Game.Story
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
         private static void ResetStatics()
         {
-            ClueCollected = null;
-            StoryNodeUnlocked = null;
+            NodeUnlocked = null;
             ChapterCompleted = null;
             StoryCompleted = null;
             ProgressLoaded = null;

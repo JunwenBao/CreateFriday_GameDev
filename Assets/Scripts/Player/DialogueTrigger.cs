@@ -1,10 +1,13 @@
 using UnityEngine;
 using StarterAssets;
 using Cinemachine;
+using Game.Story;
 
 public class DialogueTrigger : MonoBehaviour
 {
     private NPC currentNPC;
+    // NPC of the conversation in progress; null for item dialogues.
+    private NPC talkingNPC;
     private ThirdPersonController thirdPersonController;
     private bool dialogueIsActive;
     [SerializeField] private CinemachineTargetGroup targetGroup;
@@ -54,6 +57,7 @@ public class DialogueTrigger : MonoBehaviour
         }
 
         dialogueIsActive = true;
+        talkingNPC = currentNPC;
         thirdPersonController.enabled = false;
 
         targetGroup.m_Targets[0].target = transform;
@@ -87,12 +91,24 @@ public class DialogueTrigger : MonoBehaviour
 
     private void EndDialogue()
     {
+        NPC finishedNPC = talkingNPC;
+        talkingNPC = null;
+
         dialogueIsActive = false;
-        if (currentNPC != null) currentNPC.npcIsTalking = false;
+        if (finishedNPC != null) finishedNPC.npcIsTalking = false;
         thirdPersonController.enabled = true;
 
         DialogueCamera.SetActive(false);
         dialogueCanvas.SetActive(false);
+
+        // 对话状态恢复后再推进剧情，节点动作可以安全地开启新的对话或演出
+        if (finishedNPC != null && finishedNPC.storyNodeOnTalk != null)
+        {
+            if (StoryManager.Instance != null)
+                StoryManager.Instance.TryUnlockNode(finishedNPC.storyNodeOnTalk);
+            else
+                Debug.LogWarning("No StoryManager in scene; cannot unlock story node.", this);
+        }
     }
 
     private void OnTriggerEnter(Collider other)

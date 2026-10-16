@@ -1,12 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Game.Story;
 
 public class NPC : MonoBehaviour
 {
     public NPCData data;
     public DialogueData dialogue;
     public bool npcIsTalking;
+
+    [Tooltip("对话结束后尝试解锁的剧情节点，只有它是下一个节点时才会成功；可留空")]
+    public ChapterNodeData storyNodeOnTalk;
 
     private Animator animator;
 
