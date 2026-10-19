@@ -69,8 +69,12 @@ public class TextParser : MonoBehaviour
 
     private void EndConversation()
     {
+        DialogueData finished = currentDialogue;
         IsConversationActive = false;
         currentDialogue = null;
         onConversationEnd?.Invoke();
+
+        // 在对话 UI/相机复原之后再广播，监听者可以安全地开启新的对话或演出
+        GameEvents.RaiseDialogueFinished(finished);
     }
 }

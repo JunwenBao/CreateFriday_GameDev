@@ -16,11 +16,15 @@ namespace Game.Story
         [SerializeField] private string title;
         [SerializeField, TextArea(3, 8)] private string narrative;
 
+        [Tooltip("解锁该节点所需的游戏事件。选 None 时只能由代码调用 TryUnlockNode 解锁。")]
+        [SerializeReference] private StoryTrigger trigger;
+
         [SerializeField] private List<StoryAction> onUnlockActions = new List<StoryAction>();
 
         public string NodeID => nodeID;
         public string Title => title;
         public string Narrative => narrative;
+        public StoryTrigger Trigger => trigger;
 
         public void RunUnlockActions(StoryManager manager)
         {

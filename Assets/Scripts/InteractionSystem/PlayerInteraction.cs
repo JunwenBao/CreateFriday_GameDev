@@ -6,9 +6,11 @@ public class PlayerInteraction : MonoBehaviour
     [SerializeField] private KeyCode interactKey = KeyCode.E;
     [SerializeField] private DialogueTrigger dialogueTrigger;
     [SerializeField] private Animator playerAnimator;
-    [SerializeField] private Inventory inventory;
 
-    private Interactable currentInteractable;
+    private InteractableBase currentInteractable;
+
+    public DialogueTrigger DialogueTrigger => dialogueTrigger;
+    public Animator Animator => playerAnimator;
 
     private void Awake()
     {
@@ -20,11 +22,6 @@ public class PlayerInteraction : MonoBehaviour
         if (playerAnimator == null)
         {
             playerAnimator = GetComponentInChildren<Animator>();
-        }
-
-        if (inventory == null)
-        {
-            inventory = GetComponent<Inventory>();
         }
     }
 
@@ -38,13 +35,13 @@ public class PlayerInteraction : MonoBehaviour
 
         if (currentInteractable != null && Input.GetKeyDown(interactKey))
         {
-            currentInteractable.Interact(dialogueTrigger, playerAnimator, inventory);
+            currentInteractable.Interact(this);
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        Interactable interactable = other.GetComponent<Interactable>();
+        InteractableBase interactable = other.GetComponent<InteractableBase>();
         if (interactable == null) return;
 
         if (currentInteractable != null)
@@ -58,7 +55,7 @@ public class PlayerInteraction : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        Interactable interactable = other.GetComponent<Interactable>();
+        InteractableBase interactable = other.GetComponent<InteractableBase>();
         if (interactable != null && interactable == currentInteractable)
         {
             currentInteractable.SetHighlight(false);

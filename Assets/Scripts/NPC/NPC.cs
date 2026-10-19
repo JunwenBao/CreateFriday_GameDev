@@ -1,22 +1,25 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using Game.Story;
 
-public class NPC : MonoBehaviour
+public class NPC : InteractableBase
 {
     public NPCData data;
     public DialogueData dialogue;
     public bool npcIsTalking;
 
-    [Tooltip("对话结束后尝试解锁的剧情节点，只有它是下一个节点时才会成功；可留空")]
-    public ChapterNodeData storyNodeOnTalk;
-
     private Animator animator;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         animator = GetComponent<Animator>();
+    }
+
+    public override void Interact(PlayerInteraction player)
+    {
+        if (player.DialogueTrigger != null)
+        {
+            player.DialogueTrigger.StartNPCDialogue(this);
+        }
     }
 
     public void TurnToPlayer(Vector3 playerPosition)

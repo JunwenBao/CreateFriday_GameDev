@@ -8,8 +8,9 @@ namespace Game.Story
     /// Runtime heart of the story system. Drives a strictly linear sequence of
     /// chapter nodes, fires chapter/story completion, and persists progress.
     ///
-    /// Gameplay calls <see cref="TryUnlockNode"/>, which only succeeds for the
-    /// next node in order. Everything else reacts via <see cref="StoryEventManager"/>.
+    /// Gameplay never calls in directly: it raises <see cref="GameEvents"/>, and the
+    /// next node's <see cref="StoryTrigger"/> decides whether that event unlocks it.
+    /// <see cref="TryUnlockNode"/> remains available for scripted unlocks.
     /// </summary>
     public class StoryManager : MonoBehaviour
     {
@@ -28,6 +29,7 @@ namespace Game.Story
         private readonly HashSet<string> _unlockedNodes = new HashSet<string>();
         // Index into database.AllNodes of the next node that may be unlocked.
         private int _nextIndex;
+        private StoryTrigger _boundTrigger;
 
         public IReadOnlyCollection<string> UnlockedNodeIDs => _unlockedNodes;
 
@@ -70,12 +72,16 @@ namespace Game.Story
         {
             if (loadOnStart)
                 LoadProgress();
+            BindNextTrigger();
         }
 
         private void OnDestroy()
         {
-            if (Instance == this)
-                Instance = null;
+            if (Instance != this)
+                return;
+
+            UnbindTrigger();
+            Instance = null;
         }
 
         #endregion
@@ -139,6 +145,7 @@ namespace Game.Story
             var node = database.AllNodes[_nextIndex];
             _unlockedNodes.Add(node.NodeID);
             _nextIndex++;
+            BindNextTrigger();
             Debug.Log($"[Story] Node unlocked: {node.Title}", this);
 
             StoryEventManager.RaiseNodeUnlocked(node);
@@ -159,6 +166,25 @@ namespace Game.Story
 
             // Run last so an action that unlocks the following node sees a consistent state.
             node.RunUnlockActions(this);
+        }
+
+        /// <summary>Listens only for the event that the current next node is waiting for.</summary>
+        private void BindNextTrigger()
+        {
+            UnbindTrigger();
+
+            var node = NextNode;
+            if (node == null || node.Trigger == null)
+                return;
+
+            _boundTrigger = node.Trigger;
+            _boundTrigger.Bind(() => TryUnlockNode(node));
+        }
+
+        private void UnbindTrigger()
+        {
+            _boundTrigger?.Unbind();
+            _boundTrigger = null;
         }
 
         #region Persistence
@@ -222,6 +248,7 @@ namespace Game.Story
                 }
             }
 
+            BindNextTrigger();
             StoryEventManager.RaiseProgressLoaded(progress);
         }
 
@@ -230,6 +257,7 @@ namespace Game.Story
         {
             _unlockedNodes.Clear();
             _nextIndex = 0;
+            BindNextTrigger();
 
             if (File.Exists(SavePath))
                 File.Delete(SavePath);
