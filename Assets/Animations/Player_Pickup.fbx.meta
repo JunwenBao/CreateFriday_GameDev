@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: cfd596f256902cc4585732dc77695958
+guid: d0768c97373390e41bad0e705b168a6c
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -17,15 +17,13 @@ ModelImporter:
     removeConstantScaleCurves: 0
     motionNodeName: 
     rigImportErrors: 
-    rigImportWarnings: "Copied Avatar Rig Configuration mis-match. Inbetween bone
-      rotation in copied configuration does not match rotation in animation file:\n\t'Ball_L'
-      : rotation error = 6.008671 deg\n"
+    rigImportWarnings: "Copied Avatar Rig Configuration mis-match. Bone length in
+      copied configuration does not match position in animation file:\n\t'UpperLeg_L'
+      : position error = 10982.586914 mm\n\t'LowerLeg_L' : position error = 39682.554688
+      mm\n\t'Ankle_L' : position error = 37477.761719 mm\n\t'Ball_L' : position error
+      = 11213.844727 mm\n"
     animationImportErrors: 
-    animationImportWarnings: "\nClip 'mixamo.com' has import animation warnings that
-      might lower retargeting quality:\nNote: Activate translation DOF on avatar
-      to improve retargeting quality.\n\t'Ball_R' is inbetween humanoid transforms
-      and has rotation animation that will be discarded.\n\t'Ball_L' is inbetween
-      humanoid transforms and has rotation animation that will be discarded.\n"
+    animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
@@ -39,18 +37,18 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Player_Gun_Run
+      name: Player_Pickup
       takeName: mixamo.com
       internalID: -203655887218126122
       firstFrame: 0
-      lastFrame: 22
+      lastFrame: 145
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 1
       loopBlendPositionY: 1
