@@ -134,7 +134,7 @@ public class ThirdPersonShooterController : MonoBehaviour
 
             aimRigWeight = 0f;
 
-            if (!isMoving && (wasMoving || wasAiming))
+            if (!isMoving && !thirdPersonController.IsCrouch && (wasMoving || wasAiming))
             {
                 animator.Play("Idle Walk Run Blend", 0, 0f);
             }

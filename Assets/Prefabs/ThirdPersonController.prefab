@@ -676,7 +676,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5709847666355397218
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1892,7 +1892,6 @@ MonoBehaviour:
   interactKey: 101
   dialogueTrigger: {fileID: 0}
   playerAnimator: {fileID: 0}
-  inventory: {fileID: 0}
 --- !u!114 &417710331642129032
 MonoBehaviour:
   m_ObjectHideFlags: 0

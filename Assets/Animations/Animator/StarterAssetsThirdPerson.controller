@@ -102,7 +102,7 @@ BlendTree:
   m_BlendParameterY: Speed
   m_MinThreshold: 0
   m_MaxThreshold: 1
-  m_UseAutomaticThresholds: 1
+  m_UseAutomaticThresholds: 0
   m_NormalizedBlendValues: 0
   m_BlendType: 0
 --- !u!1102 &-7469282255733588732
@@ -229,7 +229,7 @@ AnimatorStateMachine:
     m_Position: {x: 510, y: 400, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -5290095817338600506}
-    m_Position: {x: -70, y: 400, z: 0}
+    m_Position: {x: -100, y: 400, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []

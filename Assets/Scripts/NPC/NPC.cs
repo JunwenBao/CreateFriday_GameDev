@@ -18,6 +18,7 @@ public class NPC : InteractableBase
     {
         if (player.DialogueTrigger != null)
         {
+            SetHighlight(false);
             player.DialogueTrigger.StartNPCDialogue(this);
         }
     }

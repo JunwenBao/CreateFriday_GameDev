@@ -12,16 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0062770776a2bfc45b9a003e60a35c38, type: 3}
   m_Name: ChapterNode_3
   m_EditorClassIdentifier: 
-  nodeID: 547d833c11944398b59181104a53834f
-  title: ChapterNode_2
+  nodeID: fee589bb5d714947963ab5cd47280bfc
+  title: ChapterNode_3
   narrative: 
   trigger:
-    rid: 4625996597530198017
+    rid: 2950765294643576834
   onUnlockActions: []
   references:
     version: 2
     RefIds:
-    - rid: 4625996597530198017
+    - rid: 2950765294643576834
       type: {class: DialogueFinishedTrigger, ns: Game.Story, asm: Assembly-CSharp}
       data:
-        dialogue: {fileID: 11400000, guid: 31552f787e0bfb7418a591f8dee26925, type: 2}
+        dialogue: {fileID: 11400000, guid: 22071bbfd5563ea469d3248ff28804af, type: 2}

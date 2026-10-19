@@ -2503,7 +2503,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   outlineColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  outlineWidth: 0.02
+  outlineWidth: 0.0109
   data: {fileID: 11400000, guid: 874a867566e70674ea59a132d46c3b33, type: 2}
   dialogue: {fileID: 11400000, guid: 31552f787e0bfb7418a591f8dee26925, type: 2}
   npcIsTalking: 0
