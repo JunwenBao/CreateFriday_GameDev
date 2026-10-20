@@ -10,6 +10,8 @@ public class TextParser : MonoBehaviour
     // 一段对话彻底播放完毕（最后一句被再次按E）时触发
     public UnityEvent onConversationEnd;
 
+    public event System.Action<DialogueLine> LineStarted;
+
     private TMP_Animated animatedText;
     private DialogueData currentDialogue;
     private int lineIndex;
@@ -63,6 +65,8 @@ public class TextParser : MonoBehaviour
         DialogueLine line = currentDialogue.conversationBlock[lineIndex];
         
         if (speakerNameText != null) speakerNameText.text = line.speaker.ToString();
+
+        LineStarted?.Invoke(line);
 
         animatedText.ReadText(line.text);
     }

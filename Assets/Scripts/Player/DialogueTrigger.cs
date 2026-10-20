@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using StarterAssets;
 using Cinemachine;
@@ -12,6 +13,14 @@ public class DialogueTrigger : MonoBehaviour
 
     [SerializeField] private GameObject DialogueCamera;
 
+    [Tooltip("Leave empty to use the CinemachineBrain on Camera.main.")]
+    [SerializeField] private CinemachineBrain cameraBrain;
+    [SerializeField] private bool hardCutDialogueCamera = true;
+
+    private CinemachineBlendDefinition originalBlend;
+    private bool blendOverridden;
+    private Coroutine restoreBlendRoutine;
+
     [Header("UI")]
     [SerializeField] private GameObject dialogueCanvas;
     [SerializeField] private TextParser textParser;
@@ -22,6 +31,9 @@ public class DialogueTrigger : MonoBehaviour
     {
         thirdPersonController = GetComponent<ThirdPersonController>();
 
+        if (cameraBrain == null && Camera.main != null)
+            cameraBrain = Camera.main.GetComponent<CinemachineBrain>();
+
         if (textParser == null)
         {
             Debug.LogError("Text Parser is not assigned on DialogueTrigger.", this);
@@ -29,6 +41,19 @@ public class DialogueTrigger : MonoBehaviour
         }
 
         textParser.onConversationEnd.AddListener(EndDialogue);
+        textParser.LineStarted += OnLineStarted;
+    }
+
+    private void OnDestroy()
+    {
+        if (textParser != null)
+            textParser.LineStarted -= OnLineStarted;
+    }
+
+    private void OnLineStarted(DialogueLine line)
+    {
+        if (talkingNPC != null && !string.IsNullOrEmpty(line.animTrigger))
+            talkingNPC.PlayDialogueAnimation(line.animTrigger);
     }
 
     private void Update()
@@ -44,9 +69,12 @@ public class DialogueTrigger : MonoBehaviour
     {
         if (dialogueIsActive) return;
 
-        if (npc == null || targetGroup == null || targetGroup.m_Targets.Length < 2)
+        if (npc == null) return;
+
+        bool useFallbackCamera = !npc.HasDialogueCamera;
+        if (useFallbackCamera && (targetGroup == null || targetGroup.m_Targets.Length < 2))
         {
-            Debug.LogWarning("Dialogue requires an NPC and a Cinemachine Target Group with at least two targets.", this);
+            Debug.LogWarning("NPC has no dialogue camera and the fallback Target Group is not set up.", this);
             return;
         }
 
@@ -54,13 +82,22 @@ public class DialogueTrigger : MonoBehaviour
         talkingNPC = npc;
         thirdPersonController.enabled = false;
 
-        targetGroup.m_Targets[0].target = transform;
-        targetGroup.m_Targets[1].target = npc.transform;
-
         npc.TurnToPlayer(transform.position);
         npc.npcIsTalking = true;
 
-        DialogueCamera.SetActive(true);
+        BeginHardCut();
+
+        if (useFallbackCamera)
+        {
+            targetGroup.m_Targets[0].target = transform;
+            targetGroup.m_Targets[1].target = npc.transform;
+            DialogueCamera.SetActive(true);
+        }
+        else
+        {
+            npc.SetDialogueCameraActive(true);
+        }
+
         dialogueCanvas.SetActive(true);
 
         textParser.BeginDialogue(npc.dialogue);
@@ -86,11 +123,45 @@ public class DialogueTrigger : MonoBehaviour
     private void EndDialogue()
     {
         dialogueIsActive = false;
-        if (talkingNPC != null) talkingNPC.npcIsTalking = false;
+        if (talkingNPC != null)
+        {
+            talkingNPC.npcIsTalking = false;
+            talkingNPC.SetDialogueCameraActive(false);
+        }
         talkingNPC = null;
         thirdPersonController.enabled = true;
 
         DialogueCamera.SetActive(false);
         dialogueCanvas.SetActive(false);
+
+        if (blendOverridden)
+            restoreBlendRoutine = StartCoroutine(RestoreBlendAfterCut());
+    }
+
+    private void BeginHardCut()
+    {
+        if (!hardCutDialogueCamera || cameraBrain == null) return;
+
+        if (restoreBlendRoutine != null)
+        {
+            StopCoroutine(restoreBlendRoutine);
+            restoreBlendRoutine = null;
+        }
+
+        if (!blendOverridden)
+        {
+            originalBlend = cameraBrain.m_DefaultBlend;
+            blendOverridden = true;
+        }
+        cameraBrain.m_DefaultBlend = new CinemachineBlendDefinition(CinemachineBlendDefinition.Style.Cut, 0f);
+    }
+
+    // Brain picks up the camera change in LateUpdate, so keep Cut until the next frame.
+    private IEnumerator RestoreBlendAfterCut()
+    {
+        yield return null;
+        cameraBrain.m_DefaultBlend = originalBlend;
+        blendOverridden = false;
+        restoreBlendRoutine = null;
     }
 }

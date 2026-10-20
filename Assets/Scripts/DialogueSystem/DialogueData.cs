@@ -13,6 +13,7 @@ public enum Speaker
 public struct DialogueLine
 {
     public Speaker speaker;
+    public string animTrigger;
     [TextArea(2, 4)]
     public string text;
 }

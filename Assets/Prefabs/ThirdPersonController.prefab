@@ -1538,6 +1538,7 @@ GameObject:
   - component: {fileID: 1683589573198261345}
   - component: {fileID: 8360815286031001691}
   - component: {fileID: 417710331642129032}
+  - component: {fileID: 7687303461142341136}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -1906,8 +1907,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetGroup: {fileID: 2457766749857733464}
   DialogueCamera: {fileID: 4790095108029143294}
+  cameraBrain: {fileID: 0}
+  hardCutDialogueCamera: 1
   dialogueCanvas: {fileID: 1521309061019530076}
   textParser: {fileID: 5510628456866668053}
+--- !u!114 &7687303461142341136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2747854352533203027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae1913ecbbcddf244973e2d182346f3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2755657588650554528
 GameObject:
   m_ObjectHideFlags: 0
