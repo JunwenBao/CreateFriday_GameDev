@@ -2,30 +2,23 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Localization;
 using UnityEngine.Localization.Settings;
-using TMPro;
 using Game.UI;
 
-[RequireComponent(typeof(TMP_Animated))]
+// 对话流程控制：逐句推进台词、弹出选项、结束对话。
+// 画面由 DialogueWindow 显示（通过 UIManager 打开 / 关闭），本组件不直接引用任何 UI 物体。
 public class TextParser : MonoBehaviour
 {
-    [SerializeField] private TMP_Text speakerNameText;
-
     // 一段对话彻底播放完毕（最后一句被再次按E）时触发
     public UnityEvent onConversationEnd;
 
     public event System.Action<DialogueLine> LineStarted;
 
-    private TMP_Animated animatedText;
+    private DialogueWindow window;
     private DialogueData currentDialogue;
     private int lineIndex;
     private bool awaitingChoice;
 
     public bool IsConversationActive { get; private set; }
-
-    private void Awake()
-    {
-        animatedText = GetComponent<TMP_Animated>();
-    }
 
     private void OnEnable()
     {
@@ -37,38 +30,41 @@ public class TextParser : MonoBehaviour
         LocalizationSettings.SelectedLocaleChanged -= OnLocaleChanged;
     }
 
+    // 玩家被销毁（如切换场景）时对话窗口仍由常驻的 UIManager 持有，需要一并关闭
+    private void OnDestroy()
+    {
+        if (IsConversationActive)
+            CloseWindows();
+    }
+
     // 对话进行中切换语言：用新语言重新显示当前这一句
     private void OnLocaleChanged(Locale _)
     {
-        if (IsConversationActive && currentDialogue != null && lineIndex >= 0 && lineIndex < currentDialogue.conversationBlock.Count)
-            animatedText.ReadText(currentDialogue.GetLineText(currentDialogue.conversationBlock[lineIndex]));
+        if (IsConversationActive && HasCurrentLine)
+            DisplayCurrentLine();
     }
 
     private void Update()
     {
-        if (!IsConversationActive || awaitingChoice)
+        if (!IsConversationActive || window == null)
+            return;
+
+        // 窗口被外部关闭（例如 CloseAll）时结束对话，避免玩家一直被锁住
+        if (!window.IsOpen)
+        {
+            EndConversation(raiseFinished: false);
+            return;
+        }
+
+        if (awaitingChoice || !HasCurrentLine)
             return;
 
         // 带选项的台词显示完毕后自动弹出选项（按 E 跳过打字也会立即弹出）
-        if (CurrentLine.HasChoices)
-        {
-            if (Input.GetKeyDown(KeyCode.E) && animatedText.IsReading)
-                animatedText.SkipToEnd();
-            if (!animatedText.IsReading)
-                ShowChoices();
-            return;
-        }
-
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            // 第一次按E：文字还在打字时，直接显示完整这一句
-            if (animatedText.IsReading)
-                animatedText.SkipToEnd();
-            // 再次按E：这一句已经显示完，进入下一句
-            else
-                AdvanceLine();
-        }
+        if (CurrentLine.HasChoices && !window.IsTyping)
+            ShowChoices();
     }
+
+    private bool HasCurrentLine => currentDialogue != null && lineIndex >= 0 && lineIndex < currentDialogue.conversationBlock.Count;
 
     private DialogueLine CurrentLine => currentDialogue.conversationBlock[lineIndex];
 
@@ -80,10 +76,45 @@ public class TextParser : MonoBehaviour
             return;
         }
 
+        if (UIManager.Instance == null)
+        {
+            Debug.LogError("UIManager is missing, cannot show the dialogue window.", this);
+            // 让调用方（DialogueTrigger）恢复玩家与相机，但不广播对话完成
+            onConversationEnd?.Invoke();
+            return;
+        }
+
         currentDialogue = dialogue;
         lineIndex = -1;
         awaitingChoice = false;
         IsConversationActive = true;
+
+        // 窗口可能异步加载：加载完成前推进的台词会在 OnWindowOpened 中补显示
+        UIManager.Instance.Open<DialogueWindow>(new DialogueWindow.Request { OnContinue = OnContinueRequested }, OnWindowOpened);
+        if (!UIManager.Instance.IsOpen<DialogueWindow>())
+        {
+            // 加载失败（例如未在 UIWindowRegistry 中注册），UIManager 已输出错误
+            EndConversation(raiseFinished: false);
+            return;
+        }
+        AdvanceLine();
+    }
+
+    private void OnWindowOpened(DialogueWindow opened)
+    {
+        if (!IsConversationActive)
+            return;
+
+        window = opened;
+        if (HasCurrentLine)
+            DisplayCurrentLine();
+    }
+
+    private void OnContinueRequested()
+    {
+        if (!IsConversationActive || awaitingChoice || !HasCurrentLine || CurrentLine.HasChoices)
+            return;
+
         AdvanceLine();
     }
 
@@ -96,24 +127,21 @@ public class TextParser : MonoBehaviour
             return;
         }
 
-        DialogueLine line = currentDialogue.conversationBlock[lineIndex];
-        
-        if (speakerNameText != null) speakerNameText.text = line.speaker.ToString();
+        LineStarted?.Invoke(CurrentLine);
+        DisplayCurrentLine();
+    }
 
-        LineStarted?.Invoke(line);
+    private void DisplayCurrentLine()
+    {
+        if (window == null)
+            return;
 
-        animatedText.ReadText(currentDialogue.GetLineText(line));
+        DialogueLine line = CurrentLine;
+        window.ShowLine(line.speaker.ToString(), currentDialogue.GetLineText(line));
     }
 
     private void ShowChoices()
     {
-        if (UIManager.Instance == null)
-        {
-            Debug.LogError("UIManager is missing, cannot show dialogue choices. Continuing dialogue.", this);
-            AdvanceLine();
-            return;
-        }
-
         awaitingChoice = true;
         DialogueData dialogue = currentDialogue;
         int index = lineIndex;
@@ -154,13 +182,26 @@ public class TextParser : MonoBehaviour
     private void EndConversation(bool raiseFinished = true)
     {
         DialogueData finished = currentDialogue;
+        CloseWindows();
         IsConversationActive = false;
         awaitingChoice = false;
         currentDialogue = null;
+        window = null;
         onConversationEnd?.Invoke();
 
         // 在对话 UI/相机复原之后再广播，监听者可以安全地开启新的对话或演出
         if (raiseFinished)
             GameEvents.RaiseDialogueFinished(finished);
+    }
+
+    private void CloseWindows()
+    {
+        UIManager manager = UIManager.Instance;
+        if (manager == null)
+            return;
+
+        if (awaitingChoice)
+            manager.Close<DialogueChoiceWindow>();
+        manager.Close<DialogueWindow>();
     }
 }

@@ -28,7 +28,7 @@ public class PlayerInteraction : MonoBehaviour
     private void Update()
     {
         // 对话进行中时，E键交给对话系统处理，避免重复触发
-        if (dialogueTrigger != null && dialogueTrigger.IsDialogueActive)
+        if (dialogueTrigger != null && (dialogueTrigger.IsDialogueActive || dialogueTrigger.DialogueEndedThisFrame))
         {
             return;
         }

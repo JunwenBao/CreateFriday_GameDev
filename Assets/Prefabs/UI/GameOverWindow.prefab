@@ -639,7 +639,7 @@ MonoBehaviour:
   closeOnMaskClick: 0
   backBehavior: 0
   cachePolicy: 0
-  inputMode: 2
+  inputMode: 0
   pauseGame: 1
   defaultSelected: {fileID: 0}
   restartButton: {fileID: 7605923680146033512}
