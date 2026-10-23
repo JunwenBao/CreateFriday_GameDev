@@ -1304,8 +1304,8 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Player_Normal_Pickup(Edit)
-  m_Speed: 1
+  m_Name: Pickup
+  m_Speed: 2
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -8649424081049125092}
@@ -1318,7 +1318,8 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 20ef3571ba3308c4ba7c6fe2c800e018, type: 2}
+  m_Motion: {fileID: -203655887218126122, guid: d0768c97373390e41bad0e705b168a6c,
+    type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
