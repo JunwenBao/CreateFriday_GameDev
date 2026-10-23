@@ -3,6 +3,7 @@ using UnityEngine.Events;
 using UnityEngine.Localization;
 using UnityEngine.Localization.Settings;
 using TMPro;
+using Game.UI;
 
 [RequireComponent(typeof(TMP_Animated))]
 public class TextParser : MonoBehaviour
@@ -17,6 +18,7 @@ public class TextParser : MonoBehaviour
     private TMP_Animated animatedText;
     private DialogueData currentDialogue;
     private int lineIndex;
+    private bool awaitingChoice;
 
     public bool IsConversationActive { get; private set; }
 
@@ -44,8 +46,18 @@ public class TextParser : MonoBehaviour
 
     private void Update()
     {
-        if (!IsConversationActive)
+        if (!IsConversationActive || awaitingChoice)
             return;
+
+        // 带选项的台词显示完毕后自动弹出选项（按 E 跳过打字也会立即弹出）
+        if (CurrentLine.HasChoices)
+        {
+            if (Input.GetKeyDown(KeyCode.E) && animatedText.IsReading)
+                animatedText.SkipToEnd();
+            if (!animatedText.IsReading)
+                ShowChoices();
+            return;
+        }
 
         if (Input.GetKeyDown(KeyCode.E))
         {
@@ -58,6 +70,8 @@ public class TextParser : MonoBehaviour
         }
     }
 
+    private DialogueLine CurrentLine => currentDialogue.conversationBlock[lineIndex];
+
     public void BeginDialogue(DialogueData dialogue)
     {
         if (dialogue == null || dialogue.conversationBlock == null || dialogue.conversationBlock.Count == 0)
@@ -68,6 +82,7 @@ public class TextParser : MonoBehaviour
 
         currentDialogue = dialogue;
         lineIndex = -1;
+        awaitingChoice = false;
         IsConversationActive = true;
         AdvanceLine();
     }
@@ -90,14 +105,62 @@ public class TextParser : MonoBehaviour
         animatedText.ReadText(currentDialogue.GetLineText(line));
     }
 
-    private void EndConversation()
+    private void ShowChoices()
+    {
+        if (UIManager.Instance == null)
+        {
+            Debug.LogError("UIManager is missing, cannot show dialogue choices. Continuing dialogue.", this);
+            AdvanceLine();
+            return;
+        }
+
+        awaitingChoice = true;
+        DialogueData dialogue = currentDialogue;
+        int index = lineIndex;
+
+        UIManager.Instance.Open<DialogueChoiceWindow>(new DialogueChoiceWindow.Request
+        {
+            Dialogue = dialogue,
+            Choices = CurrentLine.choices,
+            OnSelected = choiceIndex =>
+            {
+                // 回调到达前对话已被结束或替换时忽略
+                if (!awaitingChoice || currentDialogue != dialogue || lineIndex != index)
+                    return;
+                OnChoiceSelected(dialogue.conversationBlock[index].choices[choiceIndex]);
+            }
+        });
+    }
+
+    private void OnChoiceSelected(DialogueChoice choice)
+    {
+        awaitingChoice = false;
+
+        switch (choice.outcome)
+        {
+            case DialogueChoiceOutcome.Continue:
+                AdvanceLine();
+                break;
+            case DialogueChoiceOutcome.EndDialogue:
+                EndConversation();
+                break;
+            case DialogueChoiceOutcome.GameOver:
+                EndConversation(raiseFinished: false);
+                GameEvents.RaiseGameOver();
+                break;
+        }
+    }
+
+    private void EndConversation(bool raiseFinished = true)
     {
         DialogueData finished = currentDialogue;
         IsConversationActive = false;
+        awaitingChoice = false;
         currentDialogue = null;
         onConversationEnd?.Invoke();
 
         // 在对话 UI/相机复原之后再广播，监听者可以安全地开启新的对话或演出
-        GameEvents.RaiseDialogueFinished(finished);
+        if (raiseFinished)
+            GameEvents.RaiseDialogueFinished(finished);
     }
 }

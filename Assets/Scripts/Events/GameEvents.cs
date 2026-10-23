@@ -7,10 +7,12 @@ public static class GameEvents
     public static event Action<DialogueData> DialogueFinished;
     public static event Action<ItemData> ItemPicked;
     public static event Action<string> AreaEntered;
+    public static event Action GameOver;
 
     public static void RaiseDialogueFinished(DialogueData dialogue) => DialogueFinished?.Invoke(dialogue);
     public static void RaiseItemPicked(ItemData item) => ItemPicked?.Invoke(item);
     public static void RaiseAreaEntered(string areaID) => AreaEntered?.Invoke(areaID);
+    public static void RaiseGameOver() => GameOver?.Invoke();
 
     // 关闭 Domain Reload 进入 Play 模式时，清掉上一次运行残留的订阅
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
@@ -19,5 +21,6 @@ public static class GameEvents
         DialogueFinished = null;
         ItemPicked = null;
         AreaEntered = null;
+        GameOver = null;
     }
 }

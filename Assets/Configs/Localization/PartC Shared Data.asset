@@ -47,8 +47,16 @@ MonoBehaviour:
     m_Key: PartC_SheriffOffice_07
     m_Metadata:
       m_Items: []
+  - m_Id: 1587987966865408
+    m_Key: PartC_SheriffOffice_ChoiceA_00
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1589768243392512
+    m_Key: PartC_SheriffOffice_ChoiceA_01
+    m_Metadata:
+      m_Items: []
   - m_Id: 1568549439811584
-    m_Key: PartC_SheriffOffice_08
+    m_Key: PartC_SheriffOffice_ChoiceB
     m_Metadata:
       m_Items: []
   - m_Id: 1568645506150400

@@ -1539,6 +1539,7 @@ GameObject:
   - component: {fileID: 8360815286031001691}
   - component: {fileID: 417710331642129032}
   - component: {fileID: 7687303461142341136}
+  - component: {fileID: 8896831429516060219}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -1781,7 +1782,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 274649b0e221539409070ebf6c18918b, type: 3}
   - {fileID: 8300000, guid: a3194b8bbc96ef84fab1f98f4b7dae3e, type: 3}
   FootstepAudioVolume: 0.3
-  JumpHeight: 1.2
+  JumpHeight: 1
   Gravity: -15
   JumpTimeout: 0.3
   FallTimeout: 0.15
@@ -1923,6 +1924,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae1913ecbbcddf244973e2d182346f3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8896831429516060219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2747854352533203027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a3d0d56fc971a3488e7a67b1e62eae4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  footstepEvent:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 0f9d66dcbd1e87041bacdd01c7ad19aa,
+      type: 2}
+  stepInterval: 0.5
 --- !u!1 &2755657588650554528
 GameObject:
   m_ObjectHideFlags: 0

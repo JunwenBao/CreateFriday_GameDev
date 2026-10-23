@@ -345,7 +345,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit
     guid: 2000cf21073421459d604f39e6f97502
     GuidInternal: 
-    m_lastTime: -8584088592030491519
+    m_lastTime: -8584088543892500493
     List:
     - name: Main
       guid: 1893697925a3d848880a7af3f38dbe7f
@@ -373,7 +373,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: 7fa0ad8e1920754fb9b77a9cd425a61f
     GuidInternal: 
-    m_lastTime: -8584088592030516777
+    m_lastTime: -8584088543895831367
     List:
     - name: Play_BP_Audio_AMBR_Town_Bed
       guid: 1dc32c9c1b5c324da358ab4f6d46d5f9
@@ -677,7 +677,7 @@ MonoBehaviour:
     ParentPath: Switches\Default Work Unit
     guid: 4abf2754f2af334d90a767b9fd572409
     GuidInternal: 
-    m_lastTime: -8584088594913959167
+    m_lastTime: -8584088543892485674
     List:
     - name: FS_Material
       guid: 54282b2dfb08764cb7988b3377b782f9
