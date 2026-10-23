@@ -107,6 +107,7 @@ namespace Game.UI
             foreach (var transition in _transitions)
                 transition.Initialize();
 
+            LocaleFontSwitcher.ApplyTo(gameObject);
             RunHook(OnCreate);
         }
 

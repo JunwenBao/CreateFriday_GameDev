@@ -42861,6 +42861,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ThirdPersonController
       objectReference: {fileID: 0}
+    - target: {fileID: 3787801512826195450, guid: a7ee847e3e47c7f46a036a66816421d9,
+        type: 3}
+      propertyPath: JumpHeight
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7751799786883822281, guid: a7ee847e3e47c7f46a036a66816421d9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -82280,7 +82285,7 @@ MonoBehaviour:
   outlineColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   outlineWidth: 0.02
   targetSceneName: SheriffScene
-  targetSpawnId: 
+  targetSpawnId: SheriffSceneSpawnPoint
 --- !u!1001 &468093545065322430
 PrefabInstance:
   m_ObjectHideFlags: 0

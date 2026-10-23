@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Localization;
+using UnityEngine.Localization.Settings;
 using TMPro;
 
 [RequireComponent(typeof(TMP_Animated))]
@@ -21,6 +23,23 @@ public class TextParser : MonoBehaviour
     private void Awake()
     {
         animatedText = GetComponent<TMP_Animated>();
+    }
+
+    private void OnEnable()
+    {
+        LocalizationSettings.SelectedLocaleChanged += OnLocaleChanged;
+    }
+
+    private void OnDisable()
+    {
+        LocalizationSettings.SelectedLocaleChanged -= OnLocaleChanged;
+    }
+
+    // 对话进行中切换语言：用新语言重新显示当前这一句
+    private void OnLocaleChanged(Locale _)
+    {
+        if (IsConversationActive && currentDialogue != null && lineIndex >= 0 && lineIndex < currentDialogue.conversationBlock.Count)
+            animatedText.ReadText(currentDialogue.GetLineText(currentDialogue.conversationBlock[lineIndex]));
     }
 
     private void Update()
@@ -68,7 +87,7 @@ public class TextParser : MonoBehaviour
 
         LineStarted?.Invoke(line);
 
-        animatedText.ReadText(line.text);
+        animatedText.ReadText(currentDialogue.GetLineText(line));
     }
 
     private void EndConversation()

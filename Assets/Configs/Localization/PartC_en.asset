@@ -1,0 +1,133 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: PartC_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: c4260c07da62f1546a2805da32d33cb3, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 198140198912
+    m_Localized: '<speed = 10>A gentleman of the fourth estate. Welcome to Blackpool,
+      son. '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1557898243878912
+    m_Localized: <speed = 10>Forgive the noisy welcome; the frontier rarely minds
+      its manners.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1557908104687616
+    m_Localized: Davies tells me you wield a pen that can sway investors from Boston
+      to Philadelphia.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1557910352834560
+    m_Localized: "I respect that. I\u2019ve always held a soft spot for ambitious
+      young men who know the power of public opinion."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1558323705688064
+    m_Localized: Then you understand why ensuring my safety is beneficial for everyone
+      in this room, Sheriff.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1566889237819392
+    m_Localized: 'Beneficial down the trail, perhaps. But promises written on Eastern
+      paper don''t feed my deputies today. '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1566931495432192
+    m_Localized: 'You want the shield of the law? In Blackpool, respect is transactional. '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1567120817926144
+    m_Localized: If you want us to stick our necks out to protect your hide, you
+      need to deliver something practical to this precinct first.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1568549439811584
+    m_Localized: "If you're asking for coin... I was separated from my primary trunk
+      on the locomotive. I don\u2019t have enough greenbacks on my person to purchase
+      an armed escort."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1568645506150400
+    m_Localized: "I don\u2019t want your specie, son. I want your eyes and your ears."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1568671707967488
+    m_Localized: 'Meet our ghost. We call him the ''One-Eyed Butcher.'' '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1568687516299264
+    m_Localized: "He rode out of the savage badlands beyond the western ridge six
+      months ago, and he\u2019s made this canyon his personal abattoir. "
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1568930626547712
+    m_Localized: 'Stagecoaches burned, cargo lines plundered, bank vaults blown to
+      splinters. '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1568951472238592
+    m_Localized: Even with this poster plastered over every wall, not a single soul
+      has the courage to whisper a lead to my deputies.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1568963245649920
+    m_Localized: "And where do I fit into this? I\u2019m an investigative reporter,
+      not a bounty hunter."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1568975295885312
+    m_Localized: 'You''re an outsider. '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1568987673276416
+    m_Localized: You have an excuse to poke your nose into dark alleys, ask impertinent
+      questions, and chat up lowlifes in the saloons without raising immediate suspicion.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1568998314225664
+    m_Localized: You gather solid leads on where this butcher is roosting. Bring
+      those clues back to this desk.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1569009252970496
+    m_Localized: And if I happen to get cornered while hunting your ghost? How do
+      I even call your patrolmen for help?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1569410547200000
+    m_Localized: Just bring me those leads.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1569019482877952
+    m_Localized: "I've got eyes in the shadows of Blackpool\u2014trusted men who
+      don't wear the star when they work. "
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1569322496176128
+    m_Localized: They'll be watching.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1569400245989376
+    m_Localized: If a gun gets pointed at your head, a quiet bullet from the dark
+      will find them first.
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

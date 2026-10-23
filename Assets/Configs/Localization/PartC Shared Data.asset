@@ -1,0 +1,121 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: PartC Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: PartC
+  m_TableCollectionNameGuidString: c4260c07da62f1546a2805da32d33cb3
+  m_Entries:
+  - m_Id: 198140198912
+    m_Key: PartC_SheriffOffice_00
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1557898243878912
+    m_Key: PartC_SheriffOffice_01
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1557908104687616
+    m_Key: PartC_SheriffOffice_02
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1557910352834560
+    m_Key: PartC_SheriffOffice_03
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1558323705688064
+    m_Key: PartC_SheriffOffice_04
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1566889237819392
+    m_Key: PartC_SheriffOffice_05
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1566931495432192
+    m_Key: PartC_SheriffOffice_06
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1567120817926144
+    m_Key: PartC_SheriffOffice_07
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1568549439811584
+    m_Key: PartC_SheriffOffice_08
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1568645506150400
+    m_Key: PartC_SheriffOffice_09
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1568671707967488
+    m_Key: PartC_SheriffOffice_10
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1568687516299264
+    m_Key: PartC_SheriffOffice_11
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1568930626547712
+    m_Key: PartC_SheriffOffice_12
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1568951472238592
+    m_Key: PartC_SheriffOffice_13
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1568963245649920
+    m_Key: PartC_SheriffOffice_14
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1568975295885312
+    m_Key: PartC_SheriffOffice_15
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1568987673276416
+    m_Key: PartC_SheriffOffice_16
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1568998314225664
+    m_Key: PartC_SheriffOffice_17
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1569009252970496
+    m_Key: PartC_SheriffOffice_18
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1569019482877952
+    m_Key: PartC_SheriffOffice_19
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1569322496176128
+    m_Key: PartC_SheriffOffice_20
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1569400245989376
+    m_Key: PartC_SheriffOffice_21
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1569410547200000
+    m_Key: PartC_SheriffOffice_22
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 2950765283598139416
+  references:
+    version: 2
+    RefIds:
+    - rid: 2950765283598139416
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables,
+        asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1792369358995
