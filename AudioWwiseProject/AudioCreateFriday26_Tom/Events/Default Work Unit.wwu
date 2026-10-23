@@ -3,34 +3,45 @@
 	<Events>
 		<WorkUnit Name="Default Work Unit" ID="{8EADA07F-2019-4F75-B9B7-7A9CD425A61F}" PersistMode="Standalone">
 			<ChildrenList>
-				<Event Name="Play_FS_Teest" ID="{CEB7B37C-6F28-4F73-8373-E4B90E3F6362}">
+				<Event Name="Play_FS_All" ID="{2BC7C1EA-E809-475F-B088-7FF5775D1EBD}">
 					<ChildrenList>
-						<Action Name="" ID="{27BAA9A6-2481-4CB0-9370-D46E436F52A7}" ShortID="652840756">
+						<Action Name="" ID="{13CDB4C5-5057-40EC-979A-BF600CE51AE0}" ShortID="613881684">
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="FS_Teest" ID="{B78EA171-5103-47B5-9BE1-CD100CC09F33}" WorkUnitID="{73A11A96-30E8-4D7B-8388-7642E14CB277}"/>
+									<ObjectRef Name="FS_All" ID="{2062212D-7B4E-42DE-AA3C-E24737E63A6D}" WorkUnitID="{73A11A96-30E8-4D7B-8388-7642E14CB277}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
 					</ChildrenList>
 				</Event>
-				<Event Name="Play_Test_Magic" ID="{4D3CE230-F638-4AFA-A93D-B07FCD5E06C6}">
+				<Event Name="Play_BP_Audio_AMBR_Town_Bed" ID="{9C2CC31D-5C1B-4D32-A358-AB4F6D46D5F9}">
 					<ChildrenList>
-						<Action Name="" ID="{C207FA8F-516E-4E5F-80CD-DCDC8F8861E9}" ShortID="258019447">
+						<Action Name="" ID="{A438D42D-B34C-44F5-A3D3-D5AFF4680B65}" ShortID="775290114">
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="Test_Magic" ID="{5B69757A-273F-43DC-90C2-238067B044E9}" WorkUnitID="{73A11A96-30E8-4D7B-8388-7642E14CB277}"/>
+									<ObjectRef Name="BP_Audio_AMBR_Town_Bed" ID="{838C6826-0C2F-4CE2-95B4-726953E2CAEA}" WorkUnitID="{73A11A96-30E8-4D7B-8388-7642E14CB277}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
 					</ChildrenList>
 				</Event>
-				<Event Name="Play_Test_Amb" ID="{9E2E5BBE-45C4-4D54-B471-6AEF1BC5113A}">
+				<Event Name="Play_BP_Audio_AMBR_Town_Obj_Group_01" ID="{B6385A2D-956A-44B8-A9A6-36EE83A78BB1}">
 					<ChildrenList>
-						<Action Name="" ID="{3235ADBB-52D6-4142-AF49-5C8246B0BD42}" ShortID="321182041">
+						<Action Name="" ID="{8F236F7A-E86F-4972-A66A-A856C5EB4A15}" ShortID="340967128">
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="Test_Amb" ID="{C60B8A5F-B9F8-4852-9FFD-1D8F408A2AA2}" WorkUnitID="{73A11A96-30E8-4D7B-8388-7642E14CB277}"/>
+									<ObjectRef Name="BP_Audio_AMBR_Town_Obj_Group_01" ID="{A4EA2C4E-7C4C-44CE-AE24-899CB54EAF73}" WorkUnitID="{73A11A96-30E8-4D7B-8388-7642E14CB277}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_BP_Audio_AMBR_Town_Obj_Group_02" ID="{9A8C054A-F067-4FDF-8CAB-D5064ED3088D}">
+					<ChildrenList>
+						<Action Name="" ID="{EB2F0929-D51B-4367-B7B4-C0087C4CF645}" ShortID="380016009">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="BP_Audio_AMBR_Town_Obj_Group_02" ID="{A7AAA809-9C68-4E83-80BC-519F3B42D0AD}" WorkUnitID="{73A11A96-30E8-4D7B-8388-7642E14CB277}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
