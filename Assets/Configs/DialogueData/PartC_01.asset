@@ -62,9 +62,11 @@ MonoBehaviour:
     - key: PartC_SheriffOffice_ChoiceA
       sourceText: 
       outcome: 2
+      replies: []
     - key: PartC_SheriffOffice_ChoiceB
       sourceText: 
       outcome: 0
+      replies: []
   - speaker: 1
     animTrigger: 
     key: PartC_SheriffOffice_09
@@ -72,7 +74,7 @@ MonoBehaviour:
     choices: []
   - speaker: 1
     animTrigger: 
-    key: PartC_SheriffOffice_20
+    key: PartC_SheriffOffice_10
     sourceText: 
     choices: []
   - speaker: 1
@@ -92,46 +94,47 @@ MonoBehaviour:
     choices: []
   - speaker: 0
     animTrigger: 
-    key: PartC_SheriffOffice_14
+    key: 
     sourceText: 
-    choices: []
+    choices:
+    - key: PartC_SheriffOffice_14
+      sourceText: 
+      outcome: 3
+      replies:
+      - speaker: 1
+        animTrigger: 
+        key: PartC_SheriffOffice_15
+        sourceText: 
+      - speaker: 1
+        animTrigger: 
+        key: PartC_SheriffOffice_16
+        sourceText: 
+      - speaker: 1
+        animTrigger: 
+        key: PartC_SheriffOffice_17
+        sourceText: 
+    - key: PartC_SheriffOffice_18
+      sourceText: 
+      outcome: 3
+      replies:
+      - speaker: 1
+        animTrigger: 
+        key: PartC_SheriffOffice_19
+        sourceText: 
+      - speaker: 1
+        animTrigger: 
+        key: PartC_SheriffOffice_20
+        sourceText: 
+      - speaker: 1
+        animTrigger: 
+        key: PartC_SheriffOffice_21
+        sourceText: 
+    - key: PartC_SheriffOffice_22
+      sourceText: 
+      outcome: 0
+      replies: []
   - speaker: 1
     animTrigger: 
-    key: PartC_SheriffOffice_15
-    sourceText: 
-    choices: []
-  - speaker: 1
-    animTrigger: 
-    key: PartC_SheriffOffice_16
-    sourceText: 
-    choices: []
-  - speaker: 1
-    animTrigger: 
-    key: PartC_SheriffOffice_17
-    sourceText: 
-    choices: []
-  - speaker: 0
-    animTrigger: 
-    key: PartC_SheriffOffice_18
-    sourceText: 
-    choices: []
-  - speaker: 1
-    animTrigger: 
-    key: PartC_SheriffOffice_19
-    sourceText: 
-    choices: []
-  - speaker: 1
-    animTrigger: 
-    key: PartC_SheriffOffice_20
-    sourceText: 
-    choices: []
-  - speaker: 1
-    animTrigger: 
-    key: PartC_SheriffOffice_21
-    sourceText: 
-    choices: []
-  - speaker: 1
-    animTrigger: 
-    key: PartC_SheriffOffice_22
+    key: PartC_SheriffOffice_23
     sourceText: 
     choices: []

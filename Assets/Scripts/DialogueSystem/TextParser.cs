@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Localization;
@@ -17,6 +18,10 @@ public class TextParser : MonoBehaviour
     private DialogueData currentDialogue;
     private int lineIndex;
     private bool awaitingChoice;
+
+    // 正在播放的选项回复（ReplyThenReturn）；为 null 表示在播放主线台词
+    private List<DialogueReply> activeReplies;
+    private int replyIndex = -1;
 
     public bool IsConversationActive { get; private set; }
 
@@ -56,7 +61,7 @@ public class TextParser : MonoBehaviour
             return;
         }
 
-        if (awaitingChoice || !HasCurrentLine)
+        if (awaitingChoice || !HasCurrentLine || IsShowingReply)
             return;
 
         // 带选项的台词显示完毕后自动弹出选项（按 E 跳过打字也会立即弹出）
@@ -67,6 +72,8 @@ public class TextParser : MonoBehaviour
     private bool HasCurrentLine => currentDialogue != null && lineIndex >= 0 && lineIndex < currentDialogue.conversationBlock.Count;
 
     private DialogueLine CurrentLine => currentDialogue.conversationBlock[lineIndex];
+
+    private bool IsShowingReply => activeReplies != null && replyIndex >= 0 && replyIndex < activeReplies.Count;
 
     public void BeginDialogue(DialogueData dialogue)
     {
@@ -87,6 +94,7 @@ public class TextParser : MonoBehaviour
         currentDialogue = dialogue;
         lineIndex = -1;
         awaitingChoice = false;
+        ClearReplies();
         IsConversationActive = true;
 
         // 窗口可能异步加载：加载完成前推进的台词会在 OnWindowOpened 中补显示
@@ -112,10 +120,47 @@ public class TextParser : MonoBehaviour
 
     private void OnContinueRequested()
     {
-        if (!IsConversationActive || awaitingChoice || !HasCurrentLine || CurrentLine.HasChoices)
+        if (!IsConversationActive || awaitingChoice || !HasCurrentLine)
+            return;
+
+        if (IsShowingReply)
+        {
+            AdvanceReply();
+            return;
+        }
+
+        if (CurrentLine.HasChoices)
             return;
 
         AdvanceLine();
+    }
+
+    private void StartReplies(List<DialogueReply> replies)
+    {
+        activeReplies = replies;
+        replyIndex = -1;
+        AdvanceReply();
+    }
+
+    private void AdvanceReply()
+    {
+        replyIndex++;
+        if (!IsShowingReply)
+        {
+            // 回复播放完（或没有配置回复）：重新显示带选项的台词，Update 会在打字结束后再次弹出选项
+            ClearReplies();
+            DisplayCurrentLine();
+            return;
+        }
+
+        LineStarted?.Invoke(activeReplies[replyIndex].ToLine());
+        DisplayCurrentLine();
+    }
+
+    private void ClearReplies()
+    {
+        activeReplies = null;
+        replyIndex = -1;
     }
 
     private void AdvanceLine()
@@ -136,13 +181,15 @@ public class TextParser : MonoBehaviour
         if (window == null)
             return;
 
-        DialogueLine line = CurrentLine;
+        DialogueLine line = IsShowingReply ? activeReplies[replyIndex].ToLine() : CurrentLine;
         window.ShowLine(line.speaker.ToString(), currentDialogue.GetLineText(line));
     }
 
     private void ShowChoices()
     {
         awaitingChoice = true;
+        // 选项面板期间隐藏对话框（不关闭，否则会被 Update 视为对话被外部终止）
+        window?.SetHidden(true);
         DialogueData dialogue = currentDialogue;
         int index = lineIndex;
 
@@ -163,6 +210,7 @@ public class TextParser : MonoBehaviour
     private void OnChoiceSelected(DialogueChoice choice)
     {
         awaitingChoice = false;
+        window?.SetHidden(false);
 
         switch (choice.outcome)
         {
@@ -176,6 +224,9 @@ public class TextParser : MonoBehaviour
                 EndConversation(raiseFinished: false);
                 GameEvents.RaiseGameOver();
                 break;
+            case DialogueChoiceOutcome.ReplyThenReturn:
+                StartReplies(choice.replies);
+                break;
         }
     }
 
@@ -185,6 +236,7 @@ public class TextParser : MonoBehaviour
         CloseWindows();
         IsConversationActive = false;
         awaitingChoice = false;
+        ClearReplies();
         currentDialogue = null;
         window = null;
         onConversationEnd?.Invoke();

@@ -15,7 +15,31 @@ public enum DialogueChoiceOutcome
 {
     Continue,     // 继续播放下一句
     EndDialogue,  // 立即正常结束对话（会广播 DialogueFinished）
-    GameOver      // 结束对话并触发游戏结束（不广播 DialogueFinished）
+    GameOver,     // 结束对话并触发游戏结束（不广播 DialogueFinished）
+    ReplyThenReturn // 播放该选项的 replies，然后回到本句台词重新弹出选项
+}
+
+// 选项的专属回复台词。不含 choices，避免与 DialogueLine 互相嵌套导致序列化递归
+[Serializable]
+public struct DialogueReply
+{
+    public Speaker speaker;
+    public string animTrigger;
+
+    [Tooltip("String Table 中的 Key，运行时根据当前语言显示对应文本")]
+    public string key;
+
+    [Tooltip("尚未本地化的原文，迁移工具会自动生成 Key 并清空此处")]
+    [TextArea(2, 4)]
+    public string sourceText;
+
+    public DialogueLine ToLine() => new DialogueLine
+    {
+        speaker = speaker,
+        animTrigger = animTrigger,
+        key = key,
+        sourceText = sourceText
+    };
 }
 
 // 对话中的一个选项：选项文本 Key + 选择后的结果
@@ -30,6 +54,9 @@ public struct DialogueChoice
     public string sourceText;
 
     public DialogueChoiceOutcome outcome;
+
+    [Tooltip("outcome 为 ReplyThenReturn 时依次播放的回复，播放完回到选项界面")]
+    public List<DialogueReply> replies;
 }
 
 // 一句对话：说话人 + 台词 Key（文本存放在 Localization 的 String Table 中）

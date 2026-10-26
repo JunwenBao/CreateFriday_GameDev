@@ -115,6 +115,10 @@ MonoBehaviour:
     m_Key: PartC_SheriffOffice_22
     m_Metadata:
       m_Items: []
+  - m_Id: 2606370275471360
+    m_Key: PartC_SheriffOffice_23
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

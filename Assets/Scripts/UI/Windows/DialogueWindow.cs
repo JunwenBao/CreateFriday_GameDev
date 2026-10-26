@@ -74,7 +74,7 @@ public class DialogueWindow : UIWindow<DialogueWindow.Request>, IPointerClickHan
     // 上方有其他可交互窗口（选项、暂停菜单等）时不响应
     private bool AcceptsInput()
     {
-        if (!IsOpen || IsCovered || request == null || Time.frameCount == openedFrame)
+        if (!IsOpen || IsCovered || IsHidden || request == null || Time.frameCount == openedFrame)
             return false;
 
         UIWindow focused = UIManager.Instance != null ? UIManager.Instance.FocusedWindow : null;

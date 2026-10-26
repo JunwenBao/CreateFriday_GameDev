@@ -43,6 +43,23 @@ public static class DialogueLocalizationMigrator
                     for (int c = 0; c < line.choices.Count; c++)
                     {
                         DialogueChoice choice = line.choices[c];
+
+                        if (choice.replies != null)
+                        {
+                            for (int r = 0; r < choice.replies.Count; r++)
+                            {
+                                DialogueReply reply = choice.replies[r];
+                                if (!string.IsNullOrEmpty(reply.key) || string.IsNullOrEmpty(reply.sourceText))
+                                    continue;
+
+                                reply.key = AddEntry(collection, $"{keyPrefix}.{i:D2}.choice{c}.reply{r}", reply.sourceText, untranslated);
+                                reply.sourceText = string.Empty;
+                                choice.replies[r] = reply;
+                                changed = true;
+                                migratedCount++;
+                            }
+                        }
+
                         if (!string.IsNullOrEmpty(choice.key) || string.IsNullOrEmpty(choice.sourceText))
                             continue;
 

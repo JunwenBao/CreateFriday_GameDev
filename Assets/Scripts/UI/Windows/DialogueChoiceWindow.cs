@@ -17,21 +17,23 @@ public class DialogueChoiceWindow : UIWindow
         public Action<int> OnSelected;
     }
 
-    [Tooltip("选项按钮，按顺序对应 DialogueLine.choices；多余的按钮会被隐藏。按钮文字取子节点上的 TMP_Text")]
-    [SerializeField] private Button[] optionButtons;
+    [Tooltip("选项按钮预制体（需带 Button，按钮文字取子节点上的 TMP_Text），按选项数量自动生成")]
+    [SerializeField] private GameObject optionButtonPrefab;
 
-    private TMP_Text[] optionLabels;
+    [Tooltip("生成的按钮放在此节点下（建议挂 Layout Group 自动排版）；留空则放在窗口根节点下")]
+    [SerializeField] private RectTransform optionContainer;
+
+    // 已生成的按钮会在多次打开间复用，只增不减，多余的隐藏
+    private readonly List<Button> optionButtons = new List<Button>();
+    private readonly List<TMP_Text> optionLabels = new List<TMP_Text>();
     private Request request;
 
     protected override void OnCreate()
     {
-        optionLabels = new TMP_Text[optionButtons.Length];
-        for (int i = 0; i < optionButtons.Length; i++)
-        {
-            int index = i;
-            optionButtons[i].onClick.AddListener(() => Select(index));
-            optionLabels[i] = optionButtons[i].GetComponentInChildren<TMP_Text>(true);
-        }
+        if (optionContainer == null)
+            optionContainer = (RectTransform)transform;
+        if (optionButtonPrefab == null)
+            Debug.LogError("DialogueChoiceWindow: optionButtonPrefab is not assigned.", this);
     }
 
     protected override void OnOpen(object data)
@@ -61,7 +63,7 @@ public class DialogueChoiceWindow : UIWindow
         if (!IsOpen || request == null)
             return;
 
-        int count = Mathf.Min(request.Choices.Count, optionButtons.Length, 9);
+        int count = Mathf.Min(request.Choices.Count, optionButtons.Count, 9);
         for (int i = 0; i < count; i++)
         {
             if (Input.GetKeyDown(KeyCode.Alpha1 + i) || Input.GetKeyDown(KeyCode.Keypad1 + i))
@@ -77,16 +79,41 @@ public class DialogueChoiceWindow : UIWindow
     private void RefreshOptions()
     {
         int count = request?.Choices?.Count ?? 0;
-        if (count > optionButtons.Length)
-            Debug.LogWarning($"Dialogue has {count} choices but only {optionButtons.Length} option buttons.", this);
+        while (optionButtons.Count < count)
+        {
+            if (!CreateOptionButton())
+                break;
+        }
 
-        for (int i = 0; i < optionButtons.Length; i++)
+        for (int i = 0; i < optionButtons.Count; i++)
         {
             bool used = i < count;
             optionButtons[i].gameObject.SetActive(used);
             if (used && optionLabels[i] != null)
                 optionLabels[i].text = request.Dialogue.GetChoiceText(request.Choices[i]);
         }
+    }
+
+    private bool CreateOptionButton()
+    {
+        if (optionButtonPrefab == null)
+            return false;
+
+        GameObject instance = Instantiate(optionButtonPrefab, optionContainer, false);
+        Button button = instance.GetComponent<Button>();
+        if (button == null)
+        {
+            Debug.LogError("DialogueChoiceWindow: optionButtonPrefab has no Button component.", optionButtonPrefab);
+            Destroy(instance);
+            return false;
+        }
+
+        int index = optionButtons.Count;
+        instance.name = $"{optionButtonPrefab.name}_{index + 1}";
+        button.onClick.AddListener(() => Select(index));
+        optionButtons.Add(button);
+        optionLabels.Add(instance.GetComponentInChildren<TMP_Text>(true));
+        return true;
     }
 
     private void Select(int index)
