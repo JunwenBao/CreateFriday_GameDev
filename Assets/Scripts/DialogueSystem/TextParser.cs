@@ -56,17 +56,7 @@ public class TextParser : MonoBehaviour
 
         // 窗口被外部关闭（例如 CloseAll）时结束对话，避免玩家一直被锁住
         if (!window.IsOpen)
-        {
             EndConversation(raiseFinished: false);
-            return;
-        }
-
-        if (awaitingChoice || !HasCurrentLine || IsShowingReply)
-            return;
-
-        // 带选项的台词显示完毕后自动弹出选项（按 E 跳过打字也会立即弹出）
-        if (CurrentLine.HasChoices && !window.IsTyping)
-            ShowChoices();
     }
 
     private bool HasCurrentLine => currentDialogue != null && lineIndex >= 0 && lineIndex < currentDialogue.conversationBlock.Count;
@@ -129,8 +119,12 @@ public class TextParser : MonoBehaviour
             return;
         }
 
+        // 带选项的台词：整句显示后再按一次 E 才弹出选项（第一次按 E 只会跳过打字，由 DialogueWindow 处理）
         if (CurrentLine.HasChoices)
+        {
+            ShowChoices();
             return;
+        }
 
         AdvanceLine();
     }
@@ -147,7 +141,7 @@ public class TextParser : MonoBehaviour
         replyIndex++;
         if (!IsShowingReply)
         {
-            // 回复播放完（或没有配置回复）：重新显示带选项的台词，Update 会在打字结束后再次弹出选项
+            // 回复播放完（或没有配置回复）：重新显示带选项的台词，玩家再按 E 弹出选项
             ClearReplies();
             DisplayCurrentLine();
             return;
