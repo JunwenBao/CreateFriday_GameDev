@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a0632b966e58e1d409ecb22ee0f05f25, type: 3}
-  m_Name: PartC_01
+  m_Name: Chapter01_PartC
   m_EditorClassIdentifier: 
   tableName: PartC
   conversationBlock:
@@ -59,7 +59,7 @@ MonoBehaviour:
     key: PartC_SheriffOffice_08
     sourceText: 
     choices:
-    - key: PartC_SheriffOffice_ChoiceA
+    - key: PartC_SheriffOffice_ChoiceA_00
       sourceText: 
       outcome: 2
       replies: []

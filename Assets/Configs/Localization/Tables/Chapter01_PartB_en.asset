@@ -1,0 +1,93 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Chapter01_PartB_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: c221595344627e240bedfa9d6b69510d, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 12757774336
+    m_Localized: 'You''re tracking canyon grit all over my floorboards, city boy. '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15437934592
+    m_Localized: State your business or take yourself back out into the squall.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17816104960
+    m_Localized: "The officer who just brought me to the porch\u2014he vanished!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 215959220224
+    m_Localized: "Vanished? \nAside from myself and the Sheriff in the back office,
+      every deputy in this precinct is out on the High Street trading lead with the
+      renegades."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 236460978176
+    m_Localized: "You're seeing phantoms, greenhorn. \nThe desert sun plays wicked
+      tricks on Eastern eyes."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 488790306816
+    m_Localized: "I am a gentleman of the press. \nI require protection under law."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 506540601344
+    m_Localized: "Require? \nThe law doesn't have the spare hands to act as a personal
+      nursemaid for every tenderfoot with a fancy pocketbook and a pencil. "
+    m_Metadata:
+      m_Items: []
+  - m_Id: 518888632320
+    m_Localized: We're short on men and shorter on patience.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 529462472704
+    m_Localized: I am no mere traveler, Sergeant! I am an investigative correspondent
+      for The New Chronicle out of New York.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 540430577664
+    m_Localized: "If I am slain in these streets, my publisher will run a front-page
+      feature detailing how Blackpool is a lawless slaughterhouse. \nThe railroad
+      company will pull its investments before the month is out."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 743942402048
+    m_Localized: "But if you keep me breathing? \nI write a piece detailing the heroic
+      lawmen of Blackpool taming this wilderness."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 762200207360
+    m_Localized: "Your town leadership\u2014especially your Mayor\u2014would be very
+      pleased with that kind of ink."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 772899876864
+    m_Localized: A big Eastern rag, is it?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 784648122368
+    m_Localized: Wait right here. Touch nothing.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 794978693120
+    m_Localized: The Sheriff will hear you now. Mind your manners, and keep your
+      hands clear of your coat.
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

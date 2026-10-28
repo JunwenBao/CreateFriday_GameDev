@@ -71,8 +71,9 @@ public class DialogueTrigger : MonoBehaviour
         }
     }
 
-    // 与 NPC 对话：切换到对话相机，聚焦玩家与 NPC（由 NPC.Interact 调用）
-    public void StartNPCDialogue(NPC npc)
+    // 与 NPC 对话：切换到对话相机，聚焦玩家与 NPC（由 NPC.Interact 或 NPC 演出调用）
+    // dialogueOverride 为空时播放 npc.dialogue
+    public void StartNPCDialogue(NPC npc, DialogueData dialogueOverride = null)
     {
         if (dialogueIsActive) return;
 
@@ -105,7 +106,7 @@ public class DialogueTrigger : MonoBehaviour
             npc.SetDialogueCameraActive(true);
         }
 
-        textParser.BeginDialogue(npc.dialogue);
+        textParser.BeginDialogue(dialogueOverride != null ? dialogueOverride : npc.dialogue);
     }
 
     // 与物品对话：不切换相机，仅弹出对话框并开始对话

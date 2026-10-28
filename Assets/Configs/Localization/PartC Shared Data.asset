@@ -55,6 +55,10 @@ MonoBehaviour:
     m_Key: PartC_SheriffOffice_ChoiceA_01
     m_Metadata:
       m_Items: []
+  - m_Id: 2611754830671872
+    m_Key: PartC_SheriffOffice_ChoiceA_Reason
+    m_Metadata:
+      m_Items: []
   - m_Id: 1568549439811584
     m_Key: PartC_SheriffOffice_ChoiceB
     m_Metadata:

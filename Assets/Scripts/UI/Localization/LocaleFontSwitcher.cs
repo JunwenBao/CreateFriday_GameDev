@@ -16,6 +16,9 @@ namespace Game.UI
         private static LocaleFontSettings _settings;
         private static TMP_FontAsset _currentFont;
 
+        /// <summary>当前语言对应的字体；语言尚未初始化或未配置时为 null。</summary>
+        public static TMP_FontAsset CurrentFont => _currentFont;
+
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
         private static void Initialize()
         {

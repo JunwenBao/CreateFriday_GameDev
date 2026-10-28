@@ -33,7 +33,15 @@ public class PlayerInteraction : MonoBehaviour
             return;
         }
 
-        if (currentInteractable != null && Input.GetKeyDown(interactKey))
+        if (currentInteractable == null) return;
+
+        if (!currentInteractable.CanInteract)
+        {
+            currentInteractable.SetHighlight(false);
+            return;
+        }
+
+        if (Input.GetKeyDown(interactKey))
         {
             currentInteractable.Interact(this);
         }
@@ -50,7 +58,7 @@ public class PlayerInteraction : MonoBehaviour
         }
 
         currentInteractable = interactable;
-        currentInteractable.SetHighlight(true);
+        currentInteractable.SetHighlight(interactable.CanInteract);
     }
 
     private void OnTriggerExit(Collider other)
