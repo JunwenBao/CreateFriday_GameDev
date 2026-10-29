@@ -9,7 +9,7 @@ using Game.UI;
 // 画面由 DialogueWindow 显示（通过 UIManager 打开 / 关闭），本组件不直接引用任何 UI 物体。
 public class TextParser : MonoBehaviour
 {
-    // 一段对话彻底播放完毕（最后一句被再次按E）时触发
+    // 一段对话彻底播放完毕（最后一句被再次按F）时触发
     public UnityEvent onConversationEnd;
 
     public event System.Action<DialogueLine> LineStarted;
@@ -119,7 +119,7 @@ public class TextParser : MonoBehaviour
             return;
         }
 
-        // 带选项的台词：整句显示后再按一次 E 才弹出选项（第一次按 E 只会跳过打字，由 DialogueWindow 处理）
+        // 带选项的台词：整句显示后再按一次 F 才弹出选项（第一次按 F 只会跳过打字，由 DialogueWindow 处理）
         if (CurrentLine.HasChoices)
         {
             ShowChoices();
@@ -141,7 +141,7 @@ public class TextParser : MonoBehaviour
         replyIndex++;
         if (!IsShowingReply)
         {
-            // 回复播放完（或没有配置回复）：重新显示带选项的台词，玩家再按 E 弹出选项
+            // 回复播放完（或没有配置回复）：重新显示带选项的台词，玩家再按 F 弹出选项
             ClearReplies();
             DisplayCurrentLine();
             return;

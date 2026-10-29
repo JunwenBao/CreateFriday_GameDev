@@ -1236,6 +1236,7 @@ GameObject:
   - component: {fileID: 7687303461142341136}
   - component: {fileID: 8896831429516060219}
   - component: {fileID: 5510628456866668053}
+  - component: {fileID: 4802918638796515977}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -1587,7 +1588,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b996bf8d4f6a7884c98c48bbc21d306b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactKey: 101
+  interactKey: 102
   dialogueTrigger: {fileID: 0}
   playerAnimator: {fileID: 0}
 --- !u!114 &417710331642129032
@@ -1652,6 +1653,23 @@ MonoBehaviour:
   onConversationEnd:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &4802918638796515977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2747854352533203027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0278e66a3db1cf4e8484b78e0126b49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  icon: {fileID: 0}
+  size: {x: 64, y: 64}
+  anchor: {fileID: 0}
+  offset: {x: 0, y: 2.1, z: 0}
+  fadeDuration: 0.15
 --- !u!1 &2755657588650554528
 GameObject:
   m_ObjectHideFlags: 0

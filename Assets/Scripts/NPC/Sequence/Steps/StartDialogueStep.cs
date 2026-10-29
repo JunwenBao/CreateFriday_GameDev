@@ -8,7 +8,7 @@ public class StartDialogueStep : SequenceStep
 {
     [Tooltip("要播放的对话，留空则播放 NPC 当前的对话")]
     [SerializeField] private DialogueData dialogue;
-    [Tooltip("把这段对话设为 NPC 之后的默认对话，玩家再按 E 时播放它而不是旧对话")]
+    [Tooltip("把这段对话设为 NPC 之后的默认对话，玩家再按 F 时播放它而不是旧对话")]
     [SerializeField] private bool setAsNPCDialogue = true;
     [SerializeField] private bool waitUntilFinished = true;
 

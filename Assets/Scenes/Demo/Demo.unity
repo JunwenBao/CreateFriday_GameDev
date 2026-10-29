@@ -46167,10 +46167,45 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1453330295450752753, guid: a7ee847e3e47c7f46a036a66816421d9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2021042712092633105, guid: a7ee847e3e47c7f46a036a66816421d9,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.58
+      objectReference: {fileID: 0}
+    - target: {fileID: 2021042712092633105, guid: a7ee847e3e47c7f46a036a66816421d9,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 2021042712092633105, guid: a7ee847e3e47c7f46a036a66816421d9,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2.5
+      objectReference: {fileID: 0}
     - target: {fileID: 2383292905008902290, guid: a7ee847e3e47c7f46a036a66816421d9,
         type: 3}
       propertyPath: m_Name
       value: ThirdPersonController
+      objectReference: {fileID: 0}
+    - target: {fileID: 3115705724097940648, guid: a7ee847e3e47c7f46a036a66816421d9,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.58
+      objectReference: {fileID: 0}
+    - target: {fileID: 3115705724097940648, guid: a7ee847e3e47c7f46a036a66816421d9,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 3115705724097940648, guid: a7ee847e3e47c7f46a036a66816421d9,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2.5
       objectReference: {fileID: 0}
     - target: {fileID: 7751799786883822281, guid: a7ee847e3e47c7f46a036a66816421d9,
         type: 3}
@@ -46220,6 +46255,31 @@ PrefabInstance:
     - target: {fileID: 7751799786883822281, guid: a7ee847e3e47c7f46a036a66816421d9,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7946124414223273197, guid: a7ee847e3e47c7f46a036a66816421d9,
+        type: 3}
+      propertyPath: field of view
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 9162153935722822917, guid: a7ee847e3e47c7f46a036a66816421d9,
+        type: 3}
+      propertyPath: CameraDistance
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9162153935722822917, guid: a7ee847e3e47c7f46a036a66816421d9,
+        type: 3}
+      propertyPath: ShoulderOffset.x
+      value: 0.58
+      objectReference: {fileID: 0}
+    - target: {fileID: 9162153935722822917, guid: a7ee847e3e47c7f46a036a66816421d9,
+        type: 3}
+      propertyPath: ShoulderOffset.y
+      value: 0.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 9162153935722822917, guid: a7ee847e3e47c7f46a036a66816421d9,
+        type: 3}
+      propertyPath: ShoulderOffset.z
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

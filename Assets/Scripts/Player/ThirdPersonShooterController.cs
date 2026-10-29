@@ -38,6 +38,9 @@ public class ThirdPersonShooterController : MonoBehaviour
     private bool wasMoving;
     private bool wasAiming;
     private bool isWeaponDrawn;
+    private float weaponSwitchPendingTimer;                         // 按下 Q 后、动画机尚未进入拔/收枪状态前的移动锁定缓冲
+
+    private const float WeaponSwitchPendingDuration = 0.2f;
 
     private Transform hitTransform = null;
     private RectTransform crossHairRectTransform;                    // 十字准心的 RectTransform，用于在屏幕上移动准心
@@ -78,7 +81,20 @@ public class ThirdPersonShooterController : MonoBehaviour
             starterAssetsInputs.drawWeapon = false;
 
             animator.SetBool("IsArmed", isWeaponDrawn);
+            weaponSwitchPendingTimer = WeaponSwitchPendingDuration;
         }
+
+        // 拔枪/收枪动画播放期间禁止移动
+        bool isSwitchingWeapon = IsPlayingWeaponSwitchAnimation();
+        if (isSwitchingWeapon)
+        {
+            weaponSwitchPendingTimer = 0f;
+        }
+        else if (weaponSwitchPendingTimer > 0f)
+        {
+            weaponSwitchPendingTimer -= Time.deltaTime;
+        }
+        thirdPersonController.SetCanMove(!isSwitchingWeapon && weaponSwitchPendingTimer <= 0f);
 
         // 只有拔枪后，按住鼠标右键才会进入瞄准
         bool isAiming = isWeaponDrawn && starterAssetsInputs.aim;
@@ -162,6 +178,17 @@ public class ThirdPersonShooterController : MonoBehaviour
     }
 
     #region 射击控制
+    /// <summary>
+    /// 上半身层是否正在播放（或正过渡到）拔枪/收枪动画；正在从这两个状态过渡出去时视为已结束
+    /// </summary>
+    private bool IsPlayingWeaponSwitchAnimation()
+    {
+        AnimatorStateInfo state = animator.IsInTransition(1)
+            ? animator.GetNextAnimatorStateInfo(1)
+            : animator.GetCurrentAnimatorStateInfo(1);
+
+        return state.IsName("Player_Gun_Draw") || state.IsName("Player_Gun_Holster");
+    }
     /// <summary>
     /// 在所有 AimAssistTarget 中，找出屏幕上离准星最近且在吸附半径内的目标
     /// </summary>

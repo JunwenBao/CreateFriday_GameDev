@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-// 对话框窗口：只负责显示说话人与逐字台词，并把"继续"输入（E 键 / 点击对话框）交给 TextParser。
+// 对话框窗口：只负责显示说话人与逐字台词，并把"继续"输入（F 键 / 点击对话框）交给 TextParser。
 // 台词推进、选项与结束由 TextParser 控制，通过 UIManager 打开 / 关闭本窗口。
 public class DialogueWindow : UIWindow<DialogueWindow.Request>, IPointerClickHandler
 {
@@ -16,7 +16,7 @@ public class DialogueWindow : UIWindow<DialogueWindow.Request>, IPointerClickHan
 
     [SerializeField] private TMP_Animated bodyText;
     [SerializeField] private TMP_Text speakerNameText;
-    [SerializeField] private KeyCode continueKey = KeyCode.E;
+    [SerializeField] private KeyCode continueKey = KeyCode.F;
 
     private Request request;
     private int openedFrame = -1;
@@ -42,7 +42,7 @@ public class DialogueWindow : UIWindow<DialogueWindow.Request>, IPointerClickHan
     protected override void OnOpen(Request data)
     {
         request = data;
-        // 打开对话的那一下 E 键不能同时跳过第一句
+        // 打开对话的那一下 F 键不能同时跳过第一句
         openedFrame = Time.frameCount;
     }
 

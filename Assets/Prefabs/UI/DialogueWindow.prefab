@@ -135,7 +135,7 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
-  speed: 10
+  speed: 30
   onEmotionChange:
     m_PersistentCalls:
       m_Calls: []
@@ -265,7 +265,7 @@ MonoBehaviour:
   defaultSelected: {fileID: 0}
   bodyText: {fileID: 6378841697482025048}
   speakerNameText: {fileID: 5744515825207717081}
-  continueKey: 101
+  continueKey: 102
 --- !u!114 &2158734906612408377
 MonoBehaviour:
   m_ObjectHideFlags: 0

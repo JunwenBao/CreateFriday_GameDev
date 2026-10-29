@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-// 挂在建筑门口：玩家靠近按 E 后加载目标场景，并在目标场景的同名出生点生成
+// 挂在建筑门口：玩家靠近按 F 后加载目标场景，并在目标场景的同名出生点生成
 public class SceneDoor : InteractableBase
 {
     [SerializeField] private string targetSceneName;

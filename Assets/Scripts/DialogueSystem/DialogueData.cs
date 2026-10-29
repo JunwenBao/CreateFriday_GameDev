@@ -74,7 +74,7 @@ public struct DialogueLine
     [TextArea(2, 4)]
     public string sourceText;
 
-    [Tooltip("这句台词显示完后让玩家选择；留空则按 E 进入下一句")]
+    [Tooltip("这句台词显示完后让玩家选择；留空则按 F 进入下一句")]
     public List<DialogueChoice> choices;
 
     public bool HasChoices => choices != null && choices.Count > 0;
