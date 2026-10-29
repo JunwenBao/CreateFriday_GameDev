@@ -11,6 +11,11 @@ public class PlayerInteraction : MonoBehaviour
 
     public DialogueTrigger DialogueTrigger => dialogueTrigger;
     public Animator Animator => playerAnimator;
+    public KeyCode InteractKey => interactKey;
+
+    // 附近有可互动对象且不在对话中，即此时按互动键会生效（InteractionPrompt 据此显示头顶提示）
+    public bool CanInteractNow => currentInteractable != null && currentInteractable.CanInteract
+                                  && (dialogueTrigger == null || !dialogueTrigger.IsDialogueActive);
 
     private void Awake()
     {

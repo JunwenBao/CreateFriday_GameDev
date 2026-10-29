@@ -19,6 +19,9 @@ public class Interactable : InteractableBase
     [SerializeField] private ItemData pickupItem;
     private bool isPickedUp;   // 防止销毁延迟期间重复拾取
 
+    // 拾取后立即隐藏高亮和互动提示，不必等物体销毁
+    public override bool CanInteract => !isPickedUp;
+
     public override void Interact(PlayerInteraction player)
     {
         if (interactableType == InteractableType.Message)

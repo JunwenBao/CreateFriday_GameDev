@@ -10,6 +10,8 @@ public class SceneDoor : InteractableBase
 
     private bool isLoading;
 
+    public override bool CanInteract => !isLoading;
+
     public override void Interact(PlayerInteraction player)
     {
         if (isLoading || string.IsNullOrEmpty(targetSceneName)) return;
