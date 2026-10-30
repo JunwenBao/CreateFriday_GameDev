@@ -42,6 +42,9 @@ public class NPC : InteractableBase
     // Animation Event 的 Function 填 OnAnimationEvent，String 填事件名
     public void OnAnimationEvent(string eventName) => AnimationEventFired?.Invoke(eventName);
 
+    // NPC 复用了玩家的走路片段，片段上带有 FootstepAudio 的 PlayFootstep 事件；空方法接收以避免 "has no receiver" 报错
+    public void PlayFootstep(AnimationEvent animationEvent) { }
+
     protected override void Awake()
     {
         base.Awake();
