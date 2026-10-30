@@ -1,0 +1,140 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0632b966e58e1d409ecb22ee0f05f25, type: 3}
+  m_Name: Chapter01_PartC
+  m_EditorClassIdentifier: 
+  tableName: PartC
+  conversationBlock:
+  - speaker: 1
+    animTrigger: 
+    key: PartC_SheriffOffice_00
+    sourceText: 
+    choices: []
+  - speaker: 1
+    animTrigger: 
+    key: PartC_SheriffOffice_01
+    sourceText: 
+    choices: []
+  - speaker: 1
+    animTrigger: 
+    key: PartC_SheriffOffice_02
+    sourceText: 
+    choices: []
+  - speaker: 1
+    animTrigger: 
+    key: PartC_SheriffOffice_03
+    sourceText: 
+    choices: []
+  - speaker: 0
+    animTrigger: 
+    key: PartC_SheriffOffice_04
+    sourceText: 
+    choices: []
+  - speaker: 1
+    animTrigger: 
+    key: PartC_SheriffOffice_05
+    sourceText: 
+    choices: []
+  - speaker: 1
+    animTrigger: 
+    key: PartC_SheriffOffice_06
+    sourceText: 
+    choices: []
+  - speaker: 1
+    animTrigger: 
+    key: PartC_SheriffOffice_07
+    sourceText: 
+    choices: []
+  - speaker: 0
+    animTrigger: 
+    key: PartC_SheriffOffice_08
+    sourceText: 
+    choices:
+    - key: PartC_SheriffOffice_ChoiceA_00
+      sourceText: 
+      outcome: 2
+      replies: []
+    - key: PartC_SheriffOffice_ChoiceB
+      sourceText: 
+      outcome: 0
+      replies: []
+  - speaker: 1
+    animTrigger: 
+    key: PartC_SheriffOffice_09
+    sourceText: 
+    choices: []
+  - speaker: 1
+    animTrigger: 
+    key: PartC_SheriffOffice_10
+    sourceText: 
+    choices: []
+  - speaker: 1
+    animTrigger: 
+    key: PartC_SheriffOffice_11
+    sourceText: 
+    choices: []
+  - speaker: 1
+    animTrigger: 
+    key: PartC_SheriffOffice_12
+    sourceText: 
+    choices: []
+  - speaker: 1
+    animTrigger: 
+    key: PartC_SheriffOffice_13
+    sourceText: 
+    choices: []
+  - speaker: 0
+    animTrigger: 
+    key: 
+    sourceText: 
+    choices:
+    - key: PartC_SheriffOffice_14
+      sourceText: 
+      outcome: 3
+      replies:
+      - speaker: 1
+        animTrigger: 
+        key: PartC_SheriffOffice_15
+        sourceText: 
+      - speaker: 1
+        animTrigger: 
+        key: PartC_SheriffOffice_16
+        sourceText: 
+      - speaker: 1
+        animTrigger: 
+        key: PartC_SheriffOffice_17
+        sourceText: 
+    - key: PartC_SheriffOffice_18
+      sourceText: 
+      outcome: 3
+      replies:
+      - speaker: 1
+        animTrigger: 
+        key: PartC_SheriffOffice_19
+        sourceText: 
+      - speaker: 1
+        animTrigger: 
+        key: PartC_SheriffOffice_20
+        sourceText: 
+      - speaker: 1
+        animTrigger: 
+        key: PartC_SheriffOffice_21
+        sourceText: 
+    - key: PartC_SheriffOffice_22
+      sourceText: 
+      outcome: 0
+      replies: []
+  - speaker: 1
+    animTrigger: 
+    key: PartC_SheriffOffice_23
+    sourceText: 
+    choices: []

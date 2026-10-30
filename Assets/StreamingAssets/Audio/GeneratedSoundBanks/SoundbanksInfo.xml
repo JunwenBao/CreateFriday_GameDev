@@ -9,7 +9,7 @@
 	</RootPaths>
 	<DialogueEvents/>
 	<SoundBanks>
-		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{76EE361E-89D3-3728-1FC8-68768BFB1538}">
+		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{0688AC63-40BB-9760-EFF8-16EDCA0A7CDE}">
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
 			<Plugins>
@@ -37,6 +37,17 @@
 				<GameParameter Id="3847924954" Name="SS_Air_Presence"/>
 				<GameParameter Id="4160247818" Name="SS_Air_Turbulence"/>
 			</GameParameters>
+			<SwitchGroups>
+				<SwitchGroup Id="20433824" Name="FS_Material">
+					<Switches>
+						<Switch Id="841620460" Name="Concrete"/>
+						<Switch Id="1216965916" Name="Stone"/>
+						<Switch Id="2058049674" Name="Wood"/>
+						<Switch Id="2195636714" Name="Dirt"/>
+						<Switch Id="4248645337" Name="Grass"/>
+					</Switches>
+				</SwitchGroup>
+			</SwitchGroups>
 			<AcousticTextures>
 				<AcousticTexture Id="504532776" Name="Brick">
 					<Properties>
@@ -166,41 +177,210 @@
 				</AcousticTexture>
 			</AcousticTextures>
 		</SoundBank>
-		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{5AE9758D-AB0A-3797-ECB3-504407A98E98}">
+		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{D0498E82-D084-DC5B-7714-73B4DC670626}">
 			<ShortName>Main</ShortName>
 			<Path>Main.bnk</Path>
 			<Media>
-				<File Id="313066091" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>AMB_Test.wav</ShortName>
-					<CachePath>SFX/AMB_Test_818F3B66.wem</CachePath>
+				<File Id="31446263" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>BP_Audio_AMBR_Town_Obj_Group_02.wav</ShortName>
+					<CachePath>SFX/BP_Audio_AMBR_Town_Obj_Group_02_818F3B66.wem</CachePath>
 				</File>
-				<File Id="343996238" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>Magic_Test.wav</ShortName>
-					<CachePath>SFX/Magic_Test_818F3B66.wem</CachePath>
+				<File Id="32464610" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>BP_Audio_FS_Stone_04.wav</ShortName>
+					<CachePath>SFX/BP_Audio_FS_Stone_04_818F3B66.wem</CachePath>
 				</File>
-				<File Id="491690467" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>TestFS.wav</ShortName>
-					<CachePath>SFX/TestFS_818F3B66.wem</CachePath>
+				<File Id="49116680" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>BP_Audio_FS_Grass_02.wav</ShortName>
+					<CachePath>SFX/BP_Audio_FS_Grass_02_818F3B66.wem</CachePath>
+				</File>
+				<File Id="62298589" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>BP_Audio_AMBR_Town_Bed.wav</ShortName>
+					<CachePath>SFX/BP_Audio_AMBR_Town_Bed_818F3B66.wem</CachePath>
+				</File>
+				<File Id="105848657" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>BP_Audio_FS_Grass_01.wav</ShortName>
+					<CachePath>SFX/BP_Audio_FS_Grass_01_818F3B66.wem</CachePath>
+				</File>
+				<File Id="143920645" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>BP_Audio_FS_Wood_04.wav</ShortName>
+					<CachePath>SFX/BP_Audio_FS_Wood_04_818F3B66.wem</CachePath>
+				</File>
+				<File Id="251994249" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>BP_Audio_FS_Wood_01.wav</ShortName>
+					<CachePath>SFX/BP_Audio_FS_Wood_01_818F3B66.wem</CachePath>
+				</File>
+				<File Id="305040235" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>BP_Audio_AMBR_Town_Obj_Group_01.wav</ShortName>
+					<CachePath>SFX/BP_Audio_AMBR_Town_Obj_Group_01_818F3B66.wem</CachePath>
+				</File>
+				<File Id="313324538" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>BP_Audio_FS_Dirt_02.wav</ShortName>
+					<CachePath>SFX/BP_Audio_FS_Dirt_02_818F3B66.wem</CachePath>
+				</File>
+				<File Id="483222897" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>BP_Audio_FS_Concrete_03.wav</ShortName>
+					<CachePath>SFX/BP_Audio_FS_Concrete_03_818F3B66.wem</CachePath>
+				</File>
+				<File Id="517304936" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>BP_Audio_FS_Stone_02.wav</ShortName>
+					<CachePath>SFX/BP_Audio_FS_Stone_02_818F3B66.wem</CachePath>
+				</File>
+				<File Id="572941758" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>BP_Audio_FS_BagSound_01.wav</ShortName>
+					<CachePath>SFX/BP_Audio_FS_BagSound_01_818F3B66.wem</CachePath>
+				</File>
+				<File Id="594354036" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>BP_Audio_FS_Stone_01.wav</ShortName>
+					<CachePath>SFX/BP_Audio_FS_Stone_01_818F3B66.wem</CachePath>
+				</File>
+				<File Id="686882864" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>BP_Audio_FS_Concrete_01.wav</ShortName>
+					<CachePath>SFX/BP_Audio_FS_Concrete_01_818F3B66.wem</CachePath>
+				</File>
+				<File Id="692045935" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>BP_Audio_FS_Dirt_03.wav</ShortName>
+					<CachePath>SFX/BP_Audio_FS_Dirt_03_818F3B66.wem</CachePath>
+				</File>
+				<File Id="727865780" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>BP_Audio_FS_Concrete_02.wav</ShortName>
+					<CachePath>SFX/BP_Audio_FS_Concrete_02_818F3B66.wem</CachePath>
+				</File>
+				<File Id="754062352" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>BP_Audio_FS_Concrete_04.wav</ShortName>
+					<CachePath>SFX/BP_Audio_FS_Concrete_04_818F3B66.wem</CachePath>
+				</File>
+				<File Id="856667241" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>BP_Audio_FS_Dirt_01.wav</ShortName>
+					<CachePath>SFX/BP_Audio_FS_Dirt_01_818F3B66.wem</CachePath>
+				</File>
+				<File Id="909653602" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>BP_Audio_FS_Wood_02.wav</ShortName>
+					<CachePath>SFX/BP_Audio_FS_Wood_02_818F3B66.wem</CachePath>
+				</File>
+				<File Id="970681283" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>BP_Audio_FS_Grass_04.wav</ShortName>
+					<CachePath>SFX/BP_Audio_FS_Grass_04_818F3B66.wem</CachePath>
+				</File>
+				<File Id="979418248" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>BP_Audio_FS_BagSound_02.wav</ShortName>
+					<CachePath>SFX/BP_Audio_FS_BagSound_02_818F3B66.wem</CachePath>
+				</File>
+				<File Id="1018710785" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>BP_Audio_FS_Grass_03.wav</ShortName>
+					<CachePath>SFX/BP_Audio_FS_Grass_03_818F3B66.wem</CachePath>
+				</File>
+				<File Id="1022937455" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>BP_Audio_FS_Dirt_04.wav</ShortName>
+					<CachePath>SFX/BP_Audio_FS_Dirt_04_818F3B66.wem</CachePath>
+				</File>
+				<File Id="1023174681" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>BP_Audio_FS_Wood_03.wav</ShortName>
+					<CachePath>SFX/BP_Audio_FS_Wood_03_818F3B66.wem</CachePath>
+				</File>
+				<File Id="1052294274" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>BP_Audio_FS_Stone_03.wav</ShortName>
+					<CachePath>SFX/BP_Audio_FS_Stone_03_818F3B66.wem</CachePath>
+				</File>
+				<File Id="1066916985" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>BP_Audio_FS_BagSound_03.wav</ShortName>
+					<CachePath>SFX/BP_Audio_FS_BagSound_03_818F3B66.wem</CachePath>
 				</File>
 			</Media>
+			<Plugins>
+				<Custom>
+					<Plugin Id="584751593" Name="Silence" LibName="Wwise Silence" LibId="6619138"/>
+					<Plugin Id="1064144435" Name="Silence" LibName="Wwise Silence" LibId="6619138"/>
+				</Custom>
+			</Plugins>
 			<Events>
-				<Event Id="4235852269" Name="Play_FS_Teest" DurationType="OneShot" DurationMin="0.29866666" DurationMax="0.29866666">
+				<Event Id="1445002875" Name="Play_BP_Audio_AMBR_Town_Bed" DurationType="OneShot" DurationMin="28.606874" DurationMax="28.606874">
 					<MediaRefs>
-						<MediaRef Id="491690467"/>
+						<MediaRef Id="62298589"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="3141567363" Name="Play_Test_Amb" DurationType="OneShot" DurationMin="230.58133" DurationMax="230.58133">
+				<Event Id="2994856701" Name="Play_BP_Audio_AMBR_Town_Obj_Group_01" DurationType="OneShot" DurationMin="15.498875" DurationMax="15.498875">
 					<MediaRefs>
-						<MediaRef Id="313066091"/>
+						<MediaRef Id="305040235"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="1626553858" Name="Play_Test_Magic" DurationType="OneShot" DurationMin="1.7493334" DurationMax="1.7493334">
+				<Event Id="2994856702" Name="Play_BP_Audio_AMBR_Town_Obj_Group_02" DurationType="OneShot" DurationMin="15.80273" DurationMax="15.80273">
 					<MediaRefs>
-						<MediaRef Id="343996238"/>
+						<MediaRef Id="31446263"/>
 					</MediaRefs>
+				</Event>
+				<Event Id="3450861523" Name="Play_FS_All" DurationType="OneShot" DurationMin="0.3538531" DurationMax="1.0442737">
+					<MediaRefs>
+						<MediaRef Id="572941758"/>
+						<MediaRef Id="979418248"/>
+						<MediaRef Id="1066916985"/>
+					</MediaRefs>
+					<PluginRefs>
+						<Custom>
+							<PluginRef Id="584751593"/>
+							<PluginRef Id="1064144435"/>
+						</Custom>
+					</PluginRefs>
+					<SwitchContainers>
+						<SwitchContainer>
+							<SwitchValue GroupType="Switch" GroupId="20433824" Id="4248645337"/>
+							<MediaRefs>
+								<MediaRef Id="49116680"/>
+								<MediaRef Id="105848657"/>
+								<MediaRef Id="970681283"/>
+								<MediaRef Id="1018710785"/>
+							</MediaRefs>
+						</SwitchContainer>
+						<SwitchContainer>
+							<SwitchValue GroupType="Switch" GroupId="20433824" Id="2058049674"/>
+							<MediaRefs>
+								<MediaRef Id="143920645"/>
+								<MediaRef Id="251994249"/>
+								<MediaRef Id="909653602"/>
+								<MediaRef Id="1023174681"/>
+							</MediaRefs>
+						</SwitchContainer>
+						<SwitchContainer>
+							<SwitchValue GroupType="Switch" GroupId="20433824" Id="841620460"/>
+							<MediaRefs>
+								<MediaRef Id="483222897"/>
+								<MediaRef Id="686882864"/>
+								<MediaRef Id="727865780"/>
+								<MediaRef Id="754062352"/>
+							</MediaRefs>
+						</SwitchContainer>
+						<SwitchContainer>
+							<SwitchValue GroupType="Switch" GroupId="20433824" Id="2195636714" Default="true"/>
+							<MediaRefs>
+								<MediaRef Id="313324538"/>
+								<MediaRef Id="692045935"/>
+								<MediaRef Id="856667241"/>
+								<MediaRef Id="1022937455"/>
+							</MediaRefs>
+						</SwitchContainer>
+						<SwitchContainer>
+							<SwitchValue GroupType="Switch" GroupId="20433824" Id="1216965916"/>
+							<MediaRefs>
+								<MediaRef Id="32464610"/>
+								<MediaRef Id="517304936"/>
+								<MediaRef Id="594354036"/>
+								<MediaRef Id="1052294274"/>
+							</MediaRefs>
+						</SwitchContainer>
+					</SwitchContainers>
 				</Event>
 			</Events>
+			<SwitchGroups>
+				<SwitchGroup Id="20433824" Name="FS_Material">
+					<Switches>
+						<Switch Id="841620460" Name="Concrete"/>
+						<Switch Id="1216965916" Name="Stone"/>
+						<Switch Id="2058049674" Name="Wood"/>
+						<Switch Id="2195636714" Name="Dirt"/>
+						<Switch Id="4248645337" Name="Grass"/>
+					</Switches>
+				</SwitchGroup>
+			</SwitchGroups>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{3AFBF2CC-8975-B875-E18F-56E71149EABE}</FileHash>
+	<FileHash>{B75EECAD-D102-3399-ABAC-A6B62AED4CCB}</FileHash>
 </SoundBanksInfo>

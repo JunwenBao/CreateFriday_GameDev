@@ -1,9 +1,9 @@
 using UnityEngine;
 
-// 挂在玩家上：检测附近的可互动物品，高亮显示，并在按 E 时执行互动
+// 挂在玩家上：检测附近的可互动物品，高亮显示，并在按 F 时执行互动
 public class PlayerInteraction : MonoBehaviour
 {
-    [SerializeField] private KeyCode interactKey = KeyCode.E;
+    [SerializeField] private KeyCode interactKey = KeyCode.F;
     [SerializeField] private DialogueTrigger dialogueTrigger;
     [SerializeField] private Animator playerAnimator;
 
@@ -11,6 +11,11 @@ public class PlayerInteraction : MonoBehaviour
 
     public DialogueTrigger DialogueTrigger => dialogueTrigger;
     public Animator Animator => playerAnimator;
+    public KeyCode InteractKey => interactKey;
+
+    // 附近有可互动对象且不在对话中，即此时按互动键会生效（InteractionPrompt 据此显示头顶提示）
+    public bool CanInteractNow => currentInteractable != null && currentInteractable.CanInteract
+                                  && (dialogueTrigger == null || !dialogueTrigger.IsDialogueActive);
 
     private void Awake()
     {
@@ -27,13 +32,21 @@ public class PlayerInteraction : MonoBehaviour
 
     private void Update()
     {
-        // 对话进行中时，E键交给对话系统处理，避免重复触发
-        if (dialogueTrigger != null && dialogueTrigger.IsDialogueActive)
+        // 对话进行中时，互动键交给对话系统处理，避免重复触发
+        if (dialogueTrigger != null && (dialogueTrigger.IsDialogueActive || dialogueTrigger.DialogueEndedThisFrame))
         {
             return;
         }
 
-        if (currentInteractable != null && Input.GetKeyDown(interactKey))
+        if (currentInteractable == null) return;
+
+        if (!currentInteractable.CanInteract)
+        {
+            currentInteractable.SetHighlight(false);
+            return;
+        }
+
+        if (Input.GetKeyDown(interactKey))
         {
             currentInteractable.Interact(this);
         }
@@ -50,7 +63,7 @@ public class PlayerInteraction : MonoBehaviour
         }
 
         currentInteractable = interactable;
-        currentInteractable.SetHighlight(true);
+        currentInteractable.SetHighlight(interactable.CanInteract);
     }
 
     private void OnTriggerExit(Collider other)

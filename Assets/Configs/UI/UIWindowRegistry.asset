@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: UIWindowRegistry
   m_EditorClassIdentifier: 
   windows:
+  - {fileID: 4959428743003875687, guid: 18ddf5ad71916e44f966ffdb9f0a2707, type: 3}
+  - {fileID: 6190911192541742671, guid: cab907afdd807a847be2add4368c71b5, type: 3}
   - {fileID: 6010033736501947089, guid: 9b81ee2d6d6e2f34ba3ff7bf8cf8a78a, type: 3}
+  - {fileID: 7429016583302751946, guid: edce02ceee29498ba88266263d17357b, type: 3}
   searchFolders:
   - Assets/Prefabs/UI

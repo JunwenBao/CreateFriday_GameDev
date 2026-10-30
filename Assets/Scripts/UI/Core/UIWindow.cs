@@ -55,7 +55,22 @@ namespace Game.UI
         public bool IsOpen => State == UIWindowState.Opening || State == UIWindowState.Opened;
         /// <summary>被上方完全打开的全屏窗口挡住而隐藏。</summary>
         public bool IsCovered { get; private set; }
+        /// <summary>被业务代码通过 SetHidden 临时隐藏（窗口仍处于打开状态）。</summary>
+        public bool IsHidden { get; private set; }
         public int SortingOrder { get; private set; }
+
+        /// <summary>
+        /// 临时隐藏 / 显示已打开的窗口：只关画布，不关闭窗口、不触发生命周期钩子。
+        /// 窗口关闭时自动复位为显示。
+        /// </summary>
+        public void SetHidden(bool hidden)
+        {
+            if (IsHidden == hidden)
+                return;
+
+            IsHidden = hidden;
+            ApplyCanvasVisibility();
+        }
 
         /// <summary>关闭本窗口，可直接绑定到按钮的 OnClick。</summary>
         public void Close()
@@ -136,8 +151,9 @@ namespace Game.UI
         internal void CompleteClose()
         {
             State = UIWindowState.Closed;
-            // 静默复位遮挡状态，下次打开不会收到多余的 OnReveal
+            // 静默复位遮挡 / 隐藏状态，下次打开不会收到多余的 OnReveal
             IsCovered = false;
+            IsHidden = false;
             _canvas.enabled = true;
             _raycaster.enabled = true;
             gameObject.SetActive(false);
@@ -171,13 +187,22 @@ namespace Game.UI
                 return;
 
             IsCovered = covered;
-            // 只关画布不关 GameObject，避免 OnDisable/OnEnable 和布局重建
-            _canvas.enabled = !covered;
-            _raycaster.enabled = !covered;
+            ApplyCanvasVisibility();
             if (covered)
                 RunHook(OnCover);
             else
                 RunHook(OnReveal);
+        }
+
+        // 只关画布不关 GameObject，避免 OnDisable/OnEnable 和布局重建
+        private void ApplyCanvasVisibility()
+        {
+            if (_canvas == null)
+                return;
+
+            bool visible = !IsCovered && !IsHidden;
+            _canvas.enabled = visible;
+            _raycaster.enabled = visible;
         }
 
         internal void HandleBack() => RunHook(OnBackPressed);

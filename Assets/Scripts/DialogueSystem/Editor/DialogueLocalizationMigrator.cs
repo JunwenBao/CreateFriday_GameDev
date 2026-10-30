@@ -37,22 +37,44 @@ public static class DialogueLocalizationMigrator
             for (int i = 0; i < dialogue.conversationBlock.Count; i++)
             {
                 DialogueLine line = dialogue.conversationBlock[i];
+
+                if (line.HasChoices)
+                {
+                    for (int c = 0; c < line.choices.Count; c++)
+                    {
+                        DialogueChoice choice = line.choices[c];
+
+                        if (choice.replies != null)
+                        {
+                            for (int r = 0; r < choice.replies.Count; r++)
+                            {
+                                DialogueReply reply = choice.replies[r];
+                                if (!string.IsNullOrEmpty(reply.key) || string.IsNullOrEmpty(reply.sourceText))
+                                    continue;
+
+                                reply.key = AddEntry(collection, $"{keyPrefix}.{i:D2}.choice{c}.reply{r}", reply.sourceText, untranslated);
+                                reply.sourceText = string.Empty;
+                                choice.replies[r] = reply;
+                                changed = true;
+                                migratedCount++;
+                            }
+                        }
+
+                        if (!string.IsNullOrEmpty(choice.key) || string.IsNullOrEmpty(choice.sourceText))
+                            continue;
+
+                        choice.key = AddEntry(collection, $"{keyPrefix}.{i:D2}.choice{c}", choice.sourceText, untranslated);
+                        choice.sourceText = string.Empty;
+                        line.choices[c] = choice;
+                        changed = true;
+                        migratedCount++;
+                    }
+                }
+
                 if (!string.IsNullOrEmpty(line.key) || string.IsNullOrEmpty(line.sourceText))
                     continue;
 
-                string key = MakeUniqueKey(collection.SharedData, $"{keyPrefix}.{i:D2}");
-                collection.SharedData.AddKey(key);
-
-                foreach (StringTable table in collection.StringTables)
-                {
-                    // 原文写入英文表；其他语言先用原文占位，避免游戏中出现 "No translation found"
-                    table.AddEntry(key, line.sourceText);
-                    EditorUtility.SetDirty(table);
-                    if (table.LocaleIdentifier.Code != SourceLocaleCode)
-                        untranslated.Add($"{table.LocaleIdentifier.Code}: {key}");
-                }
-
-                line.key = key;
+                line.key = AddEntry(collection, $"{keyPrefix}.{i:D2}", line.sourceText, untranslated);
                 line.sourceText = string.Empty;
                 dialogue.conversationBlock[i] = line;
                 changed = true;
@@ -68,11 +90,28 @@ public static class DialogueLocalizationMigrator
 
         AssetDatabase.SaveAssets();
 
-        string message = $"已迁移 {migratedCount} 句台词。";
+        string message = $"已迁移 {migratedCount} 条文本（台词 / 选项）。";
         if (untranslated.Count > 0)
             message += "\n以下条目目前用英文原文占位，请在 Localization Tables 窗口中翻译：\n" + string.Join("\n", untranslated);
         Debug.Log("[DialogueLocalizationMigrator] " + message);
         EditorUtility.DisplayDialog("Dialogue Localization", message, "OK");
+    }
+
+    private static string AddEntry(StringTableCollection collection, string baseKey, string sourceText, List<string> untranslated)
+    {
+        string key = MakeUniqueKey(collection.SharedData, baseKey);
+        collection.SharedData.AddKey(key);
+
+        foreach (StringTable table in collection.StringTables)
+        {
+            // 原文写入英文表；其他语言先用原文占位，避免游戏中出现 "No translation found"
+            table.AddEntry(key, sourceText);
+            EditorUtility.SetDirty(table);
+            if (table.LocaleIdentifier.Code != SourceLocaleCode)
+                untranslated.Add($"{table.LocaleIdentifier.Code}: {key}");
+        }
+
+        return key;
     }
 
     private static StringTableCollection GetOrCreateCollection(string tableName, Dictionary<string, StringTableCollection> cache)

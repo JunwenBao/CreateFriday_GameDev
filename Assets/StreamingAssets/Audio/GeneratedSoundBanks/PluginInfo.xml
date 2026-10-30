@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PluginInfo Platform="Windows" BasePlatform="Windows">
 	<PluginLibs>
+		<PluginLib LibName="Wwise Silence" LibId="6619138" Type="Source" DLL="AkSilenceGenerator" StaticLib="AkSilenceSource"/>
 		<PluginLib LibName="System" LibId="11403271" Type="AudioDevice"/>
 		<PluginLib LibName="No Output" LibId="11862023" Type="AudioDevice"/>
 		<PluginLib LibName="Wwise Motion" LibId="33226759" Type="AudioDevice" DLL="AkMotion" StaticLib="AkMotionSink"/>
 	</PluginLibs>
-	<FileHash>{6B7D4609-CDA4-74B4-684D-125E3A94064F}</FileHash>
+	<FileHash>{A1969D8F-A091-D77A-1622-AC5D84C39C18}</FileHash>
 </PluginInfo>

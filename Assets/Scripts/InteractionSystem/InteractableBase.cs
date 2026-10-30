@@ -54,6 +54,9 @@ public abstract class InteractableBase : MonoBehaviour
         }
     }
 
+    // 为 false 时 PlayerInteraction 不高亮、不响应互动键（例如 NPC 正在演出）
+    public virtual bool CanInteract => true;
+
     // 按下互动键时由 PlayerInteraction 调用
     public abstract void Interact(PlayerInteraction player);
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using Cinemachine;
@@ -11,6 +12,10 @@ public class NPC : InteractableBase
     [Header("Cinemachine")]
     [SerializeField] private CinemachineVirtualCamera dialogueCamera;
 
+    [Header("Dialogue")]
+    [Tooltip("对话时转身面向玩家；坐着或靠在固定位置的 NPC 可关闭")]
+    [SerializeField] private bool turnToPlayerWhenTalking = true;
+
     [Header("Dialogue Animation")]
     [SerializeField] private int dialogueLayerIndex = 1;
     [Tooltip("Safety limit in case the layer never leaves its default state.")]
@@ -23,6 +28,19 @@ public class NPC : InteractableBase
     private int dialogueIdleHash;
 
     public bool HasDialogueCamera => dialogueCamera != null;
+
+    // 演出（NPCSequence）进行中时锁定，玩家不能与其对话
+    public bool InteractionLocked { get; set; }
+    public override bool CanInteract => !InteractionLocked;
+
+    // PlayDialogueAnimation 播放的动作尚未结束（含渐出）
+    public bool IsPlayingDialogueAnimation => dialogueAnimRoutine != null;
+
+    // 动画片段上的 Animation Event 触发时广播事件名，供演出步骤对齐时机（如手碰到门把时开门）
+    public event Action<string> AnimationEventFired;
+
+    // Animation Event 的 Function 填 OnAnimationEvent，String 填事件名
+    public void OnAnimationEvent(string eventName) => AnimationEventFired?.Invoke(eventName);
 
     protected override void Awake()
     {
@@ -40,6 +58,8 @@ public class NPC : InteractableBase
 
     public override void Interact(PlayerInteraction player)
     {
+        if (!CanInteract) return;
+
         if (player.DialogueTrigger != null)
         {
             SetHighlight(false);
@@ -47,10 +67,15 @@ public class NPC : InteractableBase
         }
     }
 
-    // 在对话动画层播放 paramName（Trigger 或 Bool），播放完后回到基础层
-    public void PlayDialogueAnimation(string paramName)
+    // 在对话动画层播放 paramName（Trigger 或 Bool），播放完后回到基础层；动画层或参数不存在时返回 false
+    public bool PlayDialogueAnimation(string paramName)
     {
-        if (animator == null || dialogueLayerIndex >= animator.layerCount) return;
+        if (animator == null) return false;
+        if (dialogueLayerIndex >= animator.layerCount)
+        {
+            Debug.LogWarning($"Animator on {name} has no layer {dialogueLayerIndex} for dialogue animations.", this);
+            return false;
+        }
 
         AnimatorControllerParameterType? type = null;
         foreach (var p in animator.parameters)
@@ -60,7 +85,7 @@ public class NPC : InteractableBase
         if (type == null)
         {
             Debug.LogWarning($"Animator on {name} has no parameter '{paramName}'.", this);
-            return;
+            return false;
         }
 
         if (dialogueAnimRoutine != null)
@@ -79,6 +104,7 @@ public class NPC : InteractableBase
         }
 
         dialogueAnimRoutine = StartCoroutine(DialogueAnimRoutine(paramName, type.Value));
+        return true;
     }
 
     private void StepLayerWeight(int layer, float target)
@@ -142,8 +168,11 @@ public class NPC : InteractableBase
         dialogueAnimRoutine = null;
     }
 
+    // 对话期间由 DialogueTrigger 每帧调用；turnToPlayerWhenTalking 关闭时保持原朝向
     public void TurnToPlayer(Vector3 playerPosition)
     {
+        if (!turnToPlayerWhenTalking) return;
+
         Vector3 direction = (playerPosition - transform.position).normalized;
         direction.y = 0;
         if (direction != Vector3.zero)

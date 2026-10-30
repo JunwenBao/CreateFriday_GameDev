@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ba904fad34d15743af56042f07a6050, type: 3}
+  m_Name: 2BC7C1EA-E809-475F-B088-7FF5775D1EBD
+  m_EditorClassIdentifier: 
+  objectName: Play_FS_All
+  id: 3450861523
+  guid: 2BC7C1EA-E809-475F-B088-7FF5775D1EBD

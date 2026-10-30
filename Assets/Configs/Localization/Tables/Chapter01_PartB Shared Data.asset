@@ -1,0 +1,89 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: Chapter01_PartB Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: Chapter01_PartB
+  m_TableCollectionNameGuidString: c221595344627e240bedfa9d6b69510d
+  m_Entries:
+  - m_Id: 12757774336
+    m_Key: Chapter01_PartB_01
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15437934592
+    m_Key: Chapter01_PartB_02
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17816104960
+    m_Key: Chapter01_PartB_03
+    m_Metadata:
+      m_Items: []
+  - m_Id: 215959220224
+    m_Key: Chapter01_PartB_04
+    m_Metadata:
+      m_Items: []
+  - m_Id: 236460978176
+    m_Key: Chapter01_PartB_05
+    m_Metadata:
+      m_Items: []
+  - m_Id: 488790306816
+    m_Key: Chapter01_PartB_06
+    m_Metadata:
+      m_Items: []
+  - m_Id: 506540601344
+    m_Key: Chapter01_PartB_07
+    m_Metadata:
+      m_Items: []
+  - m_Id: 518888632320
+    m_Key: Chapter01_PartB_08
+    m_Metadata:
+      m_Items: []
+  - m_Id: 529462472704
+    m_Key: Chapter01_PartB_09
+    m_Metadata:
+      m_Items: []
+  - m_Id: 540430577664
+    m_Key: Chapter01_PartB_10
+    m_Metadata:
+      m_Items: []
+  - m_Id: 743942402048
+    m_Key: Chapter01_PartB_11
+    m_Metadata:
+      m_Items: []
+  - m_Id: 762200207360
+    m_Key: Chapter01_PartB_12
+    m_Metadata:
+      m_Items: []
+  - m_Id: 772899876864
+    m_Key: Chapter01_PartB_13
+    m_Metadata:
+      m_Items: []
+  - m_Id: 784648122368
+    m_Key: Chapter01_PartB_14
+    m_Metadata:
+      m_Items: []
+  - m_Id: 794978693120
+    m_Key: Chapter01_PartB_15
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 4625996755735412746
+  references:
+    version: 2
+    RefIds:
+    - rid: 4625996755735412746
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables,
+        asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1793076809294

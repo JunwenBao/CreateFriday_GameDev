@@ -21,11 +21,15 @@ public class DialogueTrigger : MonoBehaviour
     private bool blendOverridden;
     private Coroutine restoreBlendRoutine;
 
-    [Header("UI")]
-    [SerializeField] private GameObject dialogueCanvas;
+    [Header("Dialogue")]
+    [Tooltip("对话流程控制器，对话框界面由它通过 UIManager 打开 DialogueWindow。留空则使用本物体上的 TextParser")]
     [SerializeField] private TextParser textParser;
 
     public bool IsDialogueActive => dialogueIsActive;
+    // 结束对话的那一下 E 键不能被 PlayerInteraction 当作新的互动
+    public bool DialogueEndedThisFrame => Time.frameCount == dialogueEndedFrame;
+
+    private int dialogueEndedFrame = -1;
 
     private void Awake()
     {
@@ -33,6 +37,9 @@ public class DialogueTrigger : MonoBehaviour
 
         if (cameraBrain == null && Camera.main != null)
             cameraBrain = Camera.main.GetComponent<CinemachineBrain>();
+
+        if (textParser == null)
+            textParser = GetComponent<TextParser>();
 
         if (textParser == null)
         {
@@ -64,8 +71,9 @@ public class DialogueTrigger : MonoBehaviour
         }
     }
 
-    // 与 NPC 对话：切换到对话相机，聚焦玩家与 NPC（由 NPC.Interact 调用）
-    public void StartNPCDialogue(NPC npc)
+    // 与 NPC 对话：切换到对话相机，聚焦玩家与 NPC（由 NPC.Interact 或 NPC 演出调用）
+    // dialogueOverride 为空时播放 npc.dialogue
+    public void StartNPCDialogue(NPC npc, DialogueData dialogueOverride = null)
     {
         if (dialogueIsActive) return;
 
@@ -98,9 +106,7 @@ public class DialogueTrigger : MonoBehaviour
             npc.SetDialogueCameraActive(true);
         }
 
-        dialogueCanvas.SetActive(true);
-
-        textParser.BeginDialogue(npc.dialogue);
+        textParser.BeginDialogue(dialogueOverride != null ? dialogueOverride : npc.dialogue);
     }
 
     // 与物品对话：不切换相机，仅弹出对话框并开始对话
@@ -115,7 +121,6 @@ public class DialogueTrigger : MonoBehaviour
         }
 
         dialogueIsActive = true;
-        dialogueCanvas.SetActive(true);
 
         textParser.BeginDialogue(dialogue);
     }
@@ -123,6 +128,7 @@ public class DialogueTrigger : MonoBehaviour
     private void EndDialogue()
     {
         dialogueIsActive = false;
+        dialogueEndedFrame = Time.frameCount;
         if (talkingNPC != null)
         {
             talkingNPC.npcIsTalking = false;
@@ -132,7 +138,6 @@ public class DialogueTrigger : MonoBehaviour
         thirdPersonController.enabled = true;
 
         DialogueCamera.SetActive(false);
-        dialogueCanvas.SetActive(false);
 
         if (blendOverridden)
             restoreBlendRoutine = StartCoroutine(RestoreBlendAfterCut());

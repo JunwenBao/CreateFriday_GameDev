@@ -16,4 +16,4 @@ MonoBehaviour:
   - localeCode: en
     font: {fileID: 11400000, guid: 7945e0c3798a6c147a6ec40f30059a39, type: 2}
   - localeCode: zh-Hans
-    font: {fileID: 11400000, guid: 14cb166c724c71f46aa92e9690497cc3, type: 2}
+    font: {fileID: 11400000, guid: 6f3f6cdbe424d3746b5a8f86da5c27fb, type: 2}

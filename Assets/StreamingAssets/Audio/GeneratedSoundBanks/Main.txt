@@ -1,10 +1,48 @@
 Event	ID	Name			Wwise Object Path	Notes
-	1626553858	Play_Test_Magic			\Default Work Unit\Play_Test_Magic	
-	3141567363	Play_Test_Amb			\Default Work Unit\Play_Test_Amb	
-	4235852269	Play_FS_Teest			\Default Work Unit\Play_FS_Teest	
+	1445002875	Play_BP_Audio_AMBR_Town_Bed			\Default Work Unit\Play_BP_Audio_AMBR_Town_Bed	
+	2994856701	Play_BP_Audio_AMBR_Town_Obj_Group_01			\Default Work Unit\Play_BP_Audio_AMBR_Town_Obj_Group_01	
+	2994856702	Play_BP_Audio_AMBR_Town_Obj_Group_02			\Default Work Unit\Play_BP_Audio_AMBR_Town_Obj_Group_02	
+	3450861523	Play_FS_All			\Default Work Unit\Play_FS_All	
+
+Switch Group	ID	Name			Wwise Object Path	Notes
+	20433824	FS_Material			\Default Work Unit\FS_Material	
+
+Switch	ID	Name	Switch Group			Notes
+	841620460	Concrete	FS_Material			
+	1216965916	Stone	FS_Material			
+	2058049674	Wood	FS_Material			
+	2195636714	Dirt	FS_Material			
+	4248645337	Grass	FS_Material			
+
+Source plug-ins	ID	Name	Type		Wwise Object Path	Notes
+	584751593	Silence	Wwise Silence		\Actor-Mixer Hierarchy\Default Work Unit\FS_All\FS_Bag\BP_FS_BagScilence02\Silence	
+	1064144435	Silence	Wwise Silence		\Actor-Mixer Hierarchy\Default Work Unit\FS_All\FS_Bag\BP_FS_BagScilence01\Silence	
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
-	313066091	Test_Amb	E:\CreateFriday\CreateFriday_GameDev\AudioWwiseProject\AudioCreateFriday26_Tom\.cache\Windows\SFX\AMB_Test_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Test_Amb		44271712
-	343996238	Test_Magic	E:\CreateFriday\CreateFriday_GameDev\AudioWwiseProject\AudioCreateFriday26_Tom\.cache\Windows\SFX\Magic_Test_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Test_Magic		335968
-	491690467	FS_Teest	E:\CreateFriday\CreateFriday_GameDev\AudioWwiseProject\AudioCreateFriday26_Tom\.cache\Windows\SFX\TestFS_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\FS_Teest		28768
+	31446263	BP_Audio_AMBR_Town_Obj_Group_02	E:\CreateFriday\CreateFriday_GameDev\AudioWwiseProject\AudioCreateFriday26_Tom\.cache\Windows\SFX\BP_Audio_AMBR_Town_Obj_Group_02_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\BP_AMB\BP_Audio_AMBR_Town_Obj_Group_02		3034220
+	32464610	BP_Audio_FS_Stone_04	E:\CreateFriday\CreateFriday_GameDev\AudioWwiseProject\AudioCreateFriday26_Tom\.cache\Windows\SFX\BP_Audio_FS_Stone_04_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\FS_All\BP_FS\Stone\BP_Audio_FS_Stone_04		100448
+	49116680	BP_Audio_FS_Grass_02	E:\CreateFriday\CreateFriday_GameDev\AudioWwiseProject\AudioCreateFriday26_Tom\.cache\Windows\SFX\BP_Audio_FS_Grass_02_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\FS_All\BP_FS\Grass\BP_Audio_FS_Grass_02		96096
+	62298589	BP_Audio_AMBR_Town_Bed	E:\CreateFriday\CreateFriday_GameDev\AudioWwiseProject\AudioCreateFriday26_Tom\.cache\Windows\SFX\BP_Audio_AMBR_Town_Bed_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\BP_AMB\BP_Audio_AMBR_Town_Bed		5492616
+	105848657	BP_Audio_FS_Grass_01	E:\CreateFriday\CreateFriday_GameDev\AudioWwiseProject\AudioCreateFriday26_Tom\.cache\Windows\SFX\BP_Audio_FS_Grass_01_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\FS_All\BP_FS\Grass\BP_Audio_FS_Grass_01		96096
+	143920645	BP_Audio_FS_Wood_04	E:\CreateFriday\CreateFriday_GameDev\AudioWwiseProject\AudioCreateFriday26_Tom\.cache\Windows\SFX\BP_Audio_FS_Wood_04_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\FS_All\BP_FS\Wood\BP_Audio_FS_Wood_04		96096
+	251994249	BP_Audio_FS_Wood_01	E:\CreateFriday\CreateFriday_GameDev\AudioWwiseProject\AudioCreateFriday26_Tom\.cache\Windows\SFX\BP_Audio_FS_Wood_01_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\FS_All\BP_FS\Wood\BP_Audio_FS_Wood_01		96096
+	305040235	BP_Audio_AMBR_Town_Obj_Group_01	E:\CreateFriday\CreateFriday_GameDev\AudioWwiseProject\AudioCreateFriday26_Tom\.cache\Windows\SFX\BP_Audio_AMBR_Town_Obj_Group_01_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\BP_AMB\BP_Audio_AMBR_Town_Obj_Group_01		2975880
+	313324538	BP_Audio_FS_Dirt_02	E:\CreateFriday\CreateFriday_GameDev\AudioWwiseProject\AudioCreateFriday26_Tom\.cache\Windows\SFX\BP_Audio_FS_Dirt_02_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\FS_All\BP_FS\Dirt\BP_Audio_FS_Dirt_02		63584
+	483222897	BP_Audio_FS_Concrete_03	E:\CreateFriday\CreateFriday_GameDev\AudioWwiseProject\AudioCreateFriday26_Tom\.cache\Windows\SFX\BP_Audio_FS_Concrete_03_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\FS_All\BP_FS\Concrete\BP_Audio_FS_Concrete_03		57440
+	517304936	BP_Audio_FS_Stone_02	E:\CreateFriday\CreateFriday_GameDev\AudioWwiseProject\AudioCreateFriday26_Tom\.cache\Windows\SFX\BP_Audio_FS_Stone_02_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\FS_All\BP_FS\Stone\BP_Audio_FS_Stone_02		92256
+	572941758	BP_Audio_FS_BagSound_01	E:\CreateFriday\CreateFriday_GameDev\AudioWwiseProject\AudioCreateFriday26_Tom\.cache\Windows\SFX\BP_Audio_FS_BagSound_01_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\FS_All\FS_Bag\BP_Audio_FS_BagSound_01		79968
+	594354036	BP_Audio_FS_Stone_01	E:\CreateFriday\CreateFriday_GameDev\AudioWwiseProject\AudioCreateFriday26_Tom\.cache\Windows\SFX\BP_Audio_FS_Stone_01_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\FS_All\BP_FS\Stone\BP_Audio_FS_Stone_01		106592
+	686882864	BP_Audio_FS_Concrete_01	E:\CreateFriday\CreateFriday_GameDev\AudioWwiseProject\AudioCreateFriday26_Tom\.cache\Windows\SFX\BP_Audio_FS_Concrete_01_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\FS_All\BP_FS\Concrete\BP_Audio_FS_Concrete_01		53344
+	692045935	BP_Audio_FS_Dirt_03	E:\CreateFriday\CreateFriday_GameDev\AudioWwiseProject\AudioCreateFriday26_Tom\.cache\Windows\SFX\BP_Audio_FS_Dirt_03_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\FS_All\BP_FS\Dirt\BP_Audio_FS_Dirt_03		69728
+	727865780	BP_Audio_FS_Concrete_02	E:\CreateFriday\CreateFriday_GameDev\AudioWwiseProject\AudioCreateFriday26_Tom\.cache\Windows\SFX\BP_Audio_FS_Concrete_02_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\FS_All\BP_FS\Concrete\BP_Audio_FS_Concrete_02		53344
+	754062352	BP_Audio_FS_Concrete_04	E:\CreateFriday\CreateFriday_GameDev\AudioWwiseProject\AudioCreateFriday26_Tom\.cache\Windows\SFX\BP_Audio_FS_Concrete_04_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\FS_All\BP_FS\Concrete\BP_Audio_FS_Concrete_04		53344
+	856667241	BP_Audio_FS_Dirt_01	E:\CreateFriday\CreateFriday_GameDev\AudioWwiseProject\AudioCreateFriday26_Tom\.cache\Windows\SFX\BP_Audio_FS_Dirt_01_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\FS_All\BP_FS\Dirt\BP_Audio_FS_Dirt_01		61536
+	909653602	BP_Audio_FS_Wood_02	E:\CreateFriday\CreateFriday_GameDev\AudioWwiseProject\AudioCreateFriday26_Tom\.cache\Windows\SFX\BP_Audio_FS_Wood_02_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\FS_All\BP_FS\Wood\BP_Audio_FS_Wood_02		96096
+	970681283	BP_Audio_FS_Grass_04	E:\CreateFriday\CreateFriday_GameDev\AudioWwiseProject\AudioCreateFriday26_Tom\.cache\Windows\SFX\BP_Audio_FS_Grass_04_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\FS_All\BP_FS\Grass\BP_Audio_FS_Grass_04		96096
+	979418248	BP_Audio_FS_BagSound_02	E:\CreateFriday\CreateFriday_GameDev\AudioWwiseProject\AudioCreateFriday26_Tom\.cache\Windows\SFX\BP_Audio_FS_BagSound_02_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\FS_All\FS_Bag\BP_Audio_FS_BagSound_02		74908
+	1018710785	BP_Audio_FS_Grass_03	E:\CreateFriday\CreateFriday_GameDev\AudioWwiseProject\AudioCreateFriday26_Tom\.cache\Windows\SFX\BP_Audio_FS_Grass_03_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\FS_All\BP_FS\Grass\BP_Audio_FS_Grass_03		96096
+	1022937455	BP_Audio_FS_Dirt_04	E:\CreateFriday\CreateFriday_GameDev\AudioWwiseProject\AudioCreateFriday26_Tom\.cache\Windows\SFX\BP_Audio_FS_Dirt_04_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\FS_All\BP_FS\Dirt\BP_Audio_FS_Dirt_04		69728
+	1023174681	BP_Audio_FS_Wood_03	E:\CreateFriday\CreateFriday_GameDev\AudioWwiseProject\AudioCreateFriday26_Tom\.cache\Windows\SFX\BP_Audio_FS_Wood_03_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\FS_All\BP_FS\Wood\BP_Audio_FS_Wood_03		96096
+	1052294274	BP_Audio_FS_Stone_03	E:\CreateFriday\CreateFriday_GameDev\AudioWwiseProject\AudioCreateFriday26_Tom\.cache\Windows\SFX\BP_Audio_FS_Stone_03_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\FS_All\BP_FS\Stone\BP_Audio_FS_Stone_03		106592
+	1066916985	BP_Audio_FS_BagSound_03	E:\CreateFriday\CreateFriday_GameDev\AudioWwiseProject\AudioCreateFriday26_Tom\.cache\Windows\SFX\BP_Audio_FS_BagSound_03_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\FS_All\FS_Bag\BP_Audio_FS_BagSound_03		69024
 

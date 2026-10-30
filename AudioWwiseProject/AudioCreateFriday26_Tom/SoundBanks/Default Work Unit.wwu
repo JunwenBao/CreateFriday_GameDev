@@ -5,9 +5,10 @@
 			<ChildrenList>
 				<SoundBank Name="Main" ID="{79699318-A325-48D8-880A-7AF3F38DBE7F}">
 					<ObjectInclusionList>
-						<ObjectRef Name="Play_Test_Magic" ID="{4D3CE230-F638-4AFA-A93D-B07FCD5E06C6}" WorkUnitID="{8EADA07F-2019-4F75-B9B7-7A9CD425A61F}" Origin="Manual" Filter="7"/>
-						<ObjectRef Name="Play_Test_Amb" ID="{9E2E5BBE-45C4-4D54-B471-6AEF1BC5113A}" WorkUnitID="{8EADA07F-2019-4F75-B9B7-7A9CD425A61F}" Origin="Manual" Filter="7"/>
-						<ObjectRef Name="Play_FS_Teest" ID="{CEB7B37C-6F28-4F73-8373-E4B90E3F6362}" WorkUnitID="{8EADA07F-2019-4F75-B9B7-7A9CD425A61F}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_BP_Audio_AMBR_Town_Obj_Group_01" ID="{B6385A2D-956A-44B8-A9A6-36EE83A78BB1}" WorkUnitID="{8EADA07F-2019-4F75-B9B7-7A9CD425A61F}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_FS_All" ID="{2BC7C1EA-E809-475F-B088-7FF5775D1EBD}" WorkUnitID="{8EADA07F-2019-4F75-B9B7-7A9CD425A61F}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_BP_Audio_AMBR_Town_Bed" ID="{9C2CC31D-5C1B-4D32-A358-AB4F6D46D5F9}" WorkUnitID="{8EADA07F-2019-4F75-B9B7-7A9CD425A61F}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_BP_Audio_AMBR_Town_Obj_Group_02" ID="{9A8C054A-F067-4FDF-8CAB-D5064ED3088D}" WorkUnitID="{8EADA07F-2019-4F75-B9B7-7A9CD425A61F}" Origin="Manual" Filter="7"/>
 					</ObjectInclusionList>
 					<ObjectExclusionList/>
 					<GameSyncExclusionList/>
