@@ -345,7 +345,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit
     guid: 2000cf21073421459d604f39e6f97502
     GuidInternal: 
-    m_lastTime: -8584088543892500493
+    m_lastTime: -8584079878280125567
     List:
     - name: Main
       guid: 1893697925a3d848880a7af3f38dbe7f
@@ -373,8 +373,93 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: 7fa0ad8e1920754fb9b77a9cd425a61f
     GuidInternal: 
-    m_lastTime: -8584088543895831367
+    m_lastTime: -8584079878280171191
     List:
+    - name: Play_BP_Audio_AMB_Saloon_Bed
+      guid: 9e6be38aeb4f444aa5a372b5a7d0efb0
+      id: 3385938869
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7fa0ad8e1920754fb9b77a9cd425a61f
+      - ElementName: Play_BP_Audio_AMB_Saloon_Bed
+        ObjectType: 3
+        guid: 9e6be38aeb4f444aa5a372b5a7d0efb0
+      Path: Events\Default Work Unit\Play_BP_Audio_AMB_Saloon_Bed
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Play_BP_Audio_AMB_Saloon_Poker
+      guid: bb9e7872fef908478ed7d218609bff45
+      id: 955124127
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7fa0ad8e1920754fb9b77a9cd425a61f
+      - ElementName: Play_BP_Audio_AMB_Saloon_Poker
+        ObjectType: 3
+        guid: bb9e7872fef908478ed7d218609bff45
+      Path: Events\Default Work Unit\Play_BP_Audio_AMB_Saloon_Poker
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Play_BP_Audio_AMB_Saloon_Table_01
+      guid: e1b9adb971beab40b256ff79dac63bbf
+      id: 2669354170
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7fa0ad8e1920754fb9b77a9cd425a61f
+      - ElementName: Play_BP_Audio_AMB_Saloon_Table_01
+        ObjectType: 3
+        guid: e1b9adb971beab40b256ff79dac63bbf
+      Path: Events\Default Work Unit\Play_BP_Audio_AMB_Saloon_Table_01
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Play_BP_Audio_AMB_Saloon_Table_02
+      guid: 240be6ca69e94245afa1f13b518d485a
+      id: 2669354169
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7fa0ad8e1920754fb9b77a9cd425a61f
+      - ElementName: Play_BP_Audio_AMB_Saloon_Table_02
+        ObjectType: 3
+        guid: 240be6ca69e94245afa1f13b518d485a
+      Path: Events\Default Work Unit\Play_BP_Audio_AMB_Saloon_Table_02
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Play_BP_Audio_AMB_Sheriff_Bed
+      guid: 297c48dc47571948a3654073437ceb0d
+      id: 2289372366
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7fa0ad8e1920754fb9b77a9cd425a61f
+      - ElementName: Play_BP_Audio_AMB_Sheriff_Bed
+        ObjectType: 3
+        guid: 297c48dc47571948a3654073437ceb0d
+      Path: Events\Default Work Unit\Play_BP_Audio_AMB_Sheriff_Bed
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
     - name: Play_BP_Audio_AMBR_Town_Bed
       guid: 1dc32c9c1b5c324da358ab4f6d46d5f9
       id: 1445002875
@@ -390,8 +475,8 @@ MonoBehaviour:
         guid: 1dc32c9c1b5c324da358ab4f6d46d5f9
       Path: Events\Default Work Unit\Play_BP_Audio_AMBR_Town_Bed
       maxAttenuation: 0
-      maxDuration: 28.606874
-      minDuration: 28.606874
+      maxDuration: -1
+      minDuration: -1
     - name: Play_BP_Audio_AMBR_Town_Obj_Group_01
       guid: 2d5a38b66a95b844a9a636ee83a78bb1
       id: 2994856701
@@ -407,8 +492,8 @@ MonoBehaviour:
         guid: 2d5a38b66a95b844a9a636ee83a78bb1
       Path: Events\Default Work Unit\Play_BP_Audio_AMBR_Town_Obj_Group_01
       maxAttenuation: 0
-      maxDuration: 15.498875
-      minDuration: 15.498875
+      maxDuration: -1
+      minDuration: -1
     - name: Play_BP_Audio_AMBR_Town_Obj_Group_02
       guid: 4a058c9a67f0df4f8cabd5064ed3088d
       id: 2994856702
@@ -424,8 +509,161 @@ MonoBehaviour:
         guid: 4a058c9a67f0df4f8cabd5064ed3088d
       Path: Events\Default Work Unit\Play_BP_Audio_AMBR_Town_Obj_Group_02
       maxAttenuation: 0
-      maxDuration: 15.80273
-      minDuration: 15.80273
+      maxDuration: -1
+      minDuration: -1
+    - name: Play_BP_Audio_UI_Notebook_Close
+      guid: f152d4290012974d83cc7fe9f8dd27e5
+      id: 1632743001
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7fa0ad8e1920754fb9b77a9cd425a61f
+      - ElementName: Play_BP_Audio_UI_Notebook_Close
+        ObjectType: 3
+        guid: f152d4290012974d83cc7fe9f8dd27e5
+      Path: Events\Default Work Unit\Play_BP_Audio_UI_Notebook_Close
+      maxAttenuation: 0
+      maxDuration: 0.6531875
+      minDuration: 0.6531875
+    - name: Play_BP_Audio_UI_Notebook_Confirm
+      guid: 52894bc1a680684bb21b1086bf017443
+      id: 822422525
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7fa0ad8e1920754fb9b77a9cd425a61f
+      - ElementName: Play_BP_Audio_UI_Notebook_Confirm
+        ObjectType: 3
+        guid: 52894bc1a680684bb21b1086bf017443
+      Path: Events\Default Work Unit\Play_BP_Audio_UI_Notebook_Confirm
+      maxAttenuation: 0
+      maxDuration: 0.230125
+      minDuration: 0.230125
+    - name: Play_BP_Audio_UI_Notebook_Error
+      guid: 05c00954cce1d64c84115362f9b8ea99
+      id: 3090841699
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7fa0ad8e1920754fb9b77a9cd425a61f
+      - ElementName: Play_BP_Audio_UI_Notebook_Error
+        ObjectType: 3
+        guid: 05c00954cce1d64c84115362f9b8ea99
+      Path: Events\Default Work Unit\Play_BP_Audio_UI_Notebook_Error
+      maxAttenuation: 0
+      maxDuration: 0.24533333
+      minDuration: 0.24533333
+    - name: Play_BP_Audio_UI_Notebook_NextPage_01
+      guid: 1ef5cd986929b64ca5362a87d212f528
+      id: 492132421
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7fa0ad8e1920754fb9b77a9cd425a61f
+      - ElementName: Play_BP_Audio_UI_Notebook_NextPage_01
+        ObjectType: 3
+        guid: 1ef5cd986929b64ca5362a87d212f528
+      Path: Events\Default Work Unit\Play_BP_Audio_UI_Notebook_NextPage_01
+      maxAttenuation: 0
+      maxDuration: 0.50208336
+      minDuration: 0.50208336
+    - name: Play_BP_Audio_UI_Notebook_NextPage_02
+      guid: 71555b2d7ff4f642b9f0a62e86d71a68
+      id: 492132422
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7fa0ad8e1920754fb9b77a9cd425a61f
+      - ElementName: Play_BP_Audio_UI_Notebook_NextPage_02
+        ObjectType: 3
+        guid: 71555b2d7ff4f642b9f0a62e86d71a68
+      Path: Events\Default Work Unit\Play_BP_Audio_UI_Notebook_NextPage_02
+      maxAttenuation: 0
+      maxDuration: 0.50208336
+      minDuration: 0.50208336
+    - name: Play_BP_Audio_UI_Notebook_Open
+      guid: b0ba0c67d3db4d45aa90c3535569c938
+      id: 4169777291
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7fa0ad8e1920754fb9b77a9cd425a61f
+      - ElementName: Play_BP_Audio_UI_Notebook_Open
+        ObjectType: 3
+        guid: b0ba0c67d3db4d45aa90c3535569c938
+      Path: Events\Default Work Unit\Play_BP_Audio_UI_Notebook_Open
+      maxAttenuation: 0
+      maxDuration: 1.7549791
+      minDuration: 1.7549791
+    - name: Play_BP_Audio_UI_Notebook_Select_01
+      guid: 4bf7b17d73d61c4e80248677f8448a79
+      id: 454290315
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7fa0ad8e1920754fb9b77a9cd425a61f
+      - ElementName: Play_BP_Audio_UI_Notebook_Select_01
+        ObjectType: 3
+        guid: 4bf7b17d73d61c4e80248677f8448a79
+      Path: Events\Default Work Unit\Play_BP_Audio_UI_Notebook_Select_01
+      maxAttenuation: 0
+      maxDuration: 0.2
+      minDuration: 0.2
+    - name: Play_BP_Audio_UI_Notebook_Select_02
+      guid: f5835e5adafc1741a6ba3e8c68680a2c
+      id: 454290312
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7fa0ad8e1920754fb9b77a9cd425a61f
+      - ElementName: Play_BP_Audio_UI_Notebook_Select_02
+        ObjectType: 3
+        guid: f5835e5adafc1741a6ba3e8c68680a2c
+      Path: Events\Default Work Unit\Play_BP_Audio_UI_Notebook_Select_02
+      maxAttenuation: 0
+      maxDuration: 0.2
+      minDuration: 0.2
+    - name: Play_BP_Audio_UI_Notebook_ShowPicture
+      guid: a7de9feb93e99147bff87ca087993271
+      id: 3761599346
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7fa0ad8e1920754fb9b77a9cd425a61f
+      - ElementName: Play_BP_Audio_UI_Notebook_ShowPicture
+        ObjectType: 3
+        guid: a7de9feb93e99147bff87ca087993271
+      Path: Events\Default Work Unit\Play_BP_Audio_UI_Notebook_ShowPicture
+      maxAttenuation: 0
+      maxDuration: 0.46127084
+      minDuration: 0.46127084
     - name: Play_FS_All
       guid: eac1c72b09e85f47b0887ff5775d1ebd
       id: 3450861523
@@ -791,7 +1029,7 @@ MonoBehaviour:
     GuidInternal: 
     m_lastTime: -8584126748758998548
     List: []
-  ExpandedFileSystemItemIds: 010000000200000003000000040000000a0000000b000000
+  ExpandedFileSystemItemIds: 010000000200000003000000040000000a0000000b0000002000000021000000
   ExpandedWaapiItemIds: 0200000003000000
   AutoSyncSelection: 0
   autoPopulateEnabled: 1

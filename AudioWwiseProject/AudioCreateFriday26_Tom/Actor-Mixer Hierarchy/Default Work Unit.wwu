@@ -4,6 +4,13 @@
 		<WorkUnit Name="Default Work Unit" ID="{73A11A96-30E8-4D7B-8388-7642E14CB277}" PersistMode="Standalone">
 			<ChildrenList>
 				<BlendContainer Name="FS_All" ID="{2062212D-7B4E-42DE-AA3C-E24737E63A6D}" ShortID="861093391">
+					<PropertyList>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-12</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0D0BDD3C-E48D-4BC7-B834-30F30F1AB16A}"/>
@@ -27,6 +34,11 @@
 											</Modifier>
 										</ModifierInfo>
 									</ModifierList>
+								</Property>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-10</Value>
+									</ValueList>
 								</Property>
 							</PropertyList>
 							<ReferenceList>
@@ -730,6 +742,9 @@
 				<Folder Name="BP_AMB" ID="{95F402D4-4C65-4664-9E06-EB0545EAD497}" ShortID="131616353">
 					<ChildrenList>
 						<Sound Name="BP_Audio_AMBR_Town_Bed" ID="{838C6826-0C2F-4CE2-95B4-726953E2CAEA}" ShortID="1013800255">
+							<PropertyList>
+								<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0D0BDD3C-E48D-4BC7-B834-30F30F1AB16A}"/>
@@ -752,7 +767,14 @@
 							</ActiveSourceList>
 						</Sound>
 						<Sound Name="BP_Audio_AMBR_Town_Obj_Group_01" ID="{A4EA2C4E-7C4C-44CE-AE24-899CB54EAF73}" ShortID="754511406">
+							<PropertyList>
+								<Property Name="3DSpatialization" Type="int16" Value="2"/>
+								<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+							</PropertyList>
 							<ReferenceList>
+								<Reference Name="Attenuation">
+									<ObjectRef Name="General Attenuation" ID="{D26B0E00-7D3D-4CC1-ACA3-34A542FB40ED}" WorkUnitID="{1DE09FD9-7F4B-449C-9923-28C4059B950B}"/>
+								</Reference>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0D0BDD3C-E48D-4BC7-B834-30F30F1AB16A}"/>
 								</Reference>
@@ -774,7 +796,14 @@
 							</ActiveSourceList>
 						</Sound>
 						<Sound Name="BP_Audio_AMBR_Town_Obj_Group_02" ID="{A7AAA809-9C68-4E83-80BC-519F3B42D0AD}" ShortID="364086011">
+							<PropertyList>
+								<Property Name="3DSpatialization" Type="int16" Value="2"/>
+								<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+							</PropertyList>
 							<ReferenceList>
+								<Reference Name="Attenuation">
+									<ObjectRef Name="General Attenuation" ID="{D26B0E00-7D3D-4CC1-ACA3-34A542FB40ED}" WorkUnitID="{1DE09FD9-7F4B-449C-9923-28C4059B950B}"/>
+								</Reference>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0D0BDD3C-E48D-4BC7-B834-30F30F1AB16A}"/>
 								</Reference>
@@ -793,6 +822,523 @@
 							</ChildrenList>
 							<ActiveSourceList>
 								<ActiveSource Name="BP_Audio_AMBR_Town_Obj_Group_02" ID="{1F63B0A6-5FB6-4320-A4B2-E6101036791E}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="BP_Audio_AMB_Saloon_Bed" ID="{9D0323B1-81EB-48DC-A549-6A7126C73A38}" ShortID="877335789">
+							<PropertyList>
+								<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0D0BDD3C-E48D-4BC7-B834-30F30F1AB16A}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B707C56D-6B95-4003-903A-F69E21EA27D1}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="BP_Audio_AMB_Saloon_Bed" ID="{891ED478-74D0-4A0A-978B-B9A55EC2BBF4}">
+									<Language>SFX</Language>
+									<AudioFile>BP_Audio_AMB_Saloon_Bed.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="569077827"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="BP_Audio_AMB_Saloon_Bed" ID="{891ED478-74D0-4A0A-978B-B9A55EC2BBF4}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="BP_Audio_AMB_Saloon_Poker" ID="{EF941F81-C8CF-41C6-8B57-5416624D2ADC}" ShortID="136061594">
+							<PropertyList>
+								<Property Name="3DSpatialization" Type="int16" Value="2"/>
+								<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Attenuation">
+									<ObjectRef Name="Small Attenuation" ID="{5768DA55-B2EC-4611-BB21-DCAC81ED676D}" WorkUnitID="{1DE09FD9-7F4B-449C-9923-28C4059B950B}"/>
+								</Reference>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0D0BDD3C-E48D-4BC7-B834-30F30F1AB16A}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B707C56D-6B95-4003-903A-F69E21EA27D1}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="BP_Audio_AMB_Saloon_Poker" ID="{1659E1B7-9AF9-4F34-9F7B-84D342A47466}">
+									<Language>SFX</Language>
+									<AudioFile>BP_Audio_AMB_Saloon_Poker.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="781333299"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="BP_Audio_AMB_Saloon_Poker" ID="{1659E1B7-9AF9-4F34-9F7B-84D342A47466}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="BP_Audio_AMB_Saloon_Table_01" ID="{E2E2B663-A42B-4349-BD7B-06BFC373E798}" ShortID="199299027">
+							<PropertyList>
+								<Property Name="3DSpatialization" Type="int16" Value="2"/>
+								<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Attenuation">
+									<ObjectRef Name="Small Attenuation" ID="{5768DA55-B2EC-4611-BB21-DCAC81ED676D}" WorkUnitID="{1DE09FD9-7F4B-449C-9923-28C4059B950B}"/>
+								</Reference>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0D0BDD3C-E48D-4BC7-B834-30F30F1AB16A}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B707C56D-6B95-4003-903A-F69E21EA27D1}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="BP_Audio_AMB_Saloon_Table_01" ID="{8033A2F3-5ACB-427D-BD7B-250CAE57476D}">
+									<Language>SFX</Language>
+									<AudioFile>BP_Audio_AMB_Saloon_Table_01.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="986987973"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="BP_Audio_AMB_Saloon_Table_01" ID="{8033A2F3-5ACB-427D-BD7B-250CAE57476D}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="BP_Audio_AMB_Saloon_Table_02" ID="{4359AF5C-3047-497F-A646-A3AA19AD4B12}" ShortID="940235397">
+							<PropertyList>
+								<Property Name="3DSpatialization" Type="int16" Value="2"/>
+								<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Attenuation">
+									<ObjectRef Name="Small Attenuation" ID="{5768DA55-B2EC-4611-BB21-DCAC81ED676D}" WorkUnitID="{1DE09FD9-7F4B-449C-9923-28C4059B950B}"/>
+								</Reference>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0D0BDD3C-E48D-4BC7-B834-30F30F1AB16A}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B707C56D-6B95-4003-903A-F69E21EA27D1}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="BP_Audio_AMB_Saloon_Table_02" ID="{9016F347-1469-4C51-B8BF-D73AA7F12888}">
+									<Language>SFX</Language>
+									<AudioFile>BP_Audio_AMB_Saloon_Table_02.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="536635815"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="BP_Audio_AMB_Saloon_Table_02" ID="{9016F347-1469-4C51-B8BF-D73AA7F12888}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<BlendContainer Name="BP_Audio_AMB_Sheriff_Bed" ID="{62E2FF6D-FD33-4DF3-9862-4CC5C56D0AED}" ShortID="532290303">
+							<PropertyList>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-5</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0D0BDD3C-E48D-4BC7-B834-30F30F1AB16A}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B707C56D-6B95-4003-903A-F69E21EA27D1}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="BP_Audio_AMB_Sheriff_Bed_OneOf" ID="{AE695589-567F-4DDB-82C2-A9859AC0A02C}" ShortID="897724998">
+									<PropertyList>
+										<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-11</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0D0BDD3C-E48D-4BC7-B834-30F30F1AB16A}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B707C56D-6B95-4003-903A-F69E21EA27D1}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="BP_Audio_AMB_Sheriff_Bed" ID="{366A49AC-3FCC-4835-897B-0C6C6A333D05}">
+											<Language>SFX</Language>
+											<AudioFile>BP_Audio_AMB_Sheriff_Bed.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="209510652"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="BP_Audio_AMB_Sheriff_Bed" ID="{366A49AC-3FCC-4835-897B-0C6C6A333D05}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="BP_Audio_AMBR_Town_Bed_01" ID="{75FEF19F-1DB3-4159-BE76-D384E5A16D90}" ShortID="81366241">
+									<PropertyList>
+										<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+										<Property Name="OverrideEffect" Type="bool" Value="True"/>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-11</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0D0BDD3C-E48D-4BC7-B834-30F30F1AB16A}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B707C56D-6B95-4003-903A-F69E21EA27D1}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="BP_Audio_AMBR_Town_Bed" ID="{46745988-433F-4668-917D-9F80DD9D6089}">
+											<Language>SFX</Language>
+											<AudioFile>BP_Audio_AMBR_Town_Bed.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="62298589"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ObjectLists>
+										<ObjectList Name="Effects">
+											<Reference>
+												<Local>
+													<EffectSlot Name="" ID="{B1E1923B-CBDE-41D6-BCF1-294D7196DF29}" ShortID="281011344">
+														<ReferenceList>
+															<Reference Name="Effect" PluginName="Wwise Parametric EQ" CompanyID="0" PluginID="105" PluginType="3">
+																<ObjectRef Name="New_Parametric_EQ" ID="{89364B02-547D-422A-965F-67EA95BA6416}" WorkUnitID="{B4D91169-B577-4F55-8726-3969C3B983D2}"/>
+															</Reference>
+														</ReferenceList>
+													</EffectSlot>
+												</Local>
+											</Reference>
+										</ObjectList>
+									</ObjectLists>
+									<ActiveSourceList>
+										<ActiveSource Name="BP_Audio_AMBR_Town_Bed" ID="{46745988-433F-4668-917D-9F80DD9D6089}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+						</BlendContainer>
+					</ChildrenList>
+				</Folder>
+				<Folder Name="BP_UI" ID="{62C4AF95-7278-45AC-8FD4-01F3F9CCE08A}" ShortID="247250448">
+					<ChildrenList>
+						<Sound Name="BP_Audio_UI_Notebook_Close" ID="{D2E17197-6CD8-432A-B3B0-96971A239266}" ShortID="245515474">
+							<PropertyList>
+								<Property Name="MaxSoundPerInstance" Type="int16">
+									<ValueList>
+										<Value>1</Value>
+									</ValueList>
+								</Property>
+								<Property Name="UseMaxSoundPerInstance" Type="bool">
+									<ValueList>
+										<Value>True</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0D0BDD3C-E48D-4BC7-B834-30F30F1AB16A}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B707C56D-6B95-4003-903A-F69E21EA27D1}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="BP_Audio_UI_Notebook_Close" ID="{04D4EF28-8997-4FB0-B3B4-E1DDFA38EC39}">
+									<Language>SFX</Language>
+									<AudioFile>BP_Audio_UI_Notebook_Close.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="490742252"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="BP_Audio_UI_Notebook_Close" ID="{04D4EF28-8997-4FB0-B3B4-E1DDFA38EC39}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="BP_Audio_UI_Notebook_Confirm" ID="{E43D95CD-3474-480F-BA78-FA1C9FC8C406}" ShortID="850000820">
+							<PropertyList>
+								<Property Name="MaxSoundPerInstance" Type="int16">
+									<ValueList>
+										<Value>1</Value>
+									</ValueList>
+								</Property>
+								<Property Name="UseMaxSoundPerInstance" Type="bool">
+									<ValueList>
+										<Value>True</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0D0BDD3C-E48D-4BC7-B834-30F30F1AB16A}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B707C56D-6B95-4003-903A-F69E21EA27D1}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="BP_Audio_UI_Notebook_Confirm" ID="{6D793549-8097-42C4-8CC5-1C3E7CC49188}">
+									<Language>SFX</Language>
+									<AudioFile>BP_Audio_UI_Notebook_Confirm.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="164110535"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="BP_Audio_UI_Notebook_Confirm" ID="{6D793549-8097-42C4-8CC5-1C3E7CC49188}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="BP_Audio_UI_Notebook_Error" ID="{16C42B8F-CBB0-4905-9E18-07E82456CB88}" ShortID="781947618">
+							<PropertyList>
+								<Property Name="MaxSoundPerInstance" Type="int16">
+									<ValueList>
+										<Value>1</Value>
+									</ValueList>
+								</Property>
+								<Property Name="UseMaxSoundPerInstance" Type="bool">
+									<ValueList>
+										<Value>True</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0D0BDD3C-E48D-4BC7-B834-30F30F1AB16A}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B707C56D-6B95-4003-903A-F69E21EA27D1}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="BP_Audio_UI_Notebook_Error" ID="{801216BB-CA6A-4A60-9FDE-3D0D377B253D}">
+									<Language>SFX</Language>
+									<AudioFile>BP_Audio_UI_Notebook_Error.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="95505015"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="BP_Audio_UI_Notebook_Error" ID="{801216BB-CA6A-4A60-9FDE-3D0D377B253D}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="BP_Audio_UI_Notebook_NextPage_01" ID="{5319E480-43E4-4C5F-ABDF-197BB47C3FE3}" ShortID="712565910">
+							<PropertyList>
+								<Property Name="MaxSoundPerInstance" Type="int16">
+									<ValueList>
+										<Value>1</Value>
+									</ValueList>
+								</Property>
+								<Property Name="UseMaxSoundPerInstance" Type="bool">
+									<ValueList>
+										<Value>True</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0D0BDD3C-E48D-4BC7-B834-30F30F1AB16A}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B707C56D-6B95-4003-903A-F69E21EA27D1}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="BP_Audio_UI_Notebook_NextPage_01" ID="{23409BD9-D399-42E9-8925-1FA649E14873}">
+									<Language>SFX</Language>
+									<AudioFile>BP_Audio_UI_Notebook_NextPage_01.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="947893938"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="BP_Audio_UI_Notebook_NextPage_01" ID="{23409BD9-D399-42E9-8925-1FA649E14873}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="BP_Audio_UI_Notebook_NextPage_02" ID="{0E1D02A3-B757-4228-89C3-65859A26CD86}" ShortID="537848268">
+							<PropertyList>
+								<Property Name="MaxSoundPerInstance" Type="int16">
+									<ValueList>
+										<Value>1</Value>
+									</ValueList>
+								</Property>
+								<Property Name="UseMaxSoundPerInstance" Type="bool">
+									<ValueList>
+										<Value>True</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0D0BDD3C-E48D-4BC7-B834-30F30F1AB16A}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B707C56D-6B95-4003-903A-F69E21EA27D1}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="BP_Audio_UI_Notebook_NextPage_02" ID="{0CA43EDC-AB5B-4614-AC91-5680C68B4033}">
+									<Language>SFX</Language>
+									<AudioFile>BP_Audio_UI_Notebook_NextPage_02.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="515699604"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="BP_Audio_UI_Notebook_NextPage_02" ID="{0CA43EDC-AB5B-4614-AC91-5680C68B4033}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="BP_Audio_UI_Notebook_Open" ID="{FEC28556-5109-43A4-90FC-3E0A386EEC4E}" ShortID="584052362">
+							<PropertyList>
+								<Property Name="MaxSoundPerInstance" Type="int16">
+									<ValueList>
+										<Value>1</Value>
+									</ValueList>
+								</Property>
+								<Property Name="UseMaxSoundPerInstance" Type="bool">
+									<ValueList>
+										<Value>True</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0D0BDD3C-E48D-4BC7-B834-30F30F1AB16A}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B707C56D-6B95-4003-903A-F69E21EA27D1}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="BP_Audio_UI_Notebook_Open" ID="{B9AB62F0-CFDA-446F-ADF4-2BDC215D4FF8}">
+									<Language>SFX</Language>
+									<AudioFile>BP_Audio_UI_Notebook_Open.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="281894719"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="BP_Audio_UI_Notebook_Open" ID="{B9AB62F0-CFDA-446F-ADF4-2BDC215D4FF8}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="BP_Audio_UI_Notebook_Select_01" ID="{4A197E12-CFF8-410C-A7AB-F6871DA456E7}" ShortID="969246602">
+							<PropertyList>
+								<Property Name="MaxSoundPerInstance" Type="int16">
+									<ValueList>
+										<Value>1</Value>
+									</ValueList>
+								</Property>
+								<Property Name="UseMaxSoundPerInstance" Type="bool">
+									<ValueList>
+										<Value>True</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0D0BDD3C-E48D-4BC7-B834-30F30F1AB16A}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B707C56D-6B95-4003-903A-F69E21EA27D1}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="BP_Audio_UI_Notebook_Select_01" ID="{479B3523-190D-4BE7-B304-0D7C40FB9C00}">
+									<Language>SFX</Language>
+									<AudioFile>BP_Audio_UI_Notebook_Select_01.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="290566149"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="BP_Audio_UI_Notebook_Select_01" ID="{479B3523-190D-4BE7-B304-0D7C40FB9C00}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="BP_Audio_UI_Notebook_Select_02" ID="{475382D8-1D77-41F6-8DAB-573FF88BCAF3}" ShortID="738406951">
+							<PropertyList>
+								<Property Name="MaxSoundPerInstance" Type="int16">
+									<ValueList>
+										<Value>1</Value>
+									</ValueList>
+								</Property>
+								<Property Name="UseMaxSoundPerInstance" Type="bool">
+									<ValueList>
+										<Value>True</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0D0BDD3C-E48D-4BC7-B834-30F30F1AB16A}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B707C56D-6B95-4003-903A-F69E21EA27D1}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="BP_Audio_UI_Notebook_Select_02" ID="{6DD0A5DD-164D-46D9-BB3C-4F3219C6DA92}">
+									<Language>SFX</Language>
+									<AudioFile>BP_Audio_UI_Notebook_Select_02.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="268617186"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="BP_Audio_UI_Notebook_Select_02" ID="{6DD0A5DD-164D-46D9-BB3C-4F3219C6DA92}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="BP_Audio_UI_Notebook_ShowPicture" ID="{36D9E173-7316-4E4E-BC3D-9309ACFE0531}" ShortID="57536668">
+							<PropertyList>
+								<Property Name="MaxSoundPerInstance" Type="int16">
+									<ValueList>
+										<Value>1</Value>
+									</ValueList>
+								</Property>
+								<Property Name="UseMaxSoundPerInstance" Type="bool">
+									<ValueList>
+										<Value>True</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0D0BDD3C-E48D-4BC7-B834-30F30F1AB16A}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B707C56D-6B95-4003-903A-F69E21EA27D1}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="BP_Audio_UI_Notebook_ShowPicture" ID="{5CB10535-F21B-4BF4-82AA-CD154A2F2593}">
+									<Language>SFX</Language>
+									<AudioFile>BP_Audio_UI_Notebook_ShowPicture.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="971367866"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="BP_Audio_UI_Notebook_ShowPicture" ID="{5CB10535-F21B-4BF4-82AA-CD154A2F2593}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
 					</ChildrenList>
