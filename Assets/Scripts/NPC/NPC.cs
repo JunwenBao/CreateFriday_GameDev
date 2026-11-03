@@ -31,7 +31,9 @@ public class NPC : InteractableBase
 
     // 演出（NPCSequence）进行中时锁定，玩家不能与其对话
     public bool InteractionLocked { get; set; }
-    public override bool CanInteract => !InteractionLocked;
+    // 被 FadeOutStep 隐藏后为 true，不再可互动（不受演出结束解锁影响）
+    public bool IsHidden { get; set; }
+    public override bool CanInteract => !InteractionLocked && !IsHidden;
 
     // PlayDialogueAnimation 播放的动作尚未结束（含渐出）
     public bool IsPlayingDialogueAnimation => dialogueAnimRoutine != null;

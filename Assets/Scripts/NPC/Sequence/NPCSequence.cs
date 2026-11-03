@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 // NPC 演出序列：按顺序执行一串步骤（走到点位、播放动作、等待玩家、开始对话……），
-// 每一步完成后才进入下一步。由 Start Trigger 指定的玩法事件自动启动，或由其他脚本调用 Play()。
+// 每一步完成后才进入下一步。由 Play On Start、Start Trigger 指定的玩法事件自动启动，或由其他脚本调用 Play()。
 // 演出期间会关闭 NPCPatrol，并可锁定玩家与该 NPC 的互动。
 public class NPCSequence : MonoBehaviour
 {
@@ -17,6 +17,8 @@ public class NPCSequence : MonoBehaviour
     [Header("Start")]
     [Tooltip("自动启动条件，例如某段对话结束、玩家进入区域。选 None 时只能由代码调用 Play()")]
     [SerializeReference] private StoryTrigger startTrigger;
+    [Tooltip("进入游戏（场景开始）时自动开始演出，可与 Start Trigger 同时使用")]
+    [SerializeField] private bool playOnStart;
     [SerializeField] private bool playOnce = true;
 
     [Header("Control")]
@@ -45,6 +47,11 @@ public class NPCSequence : MonoBehaviour
     private void Awake()
     {
         if (npc == null) npc = GetComponent<NPC>();
+    }
+
+    private void Start()
+    {
+        if (playOnStart) Play();
     }
 
     private void OnEnable()

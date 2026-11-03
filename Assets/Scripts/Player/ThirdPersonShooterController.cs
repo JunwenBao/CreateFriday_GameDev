@@ -30,6 +30,18 @@ public class ThirdPersonShooterController : MonoBehaviour
     [SerializeField] private float aimAssistScreenRadius = 15f;     // 准星进入目标此屏幕像素半径内触发吸附
     [SerializeField] private float aimAssistSnapSpeed = 15f;        // 准星吸附/回中的平滑速度
 
+    [Header("射击效果")]
+    [SerializeField] private Transform muzzlePoint;                 // 枪口位置（枪线起点），为空时依次使用枪口烟雾特效、子弹生成点的位置
+    [SerializeField] private float maxShootDistance = 999f;         // 射击最远距离，未命中时枪线延伸到此距离
+    [SerializeField] private Transform vfxHitEnvironment;           // 命中非 BulletTarget 物体（墙面、地面等）时的特效，可为空
+    [SerializeField] private float hitVfxLifetime = 2f;             // 命中特效存在时间，到时自动销毁
+    [SerializeField] private bool showBulletTracer = true;          // 是否显示枪线
+    [SerializeField] private Material tracerMaterial;               // 枪线材质，为空时使用默认材质
+    [SerializeField] private Color tracerColor = new Color(0.85f, 0.85f, 0.85f, 0.8f); // 枪线颜色（灰白色）
+    [SerializeField] private float tracerWidth = 0.03f;             // 枪线宽度
+    [SerializeField] private float tracerHoldTime = 2f;             // 枪线完整显示的保留时间
+    [SerializeField] private float tracerFadeTime = 0.3f;           // 保留时间结束后淡出消失所需时间
+
     private ThirdPersonController thirdPersonController;
     private StarterAssetsInputs starterAssetsInputs;
     private Animator animator;
@@ -43,6 +55,8 @@ public class ThirdPersonShooterController : MonoBehaviour
     private const float WeaponSwitchPendingDuration = 0.2f;
 
     private Transform hitTransform = null;
+    private Vector3 aimHitPoint;                                     // 当前瞄准的落点（命中点或射线最远点）
+    private Vector3 aimHitNormal;                                    // 当前瞄准命中表面的法线
     private RectTransform crossHairRectTransform;                    // 十字准心的 RectTransform，用于在屏幕上移动准心
 
     private void Awake()
@@ -60,16 +74,20 @@ public class ThirdPersonShooterController : MonoBehaviour
 
     private void Update()
     {
-        Vector3 mouseWorldPosition = Vector3.zero;
-
         Vector2 screenCenterPoint = new Vector2(Screen.width / 2f, Screen.height / 2f);
         Ray ray = Camera.main.ScreenPointToRay(screenCenterPoint);
-        
-        if (Physics.Raycast(ray, out RaycastHit hit, 999f, aimColliderLayerMask))
+
+        // 未命中任何物体时，落点为射线最远点，避免沿用上一帧的命中目标
+        Vector3 mouseWorldPosition = ray.GetPoint(maxShootDistance);
+        hitTransform = null;
+        aimHitNormal = -ray.direction;
+
+        if (Physics.Raycast(ray, out RaycastHit hit, maxShootDistance, aimColliderLayerMask))
         {
             debugTransform.position = hit.point;
             mouseWorldPosition = hit.point;
             hitTransform = hit.transform;
+            aimHitNormal = hit.normal;
         }
 
         bool isMoving = starterAssetsInputs.move.sqrMagnitude > 0.01f;
@@ -117,7 +135,9 @@ public class ThirdPersonShooterController : MonoBehaviour
                 crossHairTargetPos = assistScreenPos;
                 mouseWorldPosition = assistTarget.transform.position;
                 hitTransform = assistTarget.transform;
+                aimHitNormal = (Camera.main.transform.position - mouseWorldPosition).normalized;
             }
+            aimHitPoint = mouseWorldPosition;
 
             if (crossHairRectTransform != null)
             {
@@ -244,13 +264,60 @@ public class ThirdPersonShooterController : MonoBehaviour
             animator.SetTrigger("Fire");    // 动画控制
             muzzleSmokeParticle.Play();     // VFX
 
-            // TODO：实现这个射击结果判定
-            if (hitTransform != null && hitTransform.GetComponentInParent<BulletTarget>() != null)
+            Vector3 muzzlePosition = GetMuzzlePosition();
+            Vector3 shotDirection = aimHitPoint - muzzlePosition;
+            if (shotDirection.sqrMagnitude < 0.0001f)
             {
-                Instantiate(vfxHitRed, hitTransform.position, Quaternion.identity);
-                Debug.Log("Hit a target!");
+                shotDirection = transform.forward;
+            }
+            shotDirection.Normalize();
+
+            // 枪线：从枪口到落点，保留一段时间后淡出消失
+            if (showBulletTracer)
+            {
+                BulletTracer.Spawn(muzzlePosition, aimHitPoint, tracerColor, tracerWidth, tracerHoldTime, tracerFadeTime, tracerMaterial);
+            }
+
+            if (hitTransform == null)
+            {
+                return;
+            }
+
+            // 命中判定与击中效果
+            BulletTarget bulletTarget = hitTransform.GetComponentInParent<BulletTarget>();
+            Transform hitVfx = vfxHitEnvironment;
+            if (bulletTarget != null)
+            {
+                hitVfx = bulletTarget.ResolveHitVfx(vfxHitRed);
+                bulletTarget.TakeHit(aimHitPoint, aimHitNormal, shotDirection);
+            }
+
+            if (hitVfx != null)
+            {
+                Transform vfx = Instantiate(hitVfx, aimHitPoint, Quaternion.LookRotation(aimHitNormal));
+                Destroy(vfx.gameObject, hitVfxLifetime);
             }
         }
+    }
+
+    /// <summary>
+    /// 获取枪口世界坐标，作为枪线的起点
+    /// </summary>
+    private Vector3 GetMuzzlePosition()
+    {
+        if (muzzlePoint != null)
+        {
+            return muzzlePoint.position;
+        }
+        if (muzzleSmokeParticle != null)
+        {
+            return muzzleSmokeParticle.transform.position;
+        }
+        if (spawBulletPosition != null)
+        {
+            return spawBulletPosition.position;
+        }
+        return transform.position;
     }
     #endregion
 
