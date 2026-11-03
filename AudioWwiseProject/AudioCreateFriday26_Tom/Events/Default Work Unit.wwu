@@ -47,6 +47,160 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Play_BP_Audio_UI_Notebook_Close" ID="{29D452F1-1200-4D97-83CC-7FE9F8DD27E5}">
+					<ChildrenList>
+						<Action Name="" ID="{F55F3284-FC84-459B-A256-79ED2F05DEA1}" ShortID="450907800">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="BP_Audio_UI_Notebook_Close" ID="{D2E17197-6CD8-432A-B3B0-96971A239266}" WorkUnitID="{73A11A96-30E8-4D7B-8388-7642E14CB277}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_BP_Audio_UI_Notebook_Confirm" ID="{C14B8952-80A6-4B68-B21B-1086BF017443}">
+					<ChildrenList>
+						<Action Name="" ID="{2EE7D84E-1651-468F-808D-DEA412C6A98B}" ShortID="827681380">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="BP_Audio_UI_Notebook_Confirm" ID="{E43D95CD-3474-480F-BA78-FA1C9FC8C406}" WorkUnitID="{73A11A96-30E8-4D7B-8388-7642E14CB277}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_BP_Audio_UI_Notebook_Error" ID="{5409C005-E1CC-4CD6-8411-5362F9B8EA99}">
+					<ChildrenList>
+						<Action Name="" ID="{CA27EE8F-2BC4-4054-82AA-DC62369E5DA1}" ShortID="350642167">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="BP_Audio_UI_Notebook_Error" ID="{16C42B8F-CBB0-4905-9E18-07E82456CB88}" WorkUnitID="{73A11A96-30E8-4D7B-8388-7642E14CB277}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_BP_Audio_UI_Notebook_NextPage_01" ID="{98CDF51E-2969-4CB6-A536-2A87D212F528}">
+					<ChildrenList>
+						<Action Name="" ID="{6A2B77BD-DA68-43BF-83D6-126AF2552AF4}" ShortID="445347633">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="BP_Audio_UI_Notebook_NextPage_01" ID="{5319E480-43E4-4C5F-ABDF-197BB47C3FE3}" WorkUnitID="{73A11A96-30E8-4D7B-8388-7642E14CB277}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_BP_Audio_UI_Notebook_NextPage_02" ID="{2D5B5571-F47F-42F6-B9F0-A62E86D71A68}">
+					<ChildrenList>
+						<Action Name="" ID="{4F606A56-DDBD-4452-874B-DC11D5D5336E}" ShortID="408493873">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="BP_Audio_UI_Notebook_NextPage_02" ID="{0E1D02A3-B757-4228-89C3-65859A26CD86}" WorkUnitID="{73A11A96-30E8-4D7B-8388-7642E14CB277}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_BP_Audio_UI_Notebook_Open" ID="{670CBAB0-DBD3-454D-AA90-C3535569C938}">
+					<ChildrenList>
+						<Action Name="" ID="{9EB97310-70BF-47EF-A902-441548D3D3C5}" ShortID="358473233">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="BP_Audio_UI_Notebook_Open" ID="{FEC28556-5109-43A4-90FC-3E0A386EEC4E}" WorkUnitID="{73A11A96-30E8-4D7B-8388-7642E14CB277}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_BP_Audio_UI_Notebook_Select_01" ID="{7DB1F74B-D673-4E1C-8024-8677F8448A79}">
+					<ChildrenList>
+						<Action Name="" ID="{6492C0C8-B299-4E99-AF8F-91B00B306AFA}" ShortID="864953109">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="BP_Audio_UI_Notebook_Select_01" ID="{4A197E12-CFF8-410C-A7AB-F6871DA456E7}" WorkUnitID="{73A11A96-30E8-4D7B-8388-7642E14CB277}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_BP_Audio_UI_Notebook_Select_02" ID="{5A5E83F5-FCDA-4117-A6BA-3E8C68680A2C}">
+					<ChildrenList>
+						<Action Name="" ID="{5792AC11-98EB-4383-B772-C49394389C75}" ShortID="286671689">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="BP_Audio_UI_Notebook_Select_02" ID="{475382D8-1D77-41F6-8DAB-573FF88BCAF3}" WorkUnitID="{73A11A96-30E8-4D7B-8388-7642E14CB277}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_BP_Audio_UI_Notebook_ShowPicture" ID="{EB9FDEA7-E993-4791-BFF8-7CA087993271}">
+					<ChildrenList>
+						<Action Name="" ID="{29658602-FCFA-4FB6-9303-8421749563E5}" ShortID="403209979">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="BP_Audio_UI_Notebook_ShowPicture" ID="{36D9E173-7316-4E4E-BC3D-9309ACFE0531}" WorkUnitID="{73A11A96-30E8-4D7B-8388-7642E14CB277}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_BP_Audio_AMB_Saloon_Bed" ID="{8AE36B9E-4FEB-4A44-A5A3-72B5A7D0EFB0}">
+					<ChildrenList>
+						<Action Name="" ID="{DD2214AA-157C-48FD-AD1D-D3C1043C9143}" ShortID="338460689">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="BP_Audio_AMB_Saloon_Bed" ID="{9D0323B1-81EB-48DC-A549-6A7126C73A38}" WorkUnitID="{73A11A96-30E8-4D7B-8388-7642E14CB277}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_BP_Audio_AMB_Saloon_Poker" ID="{72789EBB-F9FE-4708-8ED7-D218609BFF45}">
+					<ChildrenList>
+						<Action Name="" ID="{31671F4D-770D-49CA-979C-F4556F279C07}" ShortID="953917722">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="BP_Audio_AMB_Saloon_Poker" ID="{EF941F81-C8CF-41C6-8B57-5416624D2ADC}" WorkUnitID="{73A11A96-30E8-4D7B-8388-7642E14CB277}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_BP_Audio_AMB_Saloon_Table_01" ID="{B9ADB9E1-BE71-40AB-B256-FF79DAC63BBF}">
+					<ChildrenList>
+						<Action Name="" ID="{36F11FE5-FDCD-4CBB-AF55-47822049474D}" ShortID="52130335">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="BP_Audio_AMB_Saloon_Table_01" ID="{E2E2B663-A42B-4349-BD7B-06BFC373E798}" WorkUnitID="{73A11A96-30E8-4D7B-8388-7642E14CB277}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_BP_Audio_AMB_Saloon_Table_02" ID="{CAE60B24-E969-4542-AFA1-F13B518D485A}">
+					<ChildrenList>
+						<Action Name="" ID="{57EA4FED-BA98-4D9B-AE0D-0DCBFF56F2BB}" ShortID="816975628">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="BP_Audio_AMB_Saloon_Table_02" ID="{4359AF5C-3047-497F-A646-A3AA19AD4B12}" WorkUnitID="{73A11A96-30E8-4D7B-8388-7642E14CB277}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_BP_Audio_AMB_Sheriff_Bed" ID="{DC487C29-5747-4819-A365-4073437CEB0D}">
+					<ChildrenList>
+						<Action Name="" ID="{2C2365B1-AD3A-4754-B919-0CA8DE66ECBA}" ShortID="855663087">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="BP_Audio_AMB_Sheriff_Bed" ID="{62E2FF6D-FD33-4DF3-9862-4CC5C56D0AED}" WorkUnitID="{73A11A96-30E8-4D7B-8388-7642E14CB277}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

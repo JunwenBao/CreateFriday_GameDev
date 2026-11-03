@@ -5,9 +5,23 @@
 			<ChildrenList>
 				<SoundBank Name="Main" ID="{79699318-A325-48D8-880A-7AF3F38DBE7F}">
 					<ObjectInclusionList>
+						<ObjectRef Name="Play_BP_Audio_AMB_Saloon_Table_01" ID="{B9ADB9E1-BE71-40AB-B256-FF79DAC63BBF}" WorkUnitID="{8EADA07F-2019-4F75-B9B7-7A9CD425A61F}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_BP_Audio_UI_Notebook_Select_02" ID="{5A5E83F5-FCDA-4117-A6BA-3E8C68680A2C}" WorkUnitID="{8EADA07F-2019-4F75-B9B7-7A9CD425A61F}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_BP_Audio_UI_Notebook_NextPage_02" ID="{2D5B5571-F47F-42F6-B9F0-A62E86D71A68}" WorkUnitID="{8EADA07F-2019-4F75-B9B7-7A9CD425A61F}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_BP_Audio_AMBR_Town_Obj_Group_01" ID="{B6385A2D-956A-44B8-A9A6-36EE83A78BB1}" WorkUnitID="{8EADA07F-2019-4F75-B9B7-7A9CD425A61F}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_BP_Audio_AMB_Saloon_Table_02" ID="{CAE60B24-E969-4542-AFA1-F13B518D485A}" WorkUnitID="{8EADA07F-2019-4F75-B9B7-7A9CD425A61F}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_BP_Audio_UI_Notebook_Open" ID="{670CBAB0-DBD3-454D-AA90-C3535569C938}" WorkUnitID="{8EADA07F-2019-4F75-B9B7-7A9CD425A61F}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_BP_Audio_AMB_Saloon_Poker" ID="{72789EBB-F9FE-4708-8ED7-D218609BFF45}" WorkUnitID="{8EADA07F-2019-4F75-B9B7-7A9CD425A61F}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_FS_All" ID="{2BC7C1EA-E809-475F-B088-7FF5775D1EBD}" WorkUnitID="{8EADA07F-2019-4F75-B9B7-7A9CD425A61F}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_BP_Audio_UI_Notebook_ShowPicture" ID="{EB9FDEA7-E993-4791-BFF8-7CA087993271}" WorkUnitID="{8EADA07F-2019-4F75-B9B7-7A9CD425A61F}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_BP_Audio_AMB_Sheriff_Bed" ID="{DC487C29-5747-4819-A365-4073437CEB0D}" WorkUnitID="{8EADA07F-2019-4F75-B9B7-7A9CD425A61F}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_BP_Audio_AMB_Saloon_Bed" ID="{8AE36B9E-4FEB-4A44-A5A3-72B5A7D0EFB0}" WorkUnitID="{8EADA07F-2019-4F75-B9B7-7A9CD425A61F}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_BP_Audio_UI_Notebook_Confirm" ID="{C14B8952-80A6-4B68-B21B-1086BF017443}" WorkUnitID="{8EADA07F-2019-4F75-B9B7-7A9CD425A61F}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_BP_Audio_UI_Notebook_NextPage_01" ID="{98CDF51E-2969-4CB6-A536-2A87D212F528}" WorkUnitID="{8EADA07F-2019-4F75-B9B7-7A9CD425A61F}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_BP_Audio_UI_Notebook_Error" ID="{5409C005-E1CC-4CD6-8411-5362F9B8EA99}" WorkUnitID="{8EADA07F-2019-4F75-B9B7-7A9CD425A61F}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_BP_Audio_AMBR_Town_Bed" ID="{9C2CC31D-5C1B-4D32-A358-AB4F6D46D5F9}" WorkUnitID="{8EADA07F-2019-4F75-B9B7-7A9CD425A61F}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_BP_Audio_UI_Notebook_Close" ID="{29D452F1-1200-4D97-83CC-7FE9F8DD27E5}" WorkUnitID="{8EADA07F-2019-4F75-B9B7-7A9CD425A61F}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_BP_Audio_UI_Notebook_Select_01" ID="{7DB1F74B-D673-4E1C-8024-8677F8448A79}" WorkUnitID="{8EADA07F-2019-4F75-B9B7-7A9CD425A61F}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_BP_Audio_AMBR_Town_Obj_Group_02" ID="{9A8C054A-F067-4FDF-8CAB-D5064ED3088D}" WorkUnitID="{8EADA07F-2019-4F75-B9B7-7A9CD425A61F}" Origin="Manual" Filter="7"/>
 					</ObjectInclusionList>
 					<ObjectExclusionList/>

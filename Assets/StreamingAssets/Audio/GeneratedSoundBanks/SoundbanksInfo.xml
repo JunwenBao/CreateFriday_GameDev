@@ -9,7 +9,7 @@
 	</RootPaths>
 	<DialogueEvents/>
 	<SoundBanks>
-		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{0688AC63-40BB-9760-EFF8-16EDCA0A7CDE}">
+		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{BD3324D0-F368-78BC-E555-E635B9026C01}">
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
 			<Plugins>
@@ -177,13 +177,13 @@
 				</AcousticTexture>
 			</AcousticTextures>
 		</SoundBank>
-		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{D0498E82-D084-DC5B-7714-73B4DC670626}">
+		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{66BBB226-D4F6-B2D8-C161-565218F2B356}">
 			<ShortName>Main</ShortName>
 			<Path>Main.bnk</Path>
 			<Media>
 				<File Id="31446263" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>BP_Audio_AMBR_Town_Obj_Group_02.wav</ShortName>
-					<CachePath>SFX/BP_Audio_AMBR_Town_Obj_Group_02_818F3B66.wem</CachePath>
+					<CachePath>SFX/BP_Audio_AMBR_Town_Obj_Group_02_FBC78EF0.wem</CachePath>
 				</File>
 				<File Id="32464610" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>BP_Audio_FS_Stone_04.wav</ShortName>
@@ -195,7 +195,11 @@
 				</File>
 				<File Id="62298589" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>BP_Audio_AMBR_Town_Bed.wav</ShortName>
-					<CachePath>SFX/BP_Audio_AMBR_Town_Bed_818F3B66.wem</CachePath>
+					<CachePath>SFX/BP_Audio_AMBR_Town_Bed_FBC78EF0.wem</CachePath>
+				</File>
+				<File Id="95505015" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>BP_Audio_UI_Notebook_Error.wav</ShortName>
+					<CachePath>SFX/BP_Audio_UI_Notebook_Error_818F3B66.wem</CachePath>
 				</File>
 				<File Id="105848657" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>BP_Audio_FS_Grass_01.wav</ShortName>
@@ -205,13 +209,33 @@
 					<ShortName>BP_Audio_FS_Wood_04.wav</ShortName>
 					<CachePath>SFX/BP_Audio_FS_Wood_04_818F3B66.wem</CachePath>
 				</File>
+				<File Id="164110535" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>BP_Audio_UI_Notebook_Confirm.wav</ShortName>
+					<CachePath>SFX/BP_Audio_UI_Notebook_Confirm_818F3B66.wem</CachePath>
+				</File>
+				<File Id="209510652" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>BP_Audio_AMB_Sheriff_Bed.wav</ShortName>
+					<CachePath>SFX/BP_Audio_AMB_Sheriff_Bed_FBC78EF0.wem</CachePath>
+				</File>
 				<File Id="251994249" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>BP_Audio_FS_Wood_01.wav</ShortName>
 					<CachePath>SFX/BP_Audio_FS_Wood_01_818F3B66.wem</CachePath>
 				</File>
+				<File Id="268617186" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>BP_Audio_UI_Notebook_Select_02.wav</ShortName>
+					<CachePath>SFX/BP_Audio_UI_Notebook_Select_02_818F3B66.wem</CachePath>
+				</File>
+				<File Id="281894719" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>BP_Audio_UI_Notebook_Open.wav</ShortName>
+					<CachePath>SFX/BP_Audio_UI_Notebook_Open_818F3B66.wem</CachePath>
+				</File>
+				<File Id="290566149" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>BP_Audio_UI_Notebook_Select_01.wav</ShortName>
+					<CachePath>SFX/BP_Audio_UI_Notebook_Select_01_818F3B66.wem</CachePath>
+				</File>
 				<File Id="305040235" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>BP_Audio_AMBR_Town_Obj_Group_01.wav</ShortName>
-					<CachePath>SFX/BP_Audio_AMBR_Town_Obj_Group_01_818F3B66.wem</CachePath>
+					<CachePath>SFX/BP_Audio_AMBR_Town_Obj_Group_01_FBC78EF0.wem</CachePath>
 				</File>
 				<File Id="313324538" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>BP_Audio_FS_Dirt_02.wav</ShortName>
@@ -221,9 +245,25 @@
 					<ShortName>BP_Audio_FS_Concrete_03.wav</ShortName>
 					<CachePath>SFX/BP_Audio_FS_Concrete_03_818F3B66.wem</CachePath>
 				</File>
+				<File Id="490742252" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>BP_Audio_UI_Notebook_Close.wav</ShortName>
+					<CachePath>SFX/BP_Audio_UI_Notebook_Close_818F3B66.wem</CachePath>
+				</File>
+				<File Id="515699604" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>BP_Audio_UI_Notebook_NextPage_02.wav</ShortName>
+					<CachePath>SFX/BP_Audio_UI_Notebook_NextPage_02_818F3B66.wem</CachePath>
+				</File>
 				<File Id="517304936" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>BP_Audio_FS_Stone_02.wav</ShortName>
 					<CachePath>SFX/BP_Audio_FS_Stone_02_818F3B66.wem</CachePath>
+				</File>
+				<File Id="536635815" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>BP_Audio_AMB_Saloon_Table_02.wav</ShortName>
+					<CachePath>SFX/BP_Audio_AMB_Saloon_Table_02_FBC78EF0.wem</CachePath>
+				</File>
+				<File Id="569077827" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>BP_Audio_AMB_Saloon_Bed.wav</ShortName>
+					<CachePath>SFX/BP_Audio_AMB_Saloon_Bed_FBC78EF0.wem</CachePath>
 				</File>
 				<File Id="572941758" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>BP_Audio_FS_BagSound_01.wav</ShortName>
@@ -249,6 +289,10 @@
 					<ShortName>BP_Audio_FS_Concrete_04.wav</ShortName>
 					<CachePath>SFX/BP_Audio_FS_Concrete_04_818F3B66.wem</CachePath>
 				</File>
+				<File Id="781333299" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>BP_Audio_AMB_Saloon_Poker.wav</ShortName>
+					<CachePath>SFX/BP_Audio_AMB_Saloon_Poker_FBC78EF0.wem</CachePath>
+				</File>
 				<File Id="856667241" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>BP_Audio_FS_Dirt_01.wav</ShortName>
 					<CachePath>SFX/BP_Audio_FS_Dirt_01_818F3B66.wem</CachePath>
@@ -257,13 +301,25 @@
 					<ShortName>BP_Audio_FS_Wood_02.wav</ShortName>
 					<CachePath>SFX/BP_Audio_FS_Wood_02_818F3B66.wem</CachePath>
 				</File>
+				<File Id="947893938" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>BP_Audio_UI_Notebook_NextPage_01.wav</ShortName>
+					<CachePath>SFX/BP_Audio_UI_Notebook_NextPage_01_818F3B66.wem</CachePath>
+				</File>
 				<File Id="970681283" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>BP_Audio_FS_Grass_04.wav</ShortName>
 					<CachePath>SFX/BP_Audio_FS_Grass_04_818F3B66.wem</CachePath>
 				</File>
+				<File Id="971367866" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>BP_Audio_UI_Notebook_ShowPicture.wav</ShortName>
+					<CachePath>SFX/BP_Audio_UI_Notebook_ShowPicture_818F3B66.wem</CachePath>
+				</File>
 				<File Id="979418248" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>BP_Audio_FS_BagSound_02.wav</ShortName>
 					<CachePath>SFX/BP_Audio_FS_BagSound_02_818F3B66.wem</CachePath>
+				</File>
+				<File Id="986987973" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>BP_Audio_AMB_Saloon_Table_01.wav</ShortName>
+					<CachePath>SFX/BP_Audio_AMB_Saloon_Table_01_FBC78EF0.wem</CachePath>
 				</File>
 				<File Id="1018710785" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>BP_Audio_FS_Grass_03.wav</ShortName>
@@ -291,21 +347,100 @@
 					<Plugin Id="584751593" Name="Silence" LibName="Wwise Silence" LibId="6619138"/>
 					<Plugin Id="1064144435" Name="Silence" LibName="Wwise Silence" LibId="6619138"/>
 				</Custom>
+				<ShareSets>
+					<Plugin Id="3657550167" Name="New_Parametric_EQ" LibName="Wwise Parametric EQ" LibId="6881283"/>
+				</ShareSets>
 			</Plugins>
 			<Events>
-				<Event Id="1445002875" Name="Play_BP_Audio_AMBR_Town_Bed" DurationType="OneShot" DurationMin="28.606874" DurationMax="28.606874">
+				<Event Id="3385938869" Name="Play_BP_Audio_AMB_Saloon_Bed" DurationType="Infinite">
+					<MediaRefs>
+						<MediaRef Id="569077827"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="955124127" Name="Play_BP_Audio_AMB_Saloon_Poker" DurationType="Infinite">
+					<MediaRefs>
+						<MediaRef Id="781333299"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="2669354170" Name="Play_BP_Audio_AMB_Saloon_Table_01" DurationType="Infinite">
+					<MediaRefs>
+						<MediaRef Id="986987973"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="2669354169" Name="Play_BP_Audio_AMB_Saloon_Table_02" DurationType="Infinite">
+					<MediaRefs>
+						<MediaRef Id="536635815"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="2289372366" Name="Play_BP_Audio_AMB_Sheriff_Bed" DurationType="Infinite">
+					<MediaRefs>
+						<MediaRef Id="62298589"/>
+						<MediaRef Id="209510652"/>
+					</MediaRefs>
+					<PluginRefs>
+						<ShareSets>
+							<PluginRef Id="3657550167"/>
+						</ShareSets>
+					</PluginRefs>
+				</Event>
+				<Event Id="1445002875" Name="Play_BP_Audio_AMBR_Town_Bed" DurationType="Infinite">
 					<MediaRefs>
 						<MediaRef Id="62298589"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="2994856701" Name="Play_BP_Audio_AMBR_Town_Obj_Group_01" DurationType="OneShot" DurationMin="15.498875" DurationMax="15.498875">
+				<Event Id="2994856701" Name="Play_BP_Audio_AMBR_Town_Obj_Group_01" DurationType="Infinite">
 					<MediaRefs>
 						<MediaRef Id="305040235"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="2994856702" Name="Play_BP_Audio_AMBR_Town_Obj_Group_02" DurationType="OneShot" DurationMin="15.80273" DurationMax="15.80273">
+				<Event Id="2994856702" Name="Play_BP_Audio_AMBR_Town_Obj_Group_02" DurationType="Infinite">
 					<MediaRefs>
 						<MediaRef Id="31446263"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="1632743001" Name="Play_BP_Audio_UI_Notebook_Close" DurationType="OneShot" DurationMin="0.6531875" DurationMax="0.6531875">
+					<MediaRefs>
+						<MediaRef Id="490742252"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="822422525" Name="Play_BP_Audio_UI_Notebook_Confirm" DurationType="OneShot" DurationMin="0.230125" DurationMax="0.230125">
+					<MediaRefs>
+						<MediaRef Id="164110535"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3090841699" Name="Play_BP_Audio_UI_Notebook_Error" DurationType="OneShot" DurationMin="0.24533333" DurationMax="0.24533333">
+					<MediaRefs>
+						<MediaRef Id="95505015"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="492132421" Name="Play_BP_Audio_UI_Notebook_NextPage_01" DurationType="OneShot" DurationMin="0.50208336" DurationMax="0.50208336">
+					<MediaRefs>
+						<MediaRef Id="947893938"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="492132422" Name="Play_BP_Audio_UI_Notebook_NextPage_02" DurationType="OneShot" DurationMin="0.50208336" DurationMax="0.50208336">
+					<MediaRefs>
+						<MediaRef Id="515699604"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="4169777291" Name="Play_BP_Audio_UI_Notebook_Open" DurationType="OneShot" DurationMin="1.7549791" DurationMax="1.7549791">
+					<MediaRefs>
+						<MediaRef Id="281894719"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="454290315" Name="Play_BP_Audio_UI_Notebook_Select_01" DurationType="OneShot" DurationMin="0.2" DurationMax="0.2">
+					<MediaRefs>
+						<MediaRef Id="290566149"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="454290312" Name="Play_BP_Audio_UI_Notebook_Select_02" DurationType="OneShot" DurationMin="0.2" DurationMax="0.2">
+					<MediaRefs>
+						<MediaRef Id="268617186"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3761599346" Name="Play_BP_Audio_UI_Notebook_ShowPicture" DurationType="OneShot" DurationMin="0.46127084" DurationMax="0.46127084">
+					<MediaRefs>
+						<MediaRef Id="971367866"/>
 					</MediaRefs>
 				</Event>
 				<Event Id="3450861523" Name="Play_FS_All" DurationType="OneShot" DurationMin="0.3538531" DurationMax="1.0442737">
@@ -382,5 +517,5 @@
 			</SwitchGroups>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{B75EECAD-D102-3399-ABAC-A6B62AED4CCB}</FileHash>
+	<FileHash>{A765EFDE-4291-C7E5-8D9D-94766600A798}</FileHash>
 </SoundBanksInfo>
