@@ -1,0 +1,521 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="16" SoundBankVersion="150">
+	<RootPaths>
+		<ProjectRoot>../../../../../AudioWwiseProject/AudioCreateFriday26_Tom</ProjectRoot>
+		<SourceFilesRoot>../../../../../AudioWwiseProject/AudioCreateFriday26_Tom/.cache/Windows</SourceFilesRoot>
+		<SoundBanksRoot>.</SoundBanksRoot>
+		<ExternalSourcesInputFile></ExternalSourcesInputFile>
+		<ExternalSourcesOutputRoot>../../../../../AudioWwiseProject/AudioCreateFriday26_Tom/GeneratedSoundBanks/Windows</ExternalSourcesOutputRoot>
+	</RootPaths>
+	<DialogueEvents/>
+	<SoundBanks>
+		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{BD3324D0-F368-78BC-E555-E635B9026C01}">
+			<ShortName>Init</ShortName>
+			<Path>Init.bnk</Path>
+			<Plugins>
+				<AudioDevices>
+					<Plugin Id="2317455096" Name="No_Output" LibName="No Output" LibId="11862023"/>
+					<Plugin Id="3859886410" Name="System" LibName="System" LibId="11403271"/>
+					<Plugin Id="4230635974" Name="Default_Motion_Device" LibName="Wwise Motion" LibId="33226759"/>
+				</AudioDevices>
+			</Plugins>
+			<Busses>
+				<Bus Id="985987111" Name="Motion Factory Bus"/>
+				<Bus Id="3803692087" Name="Master Audio Bus"/>
+			</Busses>
+			<GameParameters>
+				<GameParameter Id="796049864" Name="RPM"/>
+				<GameParameter Id="822163944" Name="SS_Air_RPM"/>
+				<GameParameter Id="1029930033" Name="SS_Air_Fury"/>
+				<GameParameter Id="1351367891" Name="SS_Air_Fear"/>
+				<GameParameter Id="1524500807" Name="Playback_Rate"/>
+				<GameParameter Id="2648548617" Name="SS_Air_Month"/>
+				<GameParameter Id="3002758120" Name="SS_Air_Freefall"/>
+				<GameParameter Id="3074696722" Name="SS_Air_Size"/>
+				<GameParameter Id="3203397129" Name="SS_Air_TimeOfDay"/>
+				<GameParameter Id="3715662592" Name="SS_Air_Storm"/>
+				<GameParameter Id="3847924954" Name="SS_Air_Presence"/>
+				<GameParameter Id="4160247818" Name="SS_Air_Turbulence"/>
+			</GameParameters>
+			<SwitchGroups>
+				<SwitchGroup Id="20433824" Name="FS_Material">
+					<Switches>
+						<Switch Id="841620460" Name="Concrete"/>
+						<Switch Id="1216965916" Name="Stone"/>
+						<Switch Id="2058049674" Name="Wood"/>
+						<Switch Id="2195636714" Name="Dirt"/>
+						<Switch Id="4248645337" Name="Grass"/>
+					</Switches>
+				</SwitchGroup>
+			</SwitchGroups>
+			<AcousticTextures>
+				<AcousticTexture Id="504532776" Name="Brick">
+					<Properties>
+						<Property Name="AbsorptionLow" Type="Real32" Value="12"/>
+						<Property Name="AbsorptionMidLow" Type="Real32" Value="18"/>
+						<Property Name="AbsorptionMidHigh" Type="Real32" Value="23"/>
+						<Property Name="AbsorptionHigh" Type="Real32" Value="35"/>
+						<Property Name="Scattering" Type="Real32" Value="0"/>
+					</Properties>
+				</AcousticTexture>
+				<AcousticTexture Id="513139656" Name="Mountain">
+					<Properties>
+						<Property Name="AbsorptionLow" Type="Real32" Value="0"/>
+						<Property Name="AbsorptionMidLow" Type="Real32" Value="0"/>
+						<Property Name="AbsorptionMidHigh" Type="Real32" Value="0"/>
+						<Property Name="AbsorptionHigh" Type="Real32" Value="0"/>
+						<Property Name="Scattering" Type="Real32" Value="0"/>
+					</Properties>
+				</AcousticTexture>
+				<AcousticTexture Id="841620460" Name="Concrete">
+					<Properties>
+						<Property Name="AbsorptionLow" Type="Real32" Value="6"/>
+						<Property Name="AbsorptionMidLow" Type="Real32" Value="6"/>
+						<Property Name="AbsorptionMidHigh" Type="Real32" Value="6"/>
+						<Property Name="AbsorptionHigh" Type="Real32" Value="14"/>
+						<Property Name="Scattering" Type="Real32" Value="0"/>
+					</Properties>
+				</AcousticTexture>
+				<AcousticTexture Id="1755085759" Name="Wood_Deep">
+					<Properties>
+						<Property Name="AbsorptionLow" Type="Real32" Value="1"/>
+						<Property Name="AbsorptionMidLow" Type="Real32" Value="8"/>
+						<Property Name="AbsorptionMidHigh" Type="Real32" Value="20"/>
+						<Property Name="AbsorptionHigh" Type="Real32" Value="35"/>
+						<Property Name="Scattering" Type="Real32" Value="0"/>
+					</Properties>
+				</AcousticTexture>
+				<AcousticTexture Id="1873957695" Name="Anechoic">
+					<Properties>
+						<Property Name="AbsorptionLow" Type="Real32" Value="100"/>
+						<Property Name="AbsorptionMidLow" Type="Real32" Value="100"/>
+						<Property Name="AbsorptionMidHigh" Type="Real32" Value="100"/>
+						<Property Name="AbsorptionHigh" Type="Real32" Value="100"/>
+						<Property Name="Scattering" Type="Real32" Value="0"/>
+					</Properties>
+				</AcousticTexture>
+				<AcousticTexture Id="1970351858" Name="Fabric">
+					<Properties>
+						<Property Name="AbsorptionLow" Type="Real32" Value="3"/>
+						<Property Name="AbsorptionMidLow" Type="Real32" Value="13"/>
+						<Property Name="AbsorptionMidHigh" Type="Real32" Value="48"/>
+						<Property Name="AbsorptionHigh" Type="Real32" Value="72"/>
+						<Property Name="Scattering" Type="Real32" Value="0"/>
+					</Properties>
+				</AcousticTexture>
+				<AcousticTexture Id="2058049674" Name="Wood">
+					<Properties>
+						<Property Name="AbsorptionLow" Type="Real32" Value="32"/>
+						<Property Name="AbsorptionMidLow" Type="Real32" Value="25"/>
+						<Property Name="AbsorptionMidHigh" Type="Real32" Value="20"/>
+						<Property Name="AbsorptionHigh" Type="Real32" Value="35"/>
+						<Property Name="Scattering" Type="Real32" Value="0"/>
+					</Properties>
+				</AcousticTexture>
+				<AcousticTexture Id="2412606308" Name="Carpet">
+					<Properties>
+						<Property Name="AbsorptionLow" Type="Real32" Value="46"/>
+						<Property Name="AbsorptionMidLow" Type="Real32" Value="45"/>
+						<Property Name="AbsorptionMidHigh" Type="Real32" Value="76"/>
+						<Property Name="AbsorptionHigh" Type="Real32" Value="100"/>
+						<Property Name="Scattering" Type="Real32" Value="0"/>
+					</Properties>
+				</AcousticTexture>
+				<AcousticTexture Id="2637588553" Name="Tile">
+					<Properties>
+						<Property Name="AbsorptionLow" Type="Real32" Value="67"/>
+						<Property Name="AbsorptionMidLow" Type="Real32" Value="41"/>
+						<Property Name="AbsorptionMidHigh" Type="Real32" Value="12"/>
+						<Property Name="AbsorptionHigh" Type="Real32" Value="0"/>
+						<Property Name="Scattering" Type="Real32" Value="0"/>
+					</Properties>
+				</AcousticTexture>
+				<AcousticTexture Id="2928161104" Name="Curtains">
+					<Properties>
+						<Property Name="AbsorptionLow" Type="Real32" Value="7"/>
+						<Property Name="AbsorptionMidLow" Type="Real32" Value="60"/>
+						<Property Name="AbsorptionMidHigh" Type="Real32" Value="0"/>
+						<Property Name="AbsorptionHigh" Type="Real32" Value="84"/>
+						<Property Name="Scattering" Type="Real32" Value="0"/>
+					</Properties>
+				</AcousticTexture>
+				<AcousticTexture Id="3195498748" Name="Cork_Tiles">
+					<Properties>
+						<Property Name="AbsorptionLow" Type="Real32" Value="14"/>
+						<Property Name="AbsorptionMidLow" Type="Real32" Value="30"/>
+						<Property Name="AbsorptionMidHigh" Type="Real32" Value="73"/>
+						<Property Name="AbsorptionHigh" Type="Real32" Value="100"/>
+						<Property Name="Scattering" Type="Real32" Value="0"/>
+					</Properties>
+				</AcousticTexture>
+				<AcousticTexture Id="3670307564" Name="Drywall">
+					<Properties>
+						<Property Name="AbsorptionLow" Type="Real32" Value="2"/>
+						<Property Name="AbsorptionMidLow" Type="Real32" Value="2"/>
+						<Property Name="AbsorptionMidHigh" Type="Real32" Value="2"/>
+						<Property Name="AbsorptionHigh" Type="Real32" Value="2"/>
+						<Property Name="Scattering" Type="Real32" Value="0"/>
+					</Properties>
+				</AcousticTexture>
+				<AcousticTexture Id="4168643977" Name="Acoustic_Banner">
+					<Properties>
+						<Property Name="AbsorptionLow" Type="Real32" Value="37"/>
+						<Property Name="AbsorptionMidLow" Type="Real32" Value="100"/>
+						<Property Name="AbsorptionMidHigh" Type="Real32" Value="100"/>
+						<Property Name="AbsorptionHigh" Type="Real32" Value="100"/>
+						<Property Name="Scattering" Type="Real32" Value="0"/>
+					</Properties>
+				</AcousticTexture>
+				<AcousticTexture Id="4262522749" Name="Wood_Bright">
+					<Properties>
+						<Property Name="AbsorptionLow" Type="Real32" Value="32"/>
+						<Property Name="AbsorptionMidLow" Type="Real32" Value="25"/>
+						<Property Name="AbsorptionMidHigh" Type="Real32" Value="10"/>
+						<Property Name="AbsorptionHigh" Type="Real32" Value="9"/>
+						<Property Name="Scattering" Type="Real32" Value="0"/>
+					</Properties>
+				</AcousticTexture>
+			</AcousticTextures>
+		</SoundBank>
+		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{66BBB226-D4F6-B2D8-C161-565218F2B356}">
+			<ShortName>Main</ShortName>
+			<Path>Main.bnk</Path>
+			<Media>
+				<File Id="31446263" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>BP_Audio_AMBR_Town_Obj_Group_02.wav</ShortName>
+					<CachePath>SFX/BP_Audio_AMBR_Town_Obj_Group_02_FBC78EF0.wem</CachePath>
+				</File>
+				<File Id="32464610" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>BP_Audio_FS_Stone_04.wav</ShortName>
+					<CachePath>SFX/BP_Audio_FS_Stone_04_818F3B66.wem</CachePath>
+				</File>
+				<File Id="49116680" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>BP_Audio_FS_Grass_02.wav</ShortName>
+					<CachePath>SFX/BP_Audio_FS_Grass_02_818F3B66.wem</CachePath>
+				</File>
+				<File Id="62298589" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>BP_Audio_AMBR_Town_Bed.wav</ShortName>
+					<CachePath>SFX/BP_Audio_AMBR_Town_Bed_FBC78EF0.wem</CachePath>
+				</File>
+				<File Id="95505015" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>BP_Audio_UI_Notebook_Error.wav</ShortName>
+					<CachePath>SFX/BP_Audio_UI_Notebook_Error_818F3B66.wem</CachePath>
+				</File>
+				<File Id="105848657" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>BP_Audio_FS_Grass_01.wav</ShortName>
+					<CachePath>SFX/BP_Audio_FS_Grass_01_818F3B66.wem</CachePath>
+				</File>
+				<File Id="143920645" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>BP_Audio_FS_Wood_04.wav</ShortName>
+					<CachePath>SFX/BP_Audio_FS_Wood_04_818F3B66.wem</CachePath>
+				</File>
+				<File Id="164110535" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>BP_Audio_UI_Notebook_Confirm.wav</ShortName>
+					<CachePath>SFX/BP_Audio_UI_Notebook_Confirm_818F3B66.wem</CachePath>
+				</File>
+				<File Id="209510652" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>BP_Audio_AMB_Sheriff_Bed.wav</ShortName>
+					<CachePath>SFX/BP_Audio_AMB_Sheriff_Bed_FBC78EF0.wem</CachePath>
+				</File>
+				<File Id="251994249" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>BP_Audio_FS_Wood_01.wav</ShortName>
+					<CachePath>SFX/BP_Audio_FS_Wood_01_818F3B66.wem</CachePath>
+				</File>
+				<File Id="268617186" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>BP_Audio_UI_Notebook_Select_02.wav</ShortName>
+					<CachePath>SFX/BP_Audio_UI_Notebook_Select_02_818F3B66.wem</CachePath>
+				</File>
+				<File Id="281894719" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>BP_Audio_UI_Notebook_Open.wav</ShortName>
+					<CachePath>SFX/BP_Audio_UI_Notebook_Open_818F3B66.wem</CachePath>
+				</File>
+				<File Id="290566149" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>BP_Audio_UI_Notebook_Select_01.wav</ShortName>
+					<CachePath>SFX/BP_Audio_UI_Notebook_Select_01_818F3B66.wem</CachePath>
+				</File>
+				<File Id="305040235" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>BP_Audio_AMBR_Town_Obj_Group_01.wav</ShortName>
+					<CachePath>SFX/BP_Audio_AMBR_Town_Obj_Group_01_FBC78EF0.wem</CachePath>
+				</File>
+				<File Id="313324538" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>BP_Audio_FS_Dirt_02.wav</ShortName>
+					<CachePath>SFX/BP_Audio_FS_Dirt_02_818F3B66.wem</CachePath>
+				</File>
+				<File Id="483222897" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>BP_Audio_FS_Concrete_03.wav</ShortName>
+					<CachePath>SFX/BP_Audio_FS_Concrete_03_818F3B66.wem</CachePath>
+				</File>
+				<File Id="490742252" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>BP_Audio_UI_Notebook_Close.wav</ShortName>
+					<CachePath>SFX/BP_Audio_UI_Notebook_Close_818F3B66.wem</CachePath>
+				</File>
+				<File Id="515699604" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>BP_Audio_UI_Notebook_NextPage_02.wav</ShortName>
+					<CachePath>SFX/BP_Audio_UI_Notebook_NextPage_02_818F3B66.wem</CachePath>
+				</File>
+				<File Id="517304936" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>BP_Audio_FS_Stone_02.wav</ShortName>
+					<CachePath>SFX/BP_Audio_FS_Stone_02_818F3B66.wem</CachePath>
+				</File>
+				<File Id="536635815" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>BP_Audio_AMB_Saloon_Table_02.wav</ShortName>
+					<CachePath>SFX/BP_Audio_AMB_Saloon_Table_02_FBC78EF0.wem</CachePath>
+				</File>
+				<File Id="569077827" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>BP_Audio_AMB_Saloon_Bed.wav</ShortName>
+					<CachePath>SFX/BP_Audio_AMB_Saloon_Bed_FBC78EF0.wem</CachePath>
+				</File>
+				<File Id="572941758" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>BP_Audio_FS_BagSound_01.wav</ShortName>
+					<CachePath>SFX/BP_Audio_FS_BagSound_01_818F3B66.wem</CachePath>
+				</File>
+				<File Id="594354036" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>BP_Audio_FS_Stone_01.wav</ShortName>
+					<CachePath>SFX/BP_Audio_FS_Stone_01_818F3B66.wem</CachePath>
+				</File>
+				<File Id="686882864" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>BP_Audio_FS_Concrete_01.wav</ShortName>
+					<CachePath>SFX/BP_Audio_FS_Concrete_01_818F3B66.wem</CachePath>
+				</File>
+				<File Id="692045935" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>BP_Audio_FS_Dirt_03.wav</ShortName>
+					<CachePath>SFX/BP_Audio_FS_Dirt_03_818F3B66.wem</CachePath>
+				</File>
+				<File Id="727865780" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>BP_Audio_FS_Concrete_02.wav</ShortName>
+					<CachePath>SFX/BP_Audio_FS_Concrete_02_818F3B66.wem</CachePath>
+				</File>
+				<File Id="754062352" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>BP_Audio_FS_Concrete_04.wav</ShortName>
+					<CachePath>SFX/BP_Audio_FS_Concrete_04_818F3B66.wem</CachePath>
+				</File>
+				<File Id="781333299" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>BP_Audio_AMB_Saloon_Poker.wav</ShortName>
+					<CachePath>SFX/BP_Audio_AMB_Saloon_Poker_FBC78EF0.wem</CachePath>
+				</File>
+				<File Id="856667241" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>BP_Audio_FS_Dirt_01.wav</ShortName>
+					<CachePath>SFX/BP_Audio_FS_Dirt_01_818F3B66.wem</CachePath>
+				</File>
+				<File Id="909653602" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>BP_Audio_FS_Wood_02.wav</ShortName>
+					<CachePath>SFX/BP_Audio_FS_Wood_02_818F3B66.wem</CachePath>
+				</File>
+				<File Id="947893938" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>BP_Audio_UI_Notebook_NextPage_01.wav</ShortName>
+					<CachePath>SFX/BP_Audio_UI_Notebook_NextPage_01_818F3B66.wem</CachePath>
+				</File>
+				<File Id="970681283" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>BP_Audio_FS_Grass_04.wav</ShortName>
+					<CachePath>SFX/BP_Audio_FS_Grass_04_818F3B66.wem</CachePath>
+				</File>
+				<File Id="971367866" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>BP_Audio_UI_Notebook_ShowPicture.wav</ShortName>
+					<CachePath>SFX/BP_Audio_UI_Notebook_ShowPicture_818F3B66.wem</CachePath>
+				</File>
+				<File Id="979418248" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>BP_Audio_FS_BagSound_02.wav</ShortName>
+					<CachePath>SFX/BP_Audio_FS_BagSound_02_818F3B66.wem</CachePath>
+				</File>
+				<File Id="986987973" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>BP_Audio_AMB_Saloon_Table_01.wav</ShortName>
+					<CachePath>SFX/BP_Audio_AMB_Saloon_Table_01_FBC78EF0.wem</CachePath>
+				</File>
+				<File Id="1018710785" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>BP_Audio_FS_Grass_03.wav</ShortName>
+					<CachePath>SFX/BP_Audio_FS_Grass_03_818F3B66.wem</CachePath>
+				</File>
+				<File Id="1022937455" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>BP_Audio_FS_Dirt_04.wav</ShortName>
+					<CachePath>SFX/BP_Audio_FS_Dirt_04_818F3B66.wem</CachePath>
+				</File>
+				<File Id="1023174681" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>BP_Audio_FS_Wood_03.wav</ShortName>
+					<CachePath>SFX/BP_Audio_FS_Wood_03_818F3B66.wem</CachePath>
+				</File>
+				<File Id="1052294274" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>BP_Audio_FS_Stone_03.wav</ShortName>
+					<CachePath>SFX/BP_Audio_FS_Stone_03_818F3B66.wem</CachePath>
+				</File>
+				<File Id="1066916985" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>BP_Audio_FS_BagSound_03.wav</ShortName>
+					<CachePath>SFX/BP_Audio_FS_BagSound_03_818F3B66.wem</CachePath>
+				</File>
+			</Media>
+			<Plugins>
+				<Custom>
+					<Plugin Id="584751593" Name="Silence" LibName="Wwise Silence" LibId="6619138"/>
+					<Plugin Id="1064144435" Name="Silence" LibName="Wwise Silence" LibId="6619138"/>
+				</Custom>
+				<ShareSets>
+					<Plugin Id="3657550167" Name="New_Parametric_EQ" LibName="Wwise Parametric EQ" LibId="6881283"/>
+				</ShareSets>
+			</Plugins>
+			<Events>
+				<Event Id="3385938869" Name="Play_BP_Audio_AMB_Saloon_Bed" DurationType="Infinite">
+					<MediaRefs>
+						<MediaRef Id="569077827"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="955124127" Name="Play_BP_Audio_AMB_Saloon_Poker" DurationType="Infinite">
+					<MediaRefs>
+						<MediaRef Id="781333299"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="2669354170" Name="Play_BP_Audio_AMB_Saloon_Table_01" DurationType="Infinite">
+					<MediaRefs>
+						<MediaRef Id="986987973"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="2669354169" Name="Play_BP_Audio_AMB_Saloon_Table_02" DurationType="Infinite">
+					<MediaRefs>
+						<MediaRef Id="536635815"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="2289372366" Name="Play_BP_Audio_AMB_Sheriff_Bed" DurationType="Infinite">
+					<MediaRefs>
+						<MediaRef Id="62298589"/>
+						<MediaRef Id="209510652"/>
+					</MediaRefs>
+					<PluginRefs>
+						<ShareSets>
+							<PluginRef Id="3657550167"/>
+						</ShareSets>
+					</PluginRefs>
+				</Event>
+				<Event Id="1445002875" Name="Play_BP_Audio_AMBR_Town_Bed" DurationType="Infinite">
+					<MediaRefs>
+						<MediaRef Id="62298589"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="2994856701" Name="Play_BP_Audio_AMBR_Town_Obj_Group_01" DurationType="Infinite">
+					<MediaRefs>
+						<MediaRef Id="305040235"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="2994856702" Name="Play_BP_Audio_AMBR_Town_Obj_Group_02" DurationType="Infinite">
+					<MediaRefs>
+						<MediaRef Id="31446263"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="1632743001" Name="Play_BP_Audio_UI_Notebook_Close" DurationType="OneShot" DurationMin="0.6531875" DurationMax="0.6531875">
+					<MediaRefs>
+						<MediaRef Id="490742252"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="822422525" Name="Play_BP_Audio_UI_Notebook_Confirm" DurationType="OneShot" DurationMin="0.230125" DurationMax="0.230125">
+					<MediaRefs>
+						<MediaRef Id="164110535"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3090841699" Name="Play_BP_Audio_UI_Notebook_Error" DurationType="OneShot" DurationMin="0.24533333" DurationMax="0.24533333">
+					<MediaRefs>
+						<MediaRef Id="95505015"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="492132421" Name="Play_BP_Audio_UI_Notebook_NextPage_01" DurationType="OneShot" DurationMin="0.50208336" DurationMax="0.50208336">
+					<MediaRefs>
+						<MediaRef Id="947893938"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="492132422" Name="Play_BP_Audio_UI_Notebook_NextPage_02" DurationType="OneShot" DurationMin="0.50208336" DurationMax="0.50208336">
+					<MediaRefs>
+						<MediaRef Id="515699604"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="4169777291" Name="Play_BP_Audio_UI_Notebook_Open" DurationType="OneShot" DurationMin="1.7549791" DurationMax="1.7549791">
+					<MediaRefs>
+						<MediaRef Id="281894719"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="454290315" Name="Play_BP_Audio_UI_Notebook_Select_01" DurationType="OneShot" DurationMin="0.2" DurationMax="0.2">
+					<MediaRefs>
+						<MediaRef Id="290566149"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="454290312" Name="Play_BP_Audio_UI_Notebook_Select_02" DurationType="OneShot" DurationMin="0.2" DurationMax="0.2">
+					<MediaRefs>
+						<MediaRef Id="268617186"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3761599346" Name="Play_BP_Audio_UI_Notebook_ShowPicture" DurationType="OneShot" DurationMin="0.46127084" DurationMax="0.46127084">
+					<MediaRefs>
+						<MediaRef Id="971367866"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3450861523" Name="Play_FS_All" DurationType="OneShot" DurationMin="0.3538531" DurationMax="1.0442737">
+					<MediaRefs>
+						<MediaRef Id="572941758"/>
+						<MediaRef Id="979418248"/>
+						<MediaRef Id="1066916985"/>
+					</MediaRefs>
+					<PluginRefs>
+						<Custom>
+							<PluginRef Id="584751593"/>
+							<PluginRef Id="1064144435"/>
+						</Custom>
+					</PluginRefs>
+					<SwitchContainers>
+						<SwitchContainer>
+							<SwitchValue GroupType="Switch" GroupId="20433824" Id="4248645337"/>
+							<MediaRefs>
+								<MediaRef Id="49116680"/>
+								<MediaRef Id="105848657"/>
+								<MediaRef Id="970681283"/>
+								<MediaRef Id="1018710785"/>
+							</MediaRefs>
+						</SwitchContainer>
+						<SwitchContainer>
+							<SwitchValue GroupType="Switch" GroupId="20433824" Id="2058049674"/>
+							<MediaRefs>
+								<MediaRef Id="143920645"/>
+								<MediaRef Id="251994249"/>
+								<MediaRef Id="909653602"/>
+								<MediaRef Id="1023174681"/>
+							</MediaRefs>
+						</SwitchContainer>
+						<SwitchContainer>
+							<SwitchValue GroupType="Switch" GroupId="20433824" Id="841620460"/>
+							<MediaRefs>
+								<MediaRef Id="483222897"/>
+								<MediaRef Id="686882864"/>
+								<MediaRef Id="727865780"/>
+								<MediaRef Id="754062352"/>
+							</MediaRefs>
+						</SwitchContainer>
+						<SwitchContainer>
+							<SwitchValue GroupType="Switch" GroupId="20433824" Id="2195636714" Default="true"/>
+							<MediaRefs>
+								<MediaRef Id="313324538"/>
+								<MediaRef Id="692045935"/>
+								<MediaRef Id="856667241"/>
+								<MediaRef Id="1022937455"/>
+							</MediaRefs>
+						</SwitchContainer>
+						<SwitchContainer>
+							<SwitchValue GroupType="Switch" GroupId="20433824" Id="1216965916"/>
+							<MediaRefs>
+								<MediaRef Id="32464610"/>
+								<MediaRef Id="517304936"/>
+								<MediaRef Id="594354036"/>
+								<MediaRef Id="1052294274"/>
+							</MediaRefs>
+						</SwitchContainer>
+					</SwitchContainers>
+				</Event>
+			</Events>
+			<SwitchGroups>
+				<SwitchGroup Id="20433824" Name="FS_Material">
+					<Switches>
+						<Switch Id="841620460" Name="Concrete"/>
+						<Switch Id="1216965916" Name="Stone"/>
+						<Switch Id="2058049674" Name="Wood"/>
+						<Switch Id="2195636714" Name="Dirt"/>
+						<Switch Id="4248645337" Name="Grass"/>
+					</Switches>
+				</SwitchGroup>
+			</SwitchGroups>
+		</SoundBank>
+	</SoundBanks>
+	<FileHash>{0D8C9F9D-C3DA-5522-02AD-429D8CDAFA28}</FileHash>
+</SoundBanksInfo>
